@@ -1,16 +1,19 @@
 //  This file was automatically generated and should not be edited.
 
 import Apollo
+import Foundation
 
 public final class LoginMutation: GraphQLMutation {
-  /// mutation Login($email: String!, $password: String!) {
-  ///   login(email: $email, password: $password) {
-  ///     __typename
-  ///     token
-  ///   }
-  /// }
+  /// The raw GraphQL definition of this operation.
   public let operationDefinition =
-    "mutation Login($email: String!, $password: String!) { login(email: $email, password: $password) { __typename token } }"
+    """
+    mutation Login($email: String!, $password: String!) {
+      login(email: $email, password: $password) {
+        __typename
+        token
+      }
+    }
+    """
 
   public let operationName = "Login"
 
@@ -92,14 +95,16 @@ public final class LoginMutation: GraphQLMutation {
 }
 
 public final class CreateUserMutation: GraphQLMutation {
-  /// mutation CreateUser($firstName: String, $lastName: String, $email: String!, $password: String!) {
-  ///   createUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password) {
-  ///     __typename
-  ///     token
-  ///   }
-  /// }
+  /// The raw GraphQL definition of this operation.
   public let operationDefinition =
-    "mutation CreateUser($firstName: String, $lastName: String, $email: String!, $password: String!) { createUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password) { __typename token } }"
+    """
+    mutation CreateUser($firstName: String, $lastName: String, $email: String!, $password: String!) {
+      createUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password) {
+        __typename
+        token
+      }
+    }
+    """
 
   public let operationName = "CreateUser"
 
