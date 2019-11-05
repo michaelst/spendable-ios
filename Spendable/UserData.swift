@@ -14,6 +14,22 @@ final class UserData: ObservableObject  {
     let objectWillChange = ObservableObjectPublisher()
     let keychain = KeychainSwift()
     
+    var showPlaidModal = false {
+        willSet { self.objectWillChange.send() }
+    }
+    
+    var firstName = "" {
+        willSet { self.objectWillChange.send() }
+    }
+    
+    var lastName = "" {
+        willSet { self.objectWillChange.send() }
+    }
+    
+    var email = "" {
+        willSet { self.objectWillChange.send() }
+    }
+    
     var apiToken : String? {
         get {
             keychain.get("api-token")

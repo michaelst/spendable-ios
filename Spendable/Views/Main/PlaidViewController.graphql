@@ -1,0 +1,7 @@
+mutation CreateBankMember($publicToken: String!) {
+  createBankMember(
+    publicToken: $publicToken
+  ) {
+    id, externalId, name, logo, status
+  }
+}

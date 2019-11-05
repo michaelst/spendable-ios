@@ -36,6 +36,7 @@ struct SignupView : View {
                             .padding(4)
                         
                         TextField("email", text: $email)
+                            .autocapitalization(.none)
                             .padding()
                             .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
                             .padding(4)

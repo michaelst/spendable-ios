@@ -24,6 +24,7 @@ struct LoginView : View {
                 VStack() {
                     VStack() {
                         TextField("email", text: $email)
+                            .autocapitalization(.none)
                             .padding()
                             .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
                             .padding(5)
@@ -56,8 +57,14 @@ struct LoginView : View {
     
     private func login() {
         apollo.client.perform(mutation: LoginMutation(email: email, password: password)) { result in
-            guard let data = try? result.get().data else { return }
-            self.userData.apiToken = data.login?.token
+            switch result {
+            case .success(let body):
+                if let data = body.data?.login {
+                    self.userData.apiToken = data.token
+                }
+            case .failure(let error):
+                print("error: \(error)")
+            }
         }
     }
 }

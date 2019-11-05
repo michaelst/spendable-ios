@@ -10,7 +10,16 @@ import UIKit
 import SwiftUI
 import LinkKit
 
-final class PlaidViewController: UIViewController {
+class PlaidViewController: UIViewController {
+    
+    let apollo = Apollo()
+    
+    convenience init(userData: UserData) {
+        self.init()
+        self.userData = userData
+    }
+    
+    var userData: UserData?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -19,15 +28,18 @@ final class PlaidViewController: UIViewController {
     }
     
     func handleSuccessWithToken(_ publicToken: String, metadata: [String : Any]?) {
-        presentAlertViewWithTitle("Success", message: "token: \(publicToken)\nmetadata: \(metadata ?? [:])")
+        apollo.client.perform(mutation: CreateBankMemberMutation(publicToken: publicToken)) { result in
+            guard let data = try? result.get().data else {
+                try! print(result.get().errors!)
+                return
+            }
+            
+            print(data)
+        }
     }
     
     func handleError(_ error: Error, metadata: [String : Any]?) {
         presentAlertViewWithTitle("Failure", message: "error: \(error.localizedDescription)\nmetadata: \(metadata ?? [:])")
-    }
-    
-    func handleExitWithMetadata(_ metadata: [String : Any]?) {
-        presentAlertViewWithTitle("Exit", message: "metadata: \(metadata ?? [:])")
     }
     
     func presentAlertViewWithTitle(_ title: String, message: String) {
@@ -43,7 +55,7 @@ final class PlaidViewController: UIViewController {
         // With shared configuration from Info.plist
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(delegate: linkViewDelegate)
-        if (UI_USER_INTERFACE_IDIOM() == .pad) {
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
             linkViewController.modalPresentationStyle = .formSheet
         }
         present(linkViewController, animated: true)
@@ -55,7 +67,7 @@ final class PlaidViewController: UIViewController {
         // <!-- SMARTDOWN_UPDATE_MODE -->
         let linkViewDelegate = self
         let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate: linkViewDelegate)
-        if (UI_USER_INTERFACE_IDIOM() == .pad) {
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
             linkViewController.modalPresentationStyle = .formSheet
         }
         present(linkViewController, animated: true)
@@ -65,49 +77,23 @@ final class PlaidViewController: UIViewController {
 
 // MARK: - PLKPlaidLinkViewDelegate Protocol
 // <!-- SMARTDOWN_PROTOCOL -->
-extension PlaidViewController : PLKPlaidLinkViewDelegate
-    // <!-- SMARTDOWN_PROTOCOL -->
-{
+extension PlaidViewController : PLKPlaidLinkViewDelegate {
     
     // <!-- SMARTDOWN_DELEGATE_SUCCESS -->
     func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didSucceedWithPublicToken publicToken: String, metadata: [String : Any]?) {
         dismiss(animated: true) {
+            self.userData?.showPlaidModal = false
+            
             // Handle success, e.g. by storing publicToken with your service
             NSLog("Successfully linked account!\npublicToken: \(publicToken)\nmetadata: \(metadata ?? [:])")
             self.handleSuccessWithToken(publicToken, metadata: metadata)
         }
     }
-    // <!-- SMARTDOWN_DELEGATE_SUCCESS -->
+    
     // <!-- SMARTDOWN_DELEGATE_EXIT -->
     func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didExitWithError error: Error?, metadata: [String : Any]?) {
         dismiss(animated: true) {
-            if let error = error {
-                NSLog("Failed to link account due to: \(error.localizedDescription)\nmetadata: \(metadata ?? [:])")
-                self.handleError(error, metadata: metadata)
-            }
-            else {
-                NSLog("Plaid link exited with metadata: \(metadata ?? [:])")
-                self.handleExitWithMetadata(metadata)
-            }
+            self.userData?.showPlaidModal = false
         }
-    }
-    // <!-- SMARTDOWN_DELEGATE_EXIT -->
-    
-    // <!-- SMARTDOWN_DELEGATE_EVENT -->
-    func linkViewController(_ linkViewController: PLKPlaidLinkViewController, didHandleEvent event: String, metadata: [String : Any]?) {
-        NSLog("Link event: \(event)\nmetadata: \(metadata ?? [:])")
-    }
-    // <!-- SMARTDOWN_DELEGATE_EVENT -->
-}
-
-extension PlaidViewController: UIViewControllerRepresentable {
-    public typealias UIViewControllerType = PlaidViewController
-    
-    public func makeUIViewController(context: UIViewControllerRepresentableContext<PlaidViewController>) -> PlaidViewController {
-        return PlaidViewController()
-    }
-    
-    public func updateUIViewController(_ uiViewController: PlaidViewController, context: UIViewControllerRepresentableContext<PlaidViewController>) {
-        //
     }
 }
