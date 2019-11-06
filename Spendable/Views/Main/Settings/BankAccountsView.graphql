@@ -1,0 +1,12 @@
+query ListBankMembers{
+  bankMembers {
+    id
+    name
+    status
+    bankAccounts {
+      id
+      name
+      sync
+    }
+  }
+}

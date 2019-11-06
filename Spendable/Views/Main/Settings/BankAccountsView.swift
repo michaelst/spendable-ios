@@ -17,24 +17,21 @@ struct BankAccountsView: View {
                 PlaidView()
             }
             
-            HStack {
-                Button(action: { self.userData.showPlaidModal = true }) {
-                    Text("Add bank")
+            List {
+                ForEach(userData.bankMembers) { bankMember in
+                    BankMemberRowView(bankMember: bankMember)
                 }
             }
+            //Button(action: { self.userData.showPlaidModal = true }) {
+            //    Text("Add bank")
+            //}
         }
+        .onAppear(perform: { self.userData.loadBankMembers() })
         .navigationBarTitle("Bank Accounts")
         .navigationBarItems(trailing:
             Button(action: { self.userData.showPlaidModal = true }) {
                 Text("Add")
             }
         )
-        
-    }
-}
-
-struct BankAccountsView_Previews: PreviewProvider {
-    static var previews: some View {
-        BankAccountsView()
     }
 }
