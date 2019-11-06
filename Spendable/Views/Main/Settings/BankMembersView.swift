@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct BankAccountsView: View {
+struct BankMembersView: View {
     @EnvironmentObject var userData: UserData
     
     var body: some View {

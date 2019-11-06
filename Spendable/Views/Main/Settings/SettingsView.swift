@@ -28,7 +28,7 @@ struct SettingsView: View {
                     })
                 }
                 
-                NavigationLink(destination: BankAccountsView()) {
+                NavigationLink(destination: BankMembersView()) {
                         Text("Bank accounts")
                 }
                 

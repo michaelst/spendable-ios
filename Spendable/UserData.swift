@@ -52,24 +52,24 @@ final class UserData: ObservableObject  {
     }
     
     func loadBankMembers() {
-        if bankMembers.count == 0 {
-            apollo.client.fetch(query: ListBankMembersQuery()) { result in
-                guard let data = try? result.get().data else { return }
+        apollo.client.fetch(query: ListBankMembersQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
+            guard let data = try? result.get().data else { return }
+            
+            self.bankMembers = []
+            
+            for bankMemberData in data.bankMembers ?? [] {
+                var bankAccounts: [BankAccount] = []
                 
-                for bankMemberData in data.bankMembers ?? [] {
-                    var bankAccounts: [BankAccount] = []
-                    
-                    for bankAccountData in bankMemberData?.bankAccounts ?? [] {
-                        if let id = bankAccountData?.id {
-                            let bankAccount = BankAccount(id: id, name: bankAccountData?.name ?? "", sync: bankAccountData?.sync ?? false)
-                            bankAccounts.append(bankAccount)
-                        }
+                for bankAccountData in bankMemberData?.bankAccounts ?? [] {
+                    if let id = bankAccountData?.id {
+                        let bankAccount = BankAccount(id: id, name: bankAccountData?.name ?? "", sync: bankAccountData?.sync ?? false)
+                        bankAccounts.append(bankAccount)
                     }
-                    
-                    if let id = bankMemberData?.id {
-                        let bankMember = BankMember(id: id, name: bankMemberData?.name ?? "", status: bankMemberData?.status, bankAccounts: bankAccounts)
-                        self.bankMembers.append(bankMember)
-                    }
+                }
+                
+                if let id = bankMemberData?.id {
+                    let bankMember = BankMember(id: id, name: bankMemberData?.name ?? "", status: bankMemberData?.status, bankAccounts: bankAccounts)
+                    self.bankMembers.append(bankMember)
                 }
             }
         }

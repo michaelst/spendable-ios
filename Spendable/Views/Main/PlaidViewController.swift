@@ -29,10 +29,7 @@ class PlaidViewController: UIViewController {
     
     func handleSuccessWithToken(_ publicToken: String, metadata: [String : Any]?) {
         apollo.client.perform(mutation: CreateBankMemberMutation(publicToken: publicToken)) { result in
-            guard let data = try? result.get().data else {
-                try! print(result.get().errors!)
-                return
-            }
+            guard let data = try? result.get().data else { return }
             
             print(data)
         }
