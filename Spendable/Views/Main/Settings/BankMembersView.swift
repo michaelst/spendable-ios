@@ -22,9 +22,6 @@ struct BankMembersView: View {
                     BankMemberRowView(bankMember: bankMember)
                 }
             }
-            //Button(action: { self.userData.showPlaidModal = true }) {
-            //    Text("Add bank")
-            //}
         }
         .onAppear(perform: { self.userData.loadBankMembers() })
         .navigationBarTitle("Bank Accounts")

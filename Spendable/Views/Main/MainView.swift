@@ -11,20 +11,20 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            TransactionsView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "dollarsign.circle")
-                        Text("Transactions")
-                    }
-                    
-            }
-            .tag(1)
             Text("Budgets")
                 .tabItem {
                     VStack {
                         Image(systemName: "tag.circle")
                         Text("Budgets")
+                    }
+                    
+            }
+            .tag(1)
+            TransactionsView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "dollarsign.circle")
+                        Text("Transactions")
                     }
                     
             }

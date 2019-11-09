@@ -1,0 +1,19 @@
+query ListTransactions{
+  transactions {
+    id
+    name
+    note
+    amount
+    date
+    category {
+        id
+    }
+  }
+}
+
+query ListCategories{
+  categories {
+    id
+    name
+  }
+}

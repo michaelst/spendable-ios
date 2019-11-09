@@ -9,7 +9,7 @@
 import Foundation
 
 struct BankAccount: Codable, Identifiable {
-    var id: String
+    let id: String
     var name: String
     var sync: Bool {
         didSet {

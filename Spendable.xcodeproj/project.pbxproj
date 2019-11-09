@@ -19,6 +19,11 @@
 		4C08F4812353F8E90000C2FC /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 4C08F4802353F8E90000C2FC /* Apollo */; };
 		4C08F4852353FC940000C2FC /* LoginView.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C08F4842353FC930000C2FC /* LoginView.graphql */; };
 		4C08F487235402DC0000C2FC /* ApolloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08F486235402DC0000C2FC /* ApolloClient.swift */; };
+		4C0985C223764CB2007CBA43 /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0985C123764CB2007CBA43 /* TransactionRowView.swift */; };
+		4C0985C423765617007CBA43 /* TransactionSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0985C323765617007CBA43 /* TransactionSectionView.swift */; };
+		4C0985C7237659C0007CBA43 /* TransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0985C6237659C0007CBA43 /* TransactionData.swift */; };
+		4C0985C923765DCC007CBA43 /* TransactionData.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C0985C823765DCC007CBA43 /* TransactionData.graphql */; };
+		4C0985CB2376610B007CBA43 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0985CA2376610B007CBA43 /* Category.swift */; };
 		4C43F620236A912F00CE5F38 /* LinkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F61F236A912F00CE5F38 /* LinkKit.framework */; };
 		4C48B1DC236FA32F00C1D234 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */; };
 		4C48B1DE236FA50B00C1D234 /* PlaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C48B1DD236FA50B00C1D234 /* PlaidViewController.swift */; };
@@ -30,6 +35,8 @@
 		4C5EA94523712FBA000EDF15 /* BankMemberRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EA94423712FBA000EDF15 /* BankMemberRowView.swift */; };
 		4C5EA94723713518000EDF15 /* BankAccountRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EA94623713518000EDF15 /* BankAccountRowView.swift */; };
 		4C5EA94923713713000EDF15 /* BankAccount.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C5EA94823713713000EDF15 /* BankAccount.graphql */; };
+		4C9E228C237529E40045E6D6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E228B237529E40045E6D6 /* Transaction.swift */; };
+		4C9E228E23752FA20045E6D6 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E228D23752FA20045E6D6 /* TransactionView.swift */; };
 		4CA3F5F4236FE04B0083E471 /* PlaidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3F5F3236FE04B0083E471 /* PlaidView.swift */; };
 		4CA3F5F6236FF7F30083E471 /* PlaidViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4CA3F5F5236FF7F30083E471 /* PlaidViewController.graphql */; };
 		4CA3F5F92370E4900083E471 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3F5F82370E4900083E471 /* User.swift */; };
@@ -78,6 +85,11 @@
 		4C08F47B2353F8C10000C2FC /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		4C08F4842353FC930000C2FC /* LoginView.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginView.graphql; sourceTree = "<group>"; };
 		4C08F486235402DC0000C2FC /* ApolloClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloClient.swift; sourceTree = "<group>"; };
+		4C0985C123764CB2007CBA43 /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
+		4C0985C323765617007CBA43 /* TransactionSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSectionView.swift; sourceTree = "<group>"; };
+		4C0985C6237659C0007CBA43 /* TransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionData.swift; sourceTree = "<group>"; };
+		4C0985C823765DCC007CBA43 /* TransactionData.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransactionData.graphql; sourceTree = "<group>"; };
+		4C0985CA2376610B007CBA43 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		4C43F61F236A912F00CE5F38 /* LinkKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkKit.framework; sourceTree = "<group>"; };
 		4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
 		4C48B1DD236FA50B00C1D234 /* PlaidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +101,8 @@
 		4C5EA94423712FBA000EDF15 /* BankMemberRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankMemberRowView.swift; sourceTree = "<group>"; };
 		4C5EA94623713518000EDF15 /* BankAccountRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountRowView.swift; sourceTree = "<group>"; };
 		4C5EA94823713713000EDF15 /* BankAccount.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = BankAccount.graphql; sourceTree = "<group>"; };
+		4C9E228B237529E40045E6D6 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		4C9E228D23752FA20045E6D6 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		4CA3F5F3236FE04B0083E471 /* PlaidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidView.swift; sourceTree = "<group>"; };
 		4CA3F5F5236FF7F30083E471 /* PlaidViewController.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = PlaidViewController.graphql; sourceTree = "<group>"; };
 		4CA3F5F82370E4900083E471 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -153,18 +167,18 @@
 		4C08F44A2353F8800000C2FC /* Spendable */ = {
 			isa = PBXGroup;
 			children = (
+				4C0985C5237659A9007CBA43 /* Data */,
+				4CA3F5F72370E4850083E471 /* Models */,
+				4C08F4532353F8800000C2FC /* Preview Content */,
+				4CE1FB8C23691A610071BF74 /* Views */,
 				4CE1FB9523691F920071BF74 /* API.swift */,
 				4C08F486235402DC0000C2FC /* ApolloClient.swift */,
 				4C08F44B2353F8800000C2FC /* AppDelegate.swift */,
 				4C08F4512353F8800000C2FC /* Assets.xcassets */,
 				4C08F4592353F8800000C2FC /* Info.plist */,
 				4C08F4562353F8800000C2FC /* LaunchScreen.storyboard */,
-				4CA3F5F72370E4850083E471 /* Models */,
-				4C08F4532353F8800000C2FC /* Preview Content */,
 				4C08F44D2353F8800000C2FC /* SceneDelegate.swift */,
 				4C08F47B2353F8C10000C2FC /* schema.json */,
-				4CE1FB9023691B8C0071BF74 /* UserData.swift */,
-				4CE1FB8C23691A610071BF74 /* Views */,
 			);
 			path = Spendable;
 			sourceTree = "<group>";
@@ -195,6 +209,16 @@
 			path = SpendableUITests;
 			sourceTree = "<group>";
 		};
+		4C0985C5237659A9007CBA43 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4C0985C823765DCC007CBA43 /* TransactionData.graphql */,
+				4C0985C6237659C0007CBA43 /* TransactionData.swift */,
+				4CE1FB9023691B8C0071BF74 /* UserData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		4C43F619236A8B8A00CE5F38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,18 +235,31 @@
 				4CA3F5F5236FF7F30083E471 /* PlaidViewController.graphql */,
 				4C48B1DD236FA50B00C1D234 /* PlaidViewController.swift */,
 				4CA3F5FA2370FAC40083E471 /* Settings */,
-				4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */,
+				4C9E2288237529720045E6D6 /* Transactions */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		4C9E2288237529720045E6D6 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */,
+				4C9E228D23752FA20045E6D6 /* TransactionView.swift */,
+				4C0985C123764CB2007CBA43 /* TransactionRowView.swift */,
+				4C0985C323765617007CBA43 /* TransactionSectionView.swift */,
+			);
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 		4CA3F5F72370E4850083E471 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4CA3F5F82370E4900083E471 /* User.swift */,
-				4C5EA93E23712166000EDF15 /* BankMember.swift */,
-				4C5EA9422371254D000EDF15 /* BankAccount.swift */,
 				4C5EA94823713713000EDF15 /* BankAccount.graphql */,
+				4C5EA9422371254D000EDF15 /* BankAccount.swift */,
+				4C5EA93E23712166000EDF15 /* BankMember.swift */,
+				4C0985CA2376610B007CBA43 /* Category.swift */,
+				4C9E228B237529E40045E6D6 /* Transaction.swift */,
+				4CA3F5F82370E4900083E471 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -242,8 +279,8 @@
 		4CE1FB8C23691A610071BF74 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4C48B1DA236FA31800C1D234 /* Main */,
 				4CE1FB8D23691A6F0071BF74 /* Auth */,
+				4C48B1DA236FA31800C1D234 /* Main */,
 				4C08F44F2353F8800000C2FC /* ContentView.swift */,
 			);
 			path = Views;
@@ -382,6 +419,7 @@
 				4C08F4852353FC940000C2FC /* LoginView.graphql in Resources */,
 				4C5EA93B23711D5E000EDF15 /* BankMembersView.graphql in Resources */,
 				4C499197236949B8002A4D7C /* SignupView.graphql in Resources */,
+				4C0985C923765DCC007CBA43 /* TransactionData.graphql in Resources */,
 				4C08F4522353F8800000C2FC /* Assets.xcassets in Resources */,
 				4CA3F5F6236FF7F30083E471 /* PlaidViewController.graphql in Resources */,
 			);
@@ -451,8 +489,12 @@
 				4CE1FB98236938DD0071BF74 /* SettingsView.swift in Sources */,
 				4C5EA94523712FBA000EDF15 /* BankMemberRowView.swift in Sources */,
 				4C08F44C2353F8800000C2FC /* AppDelegate.swift in Sources */,
+				4C0985C223764CB2007CBA43 /* TransactionRowView.swift in Sources */,
+				4C0985C423765617007CBA43 /* TransactionSectionView.swift in Sources */,
 				4C08F44E2353F8800000C2FC /* SceneDelegate.swift in Sources */,
+				4C9E228E23752FA20045E6D6 /* TransactionView.swift in Sources */,
 				4C08F4502353F8800000C2FC /* ContentView.swift in Sources */,
+				4C0985CB2376610B007CBA43 /* Category.swift in Sources */,
 				4C48B1DC236FA32F00C1D234 /* TransactionsView.swift in Sources */,
 				4C5EA94723713518000EDF15 /* BankAccountRowView.swift in Sources */,
 				4CE1FB8F23691A870071BF74 /* LoginView.swift in Sources */,
@@ -461,9 +503,11 @@
 				4CA3F5F92370E4900083E471 /* User.swift in Sources */,
 				4C08F487235402DC0000C2FC /* ApolloClient.swift in Sources */,
 				4C5EA93F23712166000EDF15 /* BankMember.swift in Sources */,
+				4C9E228C237529E40045E6D6 /* Transaction.swift in Sources */,
 				4CA3F5F4236FE04B0083E471 /* PlaidView.swift in Sources */,
 				4C48B1DE236FA50B00C1D234 /* PlaidViewController.swift in Sources */,
 				4CE1FB9A23693AA20071BF74 /* MainView.swift in Sources */,
+				4C0985C7237659C0007CBA43 /* TransactionData.swift in Sources */,
 				4C5EA9432371254D000EDF15 /* BankAccount.swift in Sources */,
 				4C49919523694916002A4D7C /* SignupView.swift in Sources */,
 				4CE1FB9623691F920071BF74 /* API.swift in Sources */,

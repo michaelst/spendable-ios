@@ -54,24 +54,25 @@ final class UserData: ObservableObject  {
     func loadBankMembers() {
         apollo.client.fetch(query: ListBankMembersQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
             guard let data = try? result.get().data else { return }
-            
-            self.bankMembers = []
+            var bankMembers: [BankMember] = []
             
             for bankMemberData in data.bankMembers ?? [] {
                 var bankAccounts: [BankAccount] = []
                 
                 for bankAccountData in bankMemberData?.bankAccounts ?? [] {
-                    if let id = bankAccountData?.id {
-                        let bankAccount = BankAccount(id: id, name: bankAccountData?.name ?? "", sync: bankAccountData?.sync ?? false)
+                    if let bankAccountid = bankAccountData?.id {
+                        let bankAccount = BankAccount(id: bankAccountid, name: bankAccountData?.name ?? "", sync: bankAccountData?.sync ?? false)
                         bankAccounts.append(bankAccount)
                     }
                 }
                 
                 if let id = bankMemberData?.id {
                     let bankMember = BankMember(id: id, name: bankMemberData?.name ?? "", status: bankMemberData?.status, bankAccounts: bankAccounts)
-                    self.bankMembers.append(bankMember)
+                    bankMembers.append(bankMember)
                 }
             }
+            
+            self.bankMembers = bankMembers
         }
     }
 }

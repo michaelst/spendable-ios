@@ -9,7 +9,7 @@
 import Foundation
 
 struct BankMember: Codable, Identifiable {
-    var id: String
+    let id: String
     var name: String
     var status: String?
     var bankAccounts: [BankAccount] = []
