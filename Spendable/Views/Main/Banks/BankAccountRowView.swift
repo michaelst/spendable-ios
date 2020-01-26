@@ -14,6 +14,6 @@ struct BankAccountRowView: View {
     var body: some View {
         Toggle(isOn: $bankAccount.sync) {
             Text(bankAccount.name)
-        }
+        }.padding(.vertical)
     }
 }

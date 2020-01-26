@@ -16,33 +16,27 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Profile")) {
+                Section {
                     TextField("first name", text: $userData.firstName)
                     TextField("last name", text: $userData.lastName)
                     TextField("email", text: $userData.email)
                 }
                 
                 Section {
-                    Button(action: { self.logout() }, label: {
-                        Text("Save profile")
+                    Button(action: { self.userData.updateCurrentUser() }, label: {
+                        Text("Save")
                     })
-                }
-                
-                NavigationLink(destination: BankMembersView()) {
-                        Text("Bank accounts")
                 }
                 
                 Section {
-                    Button(action: { self.logout() }, label: {
+                    Button(action: { self.userData.logout() }, label: {
                         Text("Logout")
                     })
                 }
-            }.navigationBarTitle("Settings", displayMode: .inline)
-        }.navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-    private func logout() {
-        self.userData.apiToken = nil
+            }.navigationBarTitle("Settings")
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear(perform: { self.userData.loadCurrentUser() })
     }
 }
 

@@ -1,0 +1,5 @@
+mutation UpdateTransaction($id: ID!, $name: String, $note: String, $categoryId: ID) {
+  updateTransaction(id: $id, name: $name, note: $note, categoryId: $categoryId) {
+    id
+  }
+}

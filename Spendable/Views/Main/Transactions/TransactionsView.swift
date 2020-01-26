@@ -11,13 +11,17 @@ import SwiftUI
 struct TransactionsView: View {
     @EnvironmentObject var data: TransactionData
     
+    var transactions: [Bool: [Transaction]] { Dictionary(grouping: data.transactions.values, by: { $0.reviewed }) }
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(data.transactions.keys.sorted(by: >), id: \.self) { date in
-                    TransactionSectionView(date: date, transactions: self.data.transactions)
+                ForEach((transactions[false] ?? []).sorted { $0.date > $1.date}) { transaction in
+                    TransactionRowView(transactionId: transaction.id)
                 }
-            }.navigationBarTitle("Transactions", displayMode: .inline)
+            }
+            .listStyle(GroupedListStyle())
+            .navigationBarTitle("Transactions")
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear(perform: { self.data.setup() })

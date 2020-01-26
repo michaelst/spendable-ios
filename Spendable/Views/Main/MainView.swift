@@ -9,17 +9,20 @@
 import SwiftUI
 
 struct MainView: View {
+    
     var body: some View {
+        
         TabView {
-            Text("Budgets")
+            BudgetsView()
                 .tabItem {
                     VStack {
-                        Image(systemName: "tag.circle")
+                        Image(systemName: "calendar")
                         Text("Budgets")
                     }
                     
             }
             .tag(1)
+            
             TransactionsView()
                 .tabItem {
                     VStack {
@@ -29,15 +32,17 @@ struct MainView: View {
                     
             }
             .tag(2)
-            Text("Goals")
+            
+            BankMembersView()
                 .tabItem {
                     VStack {
-                        Image(systemName: "calendar.circle")
-                        Text("Goals")
+                        Image(systemName: "creditcard")
+                        Text("Banks")
                     }
                     
             }
             .tag(3)
+            
             SettingsView()
                 .tabItem {
                     VStack {

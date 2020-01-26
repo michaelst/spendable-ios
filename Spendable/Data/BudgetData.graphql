@@ -1,0 +1,8 @@
+query ListBudgets{
+  budgets {
+    id
+    name
+    balance
+    goal
+  }
+}

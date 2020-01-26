@@ -9,38 +9,48 @@
 import SwiftUI
 
 struct TransactionRowView: View {
-    var transaction: Transaction
+    @EnvironmentObject var data: TransactionData
+    var transactionId: String
+    
+    private var transaction: Transaction {
+        get {
+            return data.transactions[transactionId]!
+        }
+    }
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMMM d"
+        return formatter
+    }()
     
     var body: some View {
-        NavigationLink(destination: TransactionView()) {
+        NavigationLink(destination: TransactionView(transactionId: transactionId)) {
             HStack {
                 VStack {
                     HStack {
-                        Text(transaction.name ?? "")
-                        
+                        Text(transaction.name ?? "").lineLimit(1)
                         Spacer()
-                        
-                        if transaction.amount < 0 {
-                            Text("$" + String(format: "%.2f", abs(transaction.amount))).foregroundColor(.red)
-                        } else {
-                            Text("$" + String(format: "%.2f", transaction.amount)).foregroundColor(.green)
-                        }
                     }
                     
                     HStack {
+                        Text("\(transaction.date, formatter: self.dateFormatter)").font(.caption).foregroundColor(.gray)
                         Spacer()
-                        Text(transaction.category?.name ?? "").font(.caption).foregroundColor(.gray)
-                    }
+                    }.padding(.top, 8)
                 }
                 
-                Image(systemName: "checkmark.circle").foregroundColor(.gray)
+                Spacer()
+                
+                
+                HStack {
+                    Spacer()
+                    if transaction.amount < 0 {
+                        Text("$" + String(format: "%.2f", abs(transaction.amount))).foregroundColor(.red)
+                    } else {
+                        Text("+ $" + String(format: "%.2f", transaction.amount)).foregroundColor(.green)
+                    }
+                }
             }
-        }
-    }
-}
-
-struct TransactionRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        TransactionRowView(transaction: Transaction(id: "1", name: "Uber", amount: Float("10.51")!, date: Date(), category: Category(id: "1", name: "Ride Share")))
+        }.padding(.vertical)
     }
 }

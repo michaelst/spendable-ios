@@ -1,0 +1,16 @@
+query CurrentUser{
+  currentUser {
+    firstName
+    lastName
+    email
+  }
+}
+
+mutation UpdateCurrentUser($firstName: String!, $lastName: String!, $email: String!) {
+  updateUser(firstName: $firstName, lastName: $lastName, email: $email) {
+    firstName
+    lastName
+    email
+  }
+}
+

@@ -47,6 +47,23 @@ final class UserData: ObservableObject  {
         }
     }
     
+    func loadCurrentUser() {
+        apollo.client.fetch(query: CurrentUserQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
+            guard let data = try? result.get().data else { return }
+            self.firstName = data.currentUser?.firstName ?? ""
+            self.lastName = data.currentUser?.lastName ?? ""
+            self.email = data.currentUser?.email ?? ""
+        }
+    }
+    
+    func updateCurrentUser() {
+        apollo.client.perform(mutation: UpdateCurrentUserMutation(firstName: self.firstName, lastName: self.lastName, email: self.email))
+    }
+    
+    func logout() {
+        self.apiToken = nil
+    }
+    
     var bankMembers: [BankMember] = [] {
         willSet { self.objectWillChange.send() }
     }

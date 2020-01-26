@@ -15,7 +15,11 @@ final class TransactionData: ObservableObject  {
     let apollo = Apollo()
     
     func setup() {
-        loadCategories()
+        if categories.count > 0 {
+            loadTransactions()
+        } else {
+            loadCategories()
+        }
     }
     
     var categories: [Category] = [] {
@@ -23,7 +27,7 @@ final class TransactionData: ObservableObject  {
     }
     
     private func loadCategories() {
-        apollo.client.fetch(query: ListCategoriesQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
+        apollo.client.fetch(query: ListCategoriesQuery()) { result in
             guard let data = try? result.get().data else { return }
             self.categories = self.processCategoryData(data: data)
             self.loadTransactions()
@@ -35,7 +39,7 @@ final class TransactionData: ObservableObject  {
         
         for categoryData in data.categories ?? [] {
             if let id = categoryData?.id, let name = categoryData?.name {
-                let category = Category(id: id, name: name)
+                let category = Category(id: id, name: name, parentName: categoryData?.parentName)
                 categories.append(category)
             }
         }
@@ -43,34 +47,27 @@ final class TransactionData: ObservableObject  {
         return categories
     }
     
-    var transactions: [Date: [Transaction]] = [:] {
+    var transactions: [String: Transaction] = [:] {
         willSet { self.objectWillChange.send() }
     }
     
     private func loadTransactions() {
         apollo.client.fetch(query: ListTransactionsQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
             guard let data = try? result.get().data else { return }
-            self.transactions = self.processTransactionData(data: data)
+            self.processTransactionData(data: data)
         }
     }
     
-    private func processTransactionData(data: ListTransactionsQuery.Data) -> [Date: [Transaction]] {
+    private func processTransactionData(data: ListTransactionsQuery.Data) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        var transactions: [Date: [Transaction]] = [:]
         
         for transactionData in data.transactions ?? [] {
             if let id = transactionData?.id, let amount = Float(transactionData?.amount ?? "0"), let date = formatter.date(from: transactionData?.date ?? "") {
                 let category = self.categories.first(where: { $0.id == transactionData?.category?.id })
                 let transaction = Transaction(id: id, name: transactionData?.name, note: transactionData?.note, amount: amount, date: date, category: category)
-                if transactions[date] == nil {
-                    transactions[date] = [transaction]
-                } else {
-                    transactions[date]!.append(transaction)
-                }
+                self.transactions[id] = transaction
             }
         }
-        
-        return transactions
     }
 }

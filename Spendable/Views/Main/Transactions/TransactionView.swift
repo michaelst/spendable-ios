@@ -9,13 +9,72 @@
 import SwiftUI
 
 struct TransactionView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    @EnvironmentObject var data: TransactionData
+    @Environment(\.presentationMode) var presentation
+    var transactionId: String
+    
+    private var transaction: Transaction {
+        get {
+            return data.transactions[transactionId]!
+        }
     }
-}
-
-struct TransactionView_Previews: PreviewProvider {
-    static var previews: some View {
-        TransactionView()
+    
+    @State private var name: String = ""
+    @State private var categoryId: String = ""
+    @State private var note: String = ""
+    
+    var body: some View {
+        Form {
+            Section {
+                HStack {
+                    Text("Name").foregroundColor(.secondary)
+                    
+                    Spacer()
+                    
+                    TextField("", text: $name).multilineTextAlignment(.trailing)
+                }
+                
+                NavigationLink(destination: CategoryPickerView(transaction: transaction)) {
+                    HStack {
+                        Text("Category").foregroundColor(.secondary)
+                        
+                        Spacer()
+                        
+                        Text(transaction.category?.name ?? "")
+                    }
+                }
+            }
+            
+            Section(header: Text("Notes").foregroundColor(.secondary)) {
+                TextField("", text: $note)
+            }
+            
+            Section {
+                Button(action: { self.save() }, label: {
+                    Text("Save")
+                })
+            }
+        }.onAppear(perform: { self.setInitialValues() })
+    }
+    
+    private func setInitialValues() {
+        name = transaction.name ?? ""
+        note = transaction.note ?? ""
+        categoryId = transaction.category?.id ?? ""
+    }
+    
+    private func save() {
+        var transactionToUpdate = data.transactions[transactionId]!
+        transactionToUpdate.name = name
+        transactionToUpdate.note = note
+        transactionToUpdate.save(resultHandler: { result in
+            switch result {
+            case .success:
+                self.data.transactions[self.transactionId] = transactionToUpdate
+                self.presentation.wrappedValue.dismiss()
+            case .failure(let error):
+                print("error: \(error)")
+            }
+        })
     }
 }
