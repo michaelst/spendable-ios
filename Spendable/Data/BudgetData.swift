@@ -17,6 +17,12 @@ final class BudgetData: ObservableObject  {
         willSet { self.objectWillChange.send() }
     }
     
+    func delete(at offsets: IndexSet) {
+        let offset: Int = Array(offsets).first!
+        budgets[offset].delete()
+        budgets.remove(atOffsets: offsets)
+    }
+    
     func load() {
         apollo.client.fetch(query: ListBudgetsQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
             guard let data = try? result.get().data else { return }

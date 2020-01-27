@@ -17,7 +17,7 @@ struct BudgetsView: View {
                 ForEach((data.budgets).sorted { $0.balance.doubleValue > $1.balance.doubleValue}) { budget in
                     BudgetRowView(budget: budget)
                 }
-                 .onDelete(perform: delete)
+                .onDelete(perform: data.delete)
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Budgets")
@@ -29,13 +29,6 @@ struct BudgetsView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear(perform: { self.data.load() })
-    }
-    
-    func delete(at offsets: IndexSet) {
-        //print(Array(offsets).first)
-        //print(data.budgets.subscript(offsets).id)
-        // TODO: setup deleting budgets
-        data.budgets.remove(atOffsets: offsets)
     }
     
 }

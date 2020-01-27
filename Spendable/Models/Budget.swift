@@ -11,6 +11,7 @@ import Combine
 
 class Budget: ObservableObject, Identifiable {
     let objectWillChange = ObservableObjectPublisher()
+    let apollo = Apollo()
     
     let id: String
     
@@ -46,7 +47,13 @@ class Budget: ObservableObject, Identifiable {
     }
     
     private func save() {
-        let apollo = Apollo()
         apollo.client.perform(mutation: UpdateBugdetMutation(id: id, name: name, balance: balance, goal: goal))
+    }
+    
+    func delete() {
+        apollo.client.perform(mutation: DeleteBudgetMutation(id: id)) { result in
+                   guard let data = try? result.get().data else { return }
+                   print(data)
+               }
     }
 }
