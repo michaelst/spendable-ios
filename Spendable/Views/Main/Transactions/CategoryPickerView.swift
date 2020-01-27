@@ -48,7 +48,6 @@ struct CategoryPickerView: View {
                 CategoryPickerRowView(category: category, isSelected: category.id == self.transaction.category?.id)
                     .onTapGesture { self.saveCategoryToTransaction(category) }
             }
-            .modifier(DismissingKeyboard())
         }
         .navigationBarTitle("Categories")
     }
@@ -64,11 +63,5 @@ struct CategoryPickerView: View {
                 print("error: \(error)")
             }
         })
-    }
-}
-
-struct DismissingKeyboard: ViewModifier {
-    func body(content: Content) -> some View {
-        content.onTapGesture { UIApplication.shared.keyWindow?.endEditing(true) }
     }
 }
