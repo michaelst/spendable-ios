@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct RootView: View {
     @EnvironmentObject var userData: UserData
     
     @ViewBuilder
@@ -18,11 +18,5 @@ struct ContentView: View {
         } else {
             AuthView()
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

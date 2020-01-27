@@ -1,0 +1,25 @@
+query ListBankMembers{
+  bankMembers {
+    id
+    name
+    status
+    bankAccounts {
+      id
+      name
+      sync
+    }
+  }
+}
+
+mutation CreateBankMember($publicToken: String!) {
+  createBankMember(publicToken: $publicToken) {
+    id
+    name
+    status
+    bankAccounts {
+      id
+      name
+      sync
+    }
+  }
+}

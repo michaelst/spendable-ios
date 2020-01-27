@@ -10,6 +10,7 @@ import SwiftUI
 
 struct BankMembersView: View {
     @EnvironmentObject var userData: UserData
+    @EnvironmentObject var data: BankData
     
     var body: some View {
         NavigationView {
@@ -19,7 +20,7 @@ struct BankMembersView: View {
                 }
                 
                 List {
-                    ForEach(userData.bankMembers) { bankMember in
+                    ForEach(data.bankMembers) { bankMember in
                         BankMemberRowView(bankMember: bankMember)
                     }
                 }.listStyle(GroupedListStyle())
@@ -27,11 +28,11 @@ struct BankMembersView: View {
             .navigationBarTitle("Bank Accounts")
             .navigationBarItems(trailing:
                 Button(action: { self.userData.showPlaidModal = true }) {
-                    Text("Add")
+                    Image(systemName: "plus.circle").font(.system(size: 24, weight: .regular))
                 }
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: { self.userData.loadBankMembers() })
+        .onAppear(perform: { self.data.load() })
     }
 }

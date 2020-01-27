@@ -7,10 +7,29 @@
 //
 
 import Foundation
+import Combine
 
-struct BankMember: Codable, Identifiable {
+class BankMember: ObservableObject, Identifiable {
+    let objectWillChange = ObservableObjectPublisher()
+    
     let id: String
-    var name: String
-    var status: String?
-    var bankAccounts: [BankAccount] = []
+    
+    var name: String {
+        willSet { self.objectWillChange.send() }
+    }
+    
+    var status: String? {
+        willSet { self.objectWillChange.send() }
+    }
+    
+    var bankAccounts: [BankAccount] = [] {
+        willSet { self.objectWillChange.send() }
+    }
+    
+    init(id: String, name: String, status: String?, bankAccounts: [BankAccount]) {
+        self.id = id
+        self.name = name
+        self.status = status
+        self.bankAccounts = bankAccounts
+    }
 }

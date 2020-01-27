@@ -14,12 +14,14 @@ class PlaidViewController: UIViewController {
     
     let apollo = Apollo()
     
-    convenience init(userData: UserData) {
+    convenience init(userData: UserData, bankData: BankData) {
         self.init()
         self.userData = userData
+        self.bankData = bankData
     }
     
     var userData: UserData?
+    var bankData: BankData?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -28,11 +30,7 @@ class PlaidViewController: UIViewController {
     }
     
     func handleSuccessWithToken(_ publicToken: String, metadata: [String : Any]?) {
-        apollo.client.perform(mutation: CreateBankMemberMutation(publicToken: publicToken)) { result in
-            guard let data = try? result.get().data else { return }
-            
-            print(data)
-        }
+        bankData?.createMember(publicToken: publicToken)
     }
     
     func handleError(_ error: Error, metadata: [String : Any]?) {

@@ -9,13 +9,12 @@
 import SwiftUI
 
 struct BankMemberRowView: View {
-    let bankMember: BankMember
+    @ObservedObject var bankMember: BankMember
     
     var body: some View {
-        Section(header: Text(self.bankMember.name)) {
-            ForEach(self.bankMember.bankAccounts) { bankAccount in
-                BankAccountRowView(bankAccount: bankAccount)
-            }
+        NavigationLink(destination: BankMemberView(bankMember: bankMember)) {
+            Text(bankMember.name)
         }
+        .padding(.vertical)
     }
 }

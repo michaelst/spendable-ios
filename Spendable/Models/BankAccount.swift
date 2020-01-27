@@ -7,14 +7,30 @@
 //
 
 import Foundation
+import Combine
 
-struct BankAccount: Codable, Identifiable {
+class BankAccount: ObservableObject, Identifiable {
+    let objectWillChange = ObservableObjectPublisher()
+    let apollo = Apollo()
+    
     let id: String
-    var name: String
+    
+    var name: String {
+           willSet { self.objectWillChange.send() }
+       }
+    
     var sync: Bool {
-        didSet {
-            let apollo = Apollo()
-            apollo.client.perform(mutation: UpdateBankAccountMutation(id: id, sync: sync))
-        }
+        willSet { self.objectWillChange.send() }
+        didSet { self.save() }
+    }
+    
+    init(id: String, name: String, sync: Bool) {
+        self.id = id
+        self.name = name
+        self.sync = sync
+    }
+    
+    func save() {
+        apollo.client.perform(mutation: UpdateBankAccountMutation(id: id, sync: sync))
     }
 }

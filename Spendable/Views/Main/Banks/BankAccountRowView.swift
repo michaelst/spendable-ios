@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct BankAccountRowView: View {
-    @State var bankAccount: BankAccount
+    @ObservedObject var bankAccount: BankAccount
     
     var body: some View {
         Toggle(isOn: $bankAccount.sync) {

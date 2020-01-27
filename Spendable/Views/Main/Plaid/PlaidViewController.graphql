@@ -1,7 +1,0 @@
-mutation CreateBankMember($publicToken: String!) {
-  createBankMember(
-    publicToken: $publicToken
-  ) {
-    id
-  }
-}
