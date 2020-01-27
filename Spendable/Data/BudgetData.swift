@@ -27,11 +27,7 @@ final class BudgetData: ObservableObject  {
     private func processData(data: ListBudgetsQuery.Data) {
         for budgetData in data.budgets ?? [] {
             if let id = budgetData?.id, let name = budgetData?.name, let balance = Double(budgetData!.balance!) {
-                var budget = Budget(id: id, name: name, balance: balance)
-                
-                if let balance = Double(budgetData?.balance ?? "0") {
-                    budget.balance = balance
-                }
+                let budget = Budget(id: id, name: name, balance: balance)
                 
                 self.budgets[id] = budget
             }

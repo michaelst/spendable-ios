@@ -11,7 +11,7 @@ import SwiftUI
 struct EditBudgetBalanceView: View {
     @EnvironmentObject var data: BudgetData
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State private var balance: Double = 0
+    @State private var balance: String = ""
     
     var budgetId: String
     
@@ -33,24 +33,27 @@ struct EditBudgetBalanceView: View {
     var body: some View {
         VStack {
             Form {
-                TextField("Balance", value: $balance, formatter: NumberFormatter())
+                TextField("Balance", text: $balance)
+                    .keyboardType(.decimalPad)
             }
             Spacer()
         }
         .onAppear(perform: { self.setInitialValue() })
-        .navigationBarTitle("Name")
+        .navigationBarTitle("Balance")
         .navigationBarItems(leading: backButton)
         .navigationBarBackButtonHidden(true)
     }
     
     private func setInitialValue() {
-        balance = budget.balance
+        balance = "\(budget.balance)"
     }
     
     private func save() {
-        var budgetToUpdate = data.budgets[budgetId]!
-        budgetToUpdate.balance = balance
-        data.budgets[budgetId] = budgetToUpdate
+        if let balanceDouble = Double(balance) {
+            var budgetToUpdate = data.budgets[budgetId]!
+            budgetToUpdate.balance = balanceDouble
+            data.budgets[budgetId] = budgetToUpdate
+        }
     }
 }
 

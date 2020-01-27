@@ -41,6 +41,18 @@ struct BudgetView: View {
                         Text("$" + String(format: "%.2f", budget.balance)).multilineTextAlignment(.trailing)
                     }
                 }
+                
+                NavigationLink(destination: EditBudgetGoalView(budgetId: budgetId)) {
+                    HStack {
+                        Text("Goal").foregroundColor(.secondary)
+                        
+                        Spacer()
+                        
+                        if budget.goal != nil {
+                            Text("$" + String(format: "%.2f", budget.goal!)).multilineTextAlignment(.trailing)
+                        }
+                    }
+                }
             }
         }
     }

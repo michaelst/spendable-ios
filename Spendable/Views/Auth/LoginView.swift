@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct LoginView : View {
-    
     @EnvironmentObject var userData: UserData
     @State var email : String = ""
     @State var password : String = ""
@@ -24,12 +23,17 @@ struct LoginView : View {
                 VStack() {
                     VStack() {
                         TextField("email", text: $email)
+                            .keyboardType(.emailAddress)
+                            .foregroundColor(.black)
+                            .accentColor(Color(red: 0, green: 116 / 255, blue: 217 / 255))
                             .autocapitalization(.none)
                             .padding()
                             .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
                             .padding(5)
                         
                         SecureField("password", text: $password)
+                            .foregroundColor(.black)
+                            .accentColor(Color(red: 0, green: 116 / 255, blue: 217 / 255))
                             .padding()
                             .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
                             .padding(5)
@@ -50,6 +54,8 @@ struct LoginView : View {
                     .clipped()
                     .shadow(radius: 10)
                 }
+                .keyboardResponsive()
+                .animation(.default)
                 .padding()
             }
         }
