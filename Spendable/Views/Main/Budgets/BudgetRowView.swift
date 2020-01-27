@@ -9,27 +9,19 @@
 import SwiftUI
 
 struct BudgetRowView: View {
-    @EnvironmentObject var data: BudgetData
-    
-    var budgetId: String
-    
-    private var budget: Budget {
-        get {
-            return data.budgets[budgetId]!
-        }
-    }
+    @ObservedObject var budget: Budget
     
     var body: some View {
-        NavigationLink(destination: BudgetView(budgetId: budgetId)) {
+        NavigationLink(destination: BudgetView(budget: budget)) {
             HStack {
                 Text(budget.name).lineLimit(1)
                 
                 Spacer()
                 
-                if budget.balance < 0 {
-                    Text("$" + String(format: "%.2f", abs(budget.balance))).foregroundColor(.red)
+                if budget.balance.doubleValue < 0 {
+                    Text("$" + String(format: "%.2f", abs(budget.balance.doubleValue))).foregroundColor(.red)
                 } else {
-                    Text("$" + String(format: "%.2f", budget.balance))
+                    Text("$" + String(format: "%.2f", budget.balance.doubleValue))
                 }
             }
         }.padding(.vertical)

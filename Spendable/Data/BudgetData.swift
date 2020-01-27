@@ -13,7 +13,7 @@ final class BudgetData: ObservableObject  {
     let objectWillChange = ObservableObjectPublisher()
     let apollo = Apollo()
     
-    var budgets: [String: Budget] = [:] {
+    var budgets: [Budget] = [] {
         willSet { self.objectWillChange.send() }
     }
     
@@ -25,12 +25,15 @@ final class BudgetData: ObservableObject  {
     }
     
     private func processData(data: ListBudgetsQuery.Data) {
+        var list: [Budget] = []
+        
         for budgetData in data.budgets ?? [] {
-            if let id = budgetData?.id, let name = budgetData?.name, let balance = Double(budgetData!.balance!) {
-                let budget = Budget(id: id, name: name, balance: balance)
-                
-                self.budgets[id] = budget
+            if let id = budgetData?.id, let name = budgetData?.name, let balance = budgetData?.balance {
+                let budget = Budget(id: id, name: name, balance: balance, goal:budgetData?.goal)
+                list.append(budget)
             }
         }
+        
+        budgets = list
     }
 }

@@ -14,7 +14,6 @@ struct BankAccount: Codable, Identifiable {
     var sync: Bool {
         didSet {
             let apollo = Apollo()
-            
             apollo.client.perform(mutation: UpdateBankAccountMutation(id: id, sync: sync))
         }
     }

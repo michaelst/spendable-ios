@@ -14,22 +14,28 @@ struct BudgetsView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach((data.budgets.values).sorted { $0.balance > $1.balance}) { budget in
-                    BudgetRowView(budgetId: budget.id)
+                ForEach((data.budgets).sorted { $0.balance.doubleValue > $1.balance.doubleValue}) { budget in
+                    BudgetRowView(budget: budget)
                 }
+                 .onDelete(perform: delete)
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Budgets")
             .navigationBarItems(trailing:
-                Button(action: {
-                    print("Help tapped!")
-                }) {
+                NavigationLink(destination: CreateBudgetView()) {
                     Image(systemName: "plus.circle").font(.system(size: 24, weight: .regular))
                 }
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear(perform: { self.data.load() })
+    }
+    
+    func delete(at offsets: IndexSet) {
+        //print(Array(offsets).first)
+        //print(data.budgets.subscript(offsets).id)
+        // TODO: setup deleting budgets
+        data.budgets.remove(atOffsets: offsets)
     }
     
 }
