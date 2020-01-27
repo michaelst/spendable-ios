@@ -40,7 +40,6 @@ struct AuthView: View {
                 }
                 .padding()
             }
-            
         }
     }
 }

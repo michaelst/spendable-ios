@@ -56,6 +56,26 @@ final class UserData: ObservableObject  {
         }
     }
     
+    func login(email: String, password: String) {
+        apollo.client.perform(mutation: LoginMutation(email: email, password: password)) { result in
+            switch result {
+            case .success(let body):
+                if let data = body.data?.login {
+                    self.apiToken = data.token
+                }
+            case .failure(let error):
+                print("error: \(error)")
+            }
+        }
+    }
+    
+    func signup(firstName: String, lastName: String, email: String, password: String) {
+        apollo.client.perform(mutation: CreateUserMutation(firstName: firstName, lastName: lastName, email: email, password: password)) { result in
+            guard let data = try? result.get().data else { return }
+            self.apiToken = data.createUser?.token
+        }
+    }
+    
     func updateCurrentUser() {
         apollo.client.perform(mutation: UpdateCurrentUserMutation(firstName: self.firstName, lastName: self.lastName, email: self.email))
     }

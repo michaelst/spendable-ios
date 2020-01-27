@@ -19,58 +19,64 @@ struct SignupView : View {
     let apollo = Apollo()
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color(red: 0, green: 116 / 255, blue: 217 / 255).edgesIgnoringSafeArea(.all)
-                
-                VStack() {
-                    VStack() {
-                        TextField("first name", text: $firstName)
-                            .padding()
-                            .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
-                            .padding(4)
-                        
-                        TextField("last name", text: $lastName)
-                            .padding()
-                            .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
-                            .padding(4)
-                        
-                        TextField("email", text: $email)
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
-                            .padding(4)
-                        
-                        SecureField("password", text: $password)
-                            .padding()
-                            .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
-                            .padding(4)
-                        
-                        Button(action: { self.login() }, label: {
-                            HStack() {
-                                Spacer()
-                                Text("Sign up").foregroundColor(Color.white)
-                                Spacer()
-                            }
-                            .padding()
-                            .background(Color(red: 0, green: 116 / 255, blue: 217 / 255))
-                            .padding(8)
-                        })
-                    }
-                    .padding()
-                    .background(Color.white)
-                    .clipped()
-                    .shadow(radius: 10)
+        ZStack {
+            Color(red: 0, green: 116 / 255, blue: 217 / 255).edgesIgnoringSafeArea(.all)
+            
+            VStack() {
+                ZStack(alignment: .leading) {
+                    if firstName.isEmpty { Text("first name").foregroundColor(Color(red: 216 / 255, green: 216 / 255, blue: 216 / 255)) }
+                    TextField("first name", text: $firstName)
                 }
                 .padding()
+                .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
+                .padding(4)
+                
+                ZStack(alignment: .leading) {
+                    if lastName.isEmpty { Text("last name").foregroundColor(Color(red: 216 / 255, green: 216 / 255, blue: 216 / 255)) }
+                    TextField("last name", text: $lastName)
+                }
+                .padding()
+                .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
+                .padding(4)
+                
+                ZStack(alignment: .leading) {
+                    if email.isEmpty { Text("email").foregroundColor(Color(red: 216 / 255, green: 216 / 255, blue: 216 / 255)) }
+                    TextField("email", text: $email)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+                }
+                .padding()
+                .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
+                .padding(4)
+                
+                ZStack(alignment: .leading) {
+                    if password.isEmpty { Text("password").foregroundColor(Color(red: 216 / 255, green: 216 / 255, blue: 216 / 255)) }
+                    SecureField("password", text: $password)
+                }
+                .padding()
+                .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
+                .padding(4)
+                
+                Button(action: { self.userData.signup(firstName: self.firstName, lastName: self.lastName, email: self.email, password: self.password) }, label: {
+                    HStack() {
+                        Spacer()
+                        Text("Sign up").foregroundColor(Color.white)
+                        Spacer()
+                    }
+                    .padding()
+                    .background(Color(red: 0, green: 116 / 255, blue: 217 / 255))
+                    .padding(4)
+                })
             }
-        }
-    }
-    
-    private func login() {
-        apollo.client.perform(mutation: CreateUserMutation(firstName: firstName, lastName: lastName, email: email, password: password)) { result in
-            guard let data = try? result.get().data else { return }
-            self.userData.apiToken = data.createUser?.token
+            .foregroundColor(.black)
+            .accentColor(Color(red: 0, green: 116 / 255, blue: 217 / 255))
+            .padding()
+            .background(Color.white)
+            .clipped()
+            .shadow(radius: 8)
+            .padding(.horizontal)
+            .keyboardResponsive()
+            .animation(.default)
         }
     }
 }

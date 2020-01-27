@@ -16,61 +16,48 @@ struct LoginView : View {
     let apollo = Apollo()
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color(red: 0, green: 116 / 255, blue: 217 / 255).edgesIgnoringSafeArea(.all)
+        ZStack {
+            Color(red: 0, green: 116 / 255, blue: 217 / 255).edgesIgnoringSafeArea(.all)
+            
+            VStack() {
+                ZStack(alignment: .leading) {
+                    if email.isEmpty { Text("email").foregroundColor(Color(red: 216 / 255, green: 216 / 255, blue: 216 / 255)) }
+                    TextField("email", text: $email)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+                }
+                .padding()
+                .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
+                .padding(4)
                 
-                VStack() {
-                    VStack() {
-                        TextField("email", text: $email)
-                            .keyboardType(.emailAddress)
-                            .foregroundColor(.black)
-                            .accentColor(Color(red: 0, green: 116 / 255, blue: 217 / 255))
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
-                            .padding(5)
-                        
-                        SecureField("password", text: $password)
-                            .foregroundColor(.black)
-                            .accentColor(Color(red: 0, green: 116 / 255, blue: 217 / 255))
-                            .padding()
-                            .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
-                            .padding(5)
-                        
-                        Button(action: { self.login() }, label: {
-                            HStack() {
-                                Spacer()
-                                Text("Login").foregroundColor(Color.white)
-                                Spacer()
-                            }
-                            .padding()
-                            .background(Color(red: 0, green: 116 / 255, blue: 217 / 255))
-                            .padding(5)
-                        })
+                ZStack(alignment: .leading) {
+                    if password.isEmpty { Text("password").foregroundColor(Color(red: 216 / 255, green: 216 / 255, blue: 216 / 255)) }
+                    SecureField("password", text: $password)
+                }
+                .padding()
+                .background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
+                .padding(4)
+                
+                Button(action: { self.userData.login(email: self.email, password: self.password) }, label: {
+                    HStack() {
+                        Spacer()
+                        Text("Login").foregroundColor(Color.white)
+                        Spacer()
                     }
                     .padding()
-                    .background(Color.white)
-                    .clipped()
-                    .shadow(radius: 10)
-                }
-                .keyboardResponsive()
-                .animation(.default)
-                .padding()
+                    .background(Color(red: 0, green: 116 / 255, blue: 217 / 255))
+                    .padding(4)
+                })
             }
-        }
-    }
-    
-    private func login() {
-        apollo.client.perform(mutation: LoginMutation(email: email, password: password)) { result in
-            switch result {
-            case .success(let body):
-                if let data = body.data?.login {
-                    self.userData.apiToken = data.token
-                }
-            case .failure(let error):
-                print("error: \(error)")
-            }
+            .foregroundColor(.black)
+            .accentColor(Color(red: 0, green: 116 / 255, blue: 217 / 255))
+            .padding()
+            .background(Color.white)
+            .clipped()
+            .shadow(radius: 8)
+            .padding(.horizontal)
+            .keyboardResponsive()
+            .animation(.default)
         }
     }
 }

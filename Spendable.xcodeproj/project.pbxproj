@@ -17,7 +17,6 @@
 		4C08F46E2353F8810000C2FC /* SpendableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08F46D2353F8810000C2FC /* SpendableUITests.swift */; };
 		4C08F47D2353F8C20000C2FC /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C08F47B2353F8C10000C2FC /* schema.json */; };
 		4C08F4812353F8E90000C2FC /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 4C08F4802353F8E90000C2FC /* Apollo */; };
-		4C08F4852353FC940000C2FC /* LoginView.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C08F4842353FC930000C2FC /* LoginView.graphql */; };
 		4C08F487235402DC0000C2FC /* ApolloClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C08F486235402DC0000C2FC /* ApolloClient.swift */; };
 		4C0985C223764CB2007CBA43 /* TransactionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0985C123764CB2007CBA43 /* TransactionRowView.swift */; };
 		4C0985C7237659C0007CBA43 /* TransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0985C6237659C0007CBA43 /* TransactionData.swift */; };
@@ -27,7 +26,6 @@
 		4C48B1DC236FA32F00C1D234 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */; };
 		4C48B1DE236FA50B00C1D234 /* PlaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C48B1DD236FA50B00C1D234 /* PlaidViewController.swift */; };
 		4C49919523694916002A4D7C /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49919423694916002A4D7C /* SignupView.swift */; };
-		4C499197236949B8002A4D7C /* SignupView.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C499196236949B8002A4D7C /* SignupView.graphql */; };
 		4C5780E723DE26750053117F /* LinkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F61F236A912F00CE5F38 /* LinkKit.framework */; };
 		4C5780E823DE26750053117F /* LinkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F61F236A912F00CE5F38 /* LinkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C5780EC23DE2C810053117F /* KeyboardResponsive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5780EB23DE2C810053117F /* KeyboardResponsive.swift */; };
@@ -119,7 +117,6 @@
 		4C08F46D2353F8810000C2FC /* SpendableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendableUITests.swift; sourceTree = "<group>"; };
 		4C08F46F2353F8810000C2FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C08F47B2353F8C10000C2FC /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		4C08F4842353FC930000C2FC /* LoginView.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginView.graphql; sourceTree = "<group>"; };
 		4C08F486235402DC0000C2FC /* ApolloClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloClient.swift; sourceTree = "<group>"; };
 		4C0985C123764CB2007CBA43 /* TransactionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRowView.swift; sourceTree = "<group>"; };
 		4C0985C6237659C0007CBA43 /* TransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionData.swift; sourceTree = "<group>"; };
@@ -130,7 +127,6 @@
 		4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
 		4C48B1DD236FA50B00C1D234 /* PlaidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidViewController.swift; sourceTree = "<group>"; };
 		4C49919423694916002A4D7C /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
-		4C499196236949B8002A4D7C /* SignupView.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = SignupView.graphql; sourceTree = "<group>"; };
 		4C5780EB23DE2C810053117F /* KeyboardResponsive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsive.swift; sourceTree = "<group>"; };
 		4C5780ED23DE367D0053117F /* EditBudgetGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBudgetGoalView.swift; sourceTree = "<group>"; };
 		4C5780F223DE85B60053117F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -424,9 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				4CE1FB9B2369402E0071BF74 /* AuthView.swift */,
-				4C08F4842353FC930000C2FC /* LoginView.graphql */,
 				4CE1FB8E23691A870071BF74 /* LoginView.swift */,
-				4C499196236949B8002A4D7C /* SignupView.graphql */,
 				4C49919423694916002A4D7C /* SignupView.swift */,
 			);
 			path = Auth;
@@ -553,9 +547,7 @@
 				4C9FE56423DC15ED00489EB1 /* BudgetData.graphql in Resources */,
 				4C5780F523DE88E70053117F /* Budget.graphql in Resources */,
 				4C08F4552353F8800000C2FC /* Preview Assets.xcassets in Resources */,
-				4C08F4852353FC940000C2FC /* LoginView.graphql in Resources */,
 				4C9FE55D23DC04F000489EB1 /* UserData.graphql in Resources */,
-				4C499197236949B8002A4D7C /* SignupView.graphql in Resources */,
 				4C0985C923765DCC007CBA43 /* TransactionData.graphql in Resources */,
 				4C08F4522353F8800000C2FC /* Assets.xcassets in Resources */,
 				4C0985CD23768812007CBA43 /* Transaction.graphql in Resources */,
