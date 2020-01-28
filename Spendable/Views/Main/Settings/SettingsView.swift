@@ -17,8 +17,6 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("first name", text: $userData.firstName)
-                    TextField("last name", text: $userData.lastName)
                     TextField("email", text: $userData.email)
                 }
                 

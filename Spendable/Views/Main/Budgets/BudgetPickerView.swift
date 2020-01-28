@@ -1,24 +1,24 @@
 //
-//  CategoryPickerView.swift
+//  BudgetPickerView.swift
 //  Spendable
 //
-//  Created by Michael St Clair on 11/9/19.
-//  Copyright © 2019 Fifty Seven Media. All rights reserved.
+//  Created by Michael St Clair on 1/27/20.
+//  Copyright © 2020 Fifty Seven Media. All rights reserved.
 //
 
 import SwiftUI
 
-struct CategoryPickerView: View {
+struct BudgetPickerView: View {
     @EnvironmentObject var userData: UserData
     @ObservedObject var transaction: Transaction
     @State private var searchText = ""
     
-    var categories: [Category] {
+    var budgets: [Budget] {
         get {
             if searchText == "" {
-                return self.userData.categories
+                return self.userData.budgets
             } else {
-                return self.userData.categories.filter({$0.name.lowercased().hasPrefix(searchText.lowercased()) || ($0.parentName != nil && $0.parentName!.lowercased().hasPrefix(searchText.lowercased()))})
+                return self.userData.budgets.filter({$0.name.lowercased().hasPrefix(searchText.lowercased())})
             }
         }
     }
@@ -43,11 +43,11 @@ struct CategoryPickerView: View {
                 .cornerRadius(10.0)
             }.padding(.horizontal)
             
-            List(categories) { category in
-                CategoryPickerRowView(category: category, isSelected: category.id == self.transaction.categoryId)
-                    .onTapGesture { self.transaction.categoryId = category.id }
+            List(budgets) { budget in
+                BudgetPickerRowView(budget: budget, isSelected: budget.id == self.transaction.budgetId)
+                    .onTapGesture { self.transaction.budgetId = budget.id }
             }
         }
-        .navigationBarTitle("Categories")
+        .navigationBarTitle("Budgets")
     }
 }

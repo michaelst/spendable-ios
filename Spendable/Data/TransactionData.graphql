@@ -5,6 +5,9 @@ query ListTransactions{
     note
     amount
     date
+    budget {
+        id
+    }
     category {
         id
     }
@@ -16,5 +19,11 @@ query ListCategories{
     id
     name
     parentName
+  }
+}
+
+mutation UpdateTransaction($id: ID!, $name: String, $note: String, $categoryId: ID, $budgetId: ID) {
+  updateTransaction(id: $id, name: $name, note: $note, categoryId: $categoryId, budgetId: $budgetId) {
+    id
   }
 }

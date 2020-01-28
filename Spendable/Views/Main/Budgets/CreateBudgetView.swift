@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CreateBudgetView: View {
-    @EnvironmentObject var data: BudgetData
+    @EnvironmentObject var userData: UserData
     @ObservedObject var budget: BudgetInput = BudgetInput()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -59,7 +59,7 @@ struct CreateBudgetView: View {
             }),
             trailing:
             Button("Add", action: {
-                self.budget.save(budgetData: self.data)
+                self.userData.create(budgetInput: self.budget)
                 self.presentationMode.wrappedValue.dismiss()
             })
         )

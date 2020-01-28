@@ -9,19 +9,28 @@
 import SwiftUI
 
 struct TransactionView: View {
-    @EnvironmentObject var data: TransactionData
-    @Environment(\.presentationMode) var presentation
-    var transactionId: String
+    @EnvironmentObject var userData: UserData
+    @ObservedObject var transaction: Transaction
     
-    private var transaction: Transaction {
+    var budget: Budget? {
         get {
-            return data.transactions[transactionId]!
+            if transaction.budgetId != nil {
+                return userData.budgetsById[transaction.budgetId!]
+            } else {
+                return nil
+            }
         }
     }
     
-    @State private var name: String = ""
-    @State private var categoryId: String = ""
-    @State private var note: String = ""
+    var category: Category? {
+        get {
+            if transaction.categoryId != nil {
+                return userData.categoriesById[transaction.categoryId!]
+            } else {
+                return nil
+            }
+        }
+    }
     
     var body: some View {
         Form {
@@ -31,7 +40,7 @@ struct TransactionView: View {
                     
                     Spacer()
                     
-                    TextField("", text: $name).multilineTextAlignment(.trailing)
+                    TextField("", text: $transaction.nameBinding).multilineTextAlignment(.trailing)
                 }
                 
                 NavigationLink(destination: CategoryPickerView(transaction: transaction)) {
@@ -40,41 +49,24 @@ struct TransactionView: View {
                         
                         Spacer()
                         
-                        Text(transaction.category?.name ?? "")
+                        Text(category?.name ?? "")
+                    }
+                }
+                
+                NavigationLink(destination: BudgetPickerView(transaction: transaction)) {
+                    HStack {
+                        Text("Budget").foregroundColor(.secondary)
+                        
+                        Spacer()
+                        
+                        Text(budget?.name ?? "")
                     }
                 }
             }
             
             Section(header: Text("Notes").foregroundColor(.secondary)) {
-                TextField("", text: $note)
+                TextField("", text: $transaction.noteBinding)
             }
-            
-            Section {
-                Button(action: { self.save() }, label: {
-                    Text("Save")
-                })
-            }
-        }.onAppear(perform: { self.setInitialValues() })
-    }
-    
-    private func setInitialValues() {
-        name = transaction.name ?? ""
-        note = transaction.note ?? ""
-        categoryId = transaction.category?.id ?? ""
-    }
-    
-    private func save() {
-        var transactionToUpdate = data.transactions[transactionId]!
-        transactionToUpdate.name = name
-        transactionToUpdate.note = note
-        transactionToUpdate.save(resultHandler: { result in
-            switch result {
-            case .success:
-                self.data.transactions[self.transactionId] = transactionToUpdate
-                self.presentation.wrappedValue.dismiss()
-            case .failure(let error):
-                print("error: \(error)")
-            }
-        })
+        }
     }
 }

@@ -9,21 +9,21 @@
 import SwiftUI
 
 struct TransactionsView: View {
-    @EnvironmentObject var data: TransactionData
-    
-    var transactions: [Bool: [Transaction]] { Dictionary(grouping: data.transactions.values, by: { $0.reviewed }) }
+    @EnvironmentObject var userData: UserData
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach((transactions[false] ?? []).sorted { $0.date > $1.date}) { transaction in
-                    TransactionRowView(transactionId: transaction.id)
+            Section {
+                List {
+                    ForEach((userData.transactions).sorted { $0.date > $1.date}) { transaction in
+                        TransactionRowView(transaction: transaction)
+                    }
                 }
+                .listStyle(GroupedListStyle())
             }
-            .listStyle(GroupedListStyle())
             .navigationBarTitle("Transactions")
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: { self.data.setup() })
+        .onAppear(perform: { self.userData.loadTransactions() })
     }
 }

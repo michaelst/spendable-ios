@@ -9,37 +9,45 @@
 import SwiftUI
 import Combine
 
-final class BudgetData: ObservableObject  {
-    let objectWillChange = ObservableObjectPublisher()
-    let apollo = Apollo()
-    
-    var budgets: [Budget] = [] {
-        willSet { self.objectWillChange.send() }
-    }
-    
-    func delete(at offsets: IndexSet) {
-        let offset: Int = Array(offsets).first!
-        budgets[offset].delete()
-        budgets.remove(atOffsets: offsets)
-    }
-    
-    func load() {
-        apollo.client.fetch(query: ListBudgetsQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
+extension UserData  {
+    func loadBudgets() {
+        apollo.client.fetch(query: ListBudgetsQuery()) { result in
             guard let data = try? result.get().data else { return }
             self.processData(data: data)
         }
     }
     
+    func create(budgetInput: BudgetInput) {
+        apollo.client.perform(mutation: CreateBudgetMutation(name: budgetInput.name, balance: budgetInput.balance, goal: budgetInput.goal)) { result in
+            guard let data = try? result.get().data?.createBudget else { return }
+            if let id = data.id, let name = data.name, let balance = data.balance {
+                let budget = Budget(id: id, name: name, balance: balance, goal: data.goal)
+                self.budgets.append(budget)
+                self.apollo.client.clearCache()
+            }
+        }
+    }
+    
+    func deleteBudgets(at offsets: IndexSet) {
+        for offset in Array(offsets) {
+            apollo.client.perform(mutation: DeleteBudgetMutation(id: budgets[offset].id)) { result in
+                self.apollo.client.clearCache()
+            }
+        }
+        
+        budgets.remove(atOffsets: offsets)
+    }
+    
     private func processData(data: ListBudgetsQuery.Data) {
-        var list: [Budget] = []
+        var budgetsFromData: [Budget] = []
         
         for budgetData in data.budgets ?? [] {
             if let id = budgetData?.id, let name = budgetData?.name, let balance = budgetData?.balance {
                 let budget = Budget(id: id, name: name, balance: balance, goal:budgetData?.goal)
-                list.append(budget)
+                budgetsFromData.append(budget)
             }
         }
         
-        budgets = list
+        budgets = budgetsFromData
     }
 }

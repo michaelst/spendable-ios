@@ -33,18 +33,6 @@ class BudgetInput: ObservableObject {
         }
     }
     
-    func save(budgetData: BudgetData) {
-        let apollo = Apollo()
-        
-        apollo.client.perform(mutation: CreateBudgetMutation(name: name, balance: balance, goal: goal)) { result in
-            guard let data = try? result.get().data?.createBudget else { return }
-            if let id = data.id, let name = data.name, let balance = data.balance {
-                let budget = Budget(id: id, name: name, balance: balance, goal: data.goal)
-                budgetData.budgets.append(budget)
-            }
-        }
-    }
-    
     func clear() {
         name = ""
         balance = "0"

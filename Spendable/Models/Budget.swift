@@ -10,6 +10,14 @@ import Foundation
 import Combine
 
 class Budget: ObservableObject, Identifiable {
+    
+    init(id: String, name: String, balance: String, goal: String? = nil) {
+        self.id = id
+        self.name = name
+        self.balance = balance
+        self.goal = goal
+    }
+    
     let objectWillChange = ObservableObjectPublisher()
     let apollo = Apollo()
     
@@ -39,21 +47,7 @@ class Budget: ObservableObject, Identifiable {
         }
     }
     
-    init(id: String, name: String, balance: String, goal: String? = nil) {
-        self.id = id
-        self.name = name
-        self.balance = balance
-        self.goal = goal
-    }
-    
     private func save() {
         apollo.client.perform(mutation: UpdateBugdetMutation(id: id, name: name, balance: balance, goal: goal))
-    }
-    
-    func delete() {
-        apollo.client.perform(mutation: DeleteBudgetMutation(id: id)) { result in
-                   guard let data = try? result.get().data else { return }
-                   print(data)
-               }
     }
 }

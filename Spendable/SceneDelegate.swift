@@ -22,8 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         let rootView = RootView()
             .environmentObject(UserData())
-            .environmentObject(TransactionData())
-            .environmentObject(BudgetData())
             .environmentObject(BankData())
 
         

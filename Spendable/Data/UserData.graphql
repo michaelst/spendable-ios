@@ -1,7 +1,5 @@
 query CurrentUser{
   currentUser {
-    firstName
-    lastName
     email
   }
 }
@@ -9,22 +7,18 @@ query CurrentUser{
 mutation Login($email : String!, $password: String!) {
   login(email: $email, password: $password) {
     token
-    firstName
-    lastName
     email
   }
 }
 
-mutation CreateUser($firstName: String, $lastName: String, $email: String!, $password: String!) {
-    createUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password) {
+mutation CreateUser($email: String!, $password: String!) {
+    createUser(email: $email, password: $password) {
         token
     }
 }
 
-mutation UpdateCurrentUser($firstName: String!, $lastName: String!, $email: String!) {
-  updateUser(firstName: $firstName, lastName: $lastName, email: $email) {
-    firstName
-    lastName
+mutation UpdateCurrentUser($email: String!) {
+  updateUser(email: $email) {
     email
   }
 }

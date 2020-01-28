@@ -9,15 +9,15 @@
 import SwiftUI
 
 struct BudgetsView: View {
-    @EnvironmentObject var data: BudgetData
+    @EnvironmentObject var userData: UserData
     
     var body: some View {
         NavigationView {
             List {
-                ForEach((data.budgets).sorted { $0.balance.doubleValue > $1.balance.doubleValue}) { budget in
+                ForEach((userData.budgets).sorted { $0.balance.doubleValue > $1.balance.doubleValue}) { budget in
                     BudgetRowView(budget: budget)
                 }
-                .onDelete(perform: data.delete)
+                .onDelete(perform: userData.deleteBudgets)
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Budgets")
@@ -28,7 +28,7 @@ struct BudgetsView: View {
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: { self.data.load() })
+        .onAppear(perform: { self.userData.loadBudgets() })
     }
     
 }

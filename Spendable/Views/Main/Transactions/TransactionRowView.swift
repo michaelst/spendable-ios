@@ -9,14 +9,7 @@
 import SwiftUI
 
 struct TransactionRowView: View {
-    @EnvironmentObject var data: TransactionData
-    var transactionId: String
-    
-    private var transaction: Transaction {
-        get {
-            return data.transactions[transactionId]!
-        }
-    }
+    @ObservedObject var transaction: Transaction
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -25,7 +18,7 @@ struct TransactionRowView: View {
     }()
     
     var body: some View {
-        NavigationLink(destination: TransactionView(transactionId: transactionId)) {
+        NavigationLink(destination: TransactionView(transaction: transaction)) {
             HStack {
                 VStack {
                     HStack {

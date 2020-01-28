@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var userData: UserData
     
     var body: some View {
         
@@ -54,6 +55,7 @@ struct MainView: View {
             .tag(4)
         }
         .accentColor(Color(red: 67 / 255, green: 150 / 255, blue: 223 / 255))
+        .onAppear(perform: { self.userData.loadData() })
     }
 }
 
