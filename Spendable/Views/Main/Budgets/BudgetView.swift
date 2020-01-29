@@ -14,11 +14,8 @@ struct BudgetView: View {
     @ObservedObject var budgetInput: BudgetInput = BudgetInput()
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State private var name: String = ""
-    
     private func setInitialValue() {
         budgetInput.name = budget.name
-        budgetInput.balance = budget.balance
         budgetInput.goal = budget.goal
     }
     

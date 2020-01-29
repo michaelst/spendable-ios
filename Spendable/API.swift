@@ -364,6 +364,97 @@ public final class CreateBankMemberMutation: GraphQLMutation {
   }
 }
 
+public final class UpdateBankAccountMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    mutation UpdateBankAccount($id: ID!, $sync: Boolean!) {
+      updateBankAccount(id: $id, sync: $sync) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName = "UpdateBankAccount"
+
+  public var id: GraphQLID
+  public var sync: Bool
+
+  public init(id: GraphQLID, sync: Bool) {
+    self.id = id
+    self.sync = sync
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id, "sync": sync]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["RootMutationType"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateBankAccount", arguments: ["id": GraphQLVariable("id"), "sync": GraphQLVariable("sync")], type: .object(UpdateBankAccount.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(updateBankAccount: UpdateBankAccount? = nil) {
+      self.init(unsafeResultMap: ["__typename": "RootMutationType", "updateBankAccount": updateBankAccount.flatMap { (value: UpdateBankAccount) -> ResultMap in value.resultMap }])
+    }
+
+    public var updateBankAccount: UpdateBankAccount? {
+      get {
+        return (resultMap["updateBankAccount"] as? ResultMap).flatMap { UpdateBankAccount(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "updateBankAccount")
+      }
+    }
+
+    public struct UpdateBankAccount: GraphQLSelectionSet {
+      public static let possibleTypes = ["BankAccount"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(GraphQLID.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID? = nil) {
+        self.init(unsafeResultMap: ["__typename": "BankAccount", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID? {
+        get {
+          return resultMap["id"] as? GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+    }
+  }
+}
+
 public final class ListBudgetsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
@@ -483,8 +574,8 @@ public final class CreateBudgetMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
     """
-    mutation CreateBudget($name: String!, $balance: String!, $goal: String) {
-      createBudget(name: $name, balance: $balance, goal: $goal) {
+    mutation CreateBudget($name: String!, $goal: String) {
+      createBudget(name: $name, goal: $goal) {
         __typename
         id
         name
@@ -497,24 +588,22 @@ public final class CreateBudgetMutation: GraphQLMutation {
   public let operationName = "CreateBudget"
 
   public var name: String
-  public var balance: String
   public var goal: String?
 
-  public init(name: String, balance: String, goal: String? = nil) {
+  public init(name: String, goal: String? = nil) {
     self.name = name
-    self.balance = balance
     self.goal = goal
   }
 
   public var variables: GraphQLMap? {
-    return ["name": name, "balance": balance, "goal": goal]
+    return ["name": name, "goal": goal]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["RootMutationType"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("createBudget", arguments: ["name": GraphQLVariable("name"), "balance": GraphQLVariable("balance"), "goal": GraphQLVariable("goal")], type: .object(CreateBudget.selections)),
+      GraphQLField("createBudget", arguments: ["name": GraphQLVariable("name"), "goal": GraphQLVariable("goal")], type: .object(CreateBudget.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -609,8 +698,8 @@ public final class UpdateBudgetMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
     """
-    mutation UpdateBudget($id: ID!, $name: String!, $balance: String!, $goal: String) {
-      updateBudget(id: $id, name: $name, balance: $balance, goal: $goal) {
+    mutation UpdateBudget($id: ID!, $name: String!, $goal: String) {
+      updateBudget(id: $id, name: $name, goal: $goal) {
         __typename
         id
         name
@@ -624,25 +713,23 @@ public final class UpdateBudgetMutation: GraphQLMutation {
 
   public var id: GraphQLID
   public var name: String
-  public var balance: String
   public var goal: String?
 
-  public init(id: GraphQLID, name: String, balance: String, goal: String? = nil) {
+  public init(id: GraphQLID, name: String, goal: String? = nil) {
     self.id = id
     self.name = name
-    self.balance = balance
     self.goal = goal
   }
 
   public var variables: GraphQLMap? {
-    return ["id": id, "name": name, "balance": balance, "goal": goal]
+    return ["id": id, "name": name, "goal": goal]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["RootMutationType"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateBudget", arguments: ["id": GraphQLVariable("id"), "name": GraphQLVariable("name"), "balance": GraphQLVariable("balance"), "goal": GraphQLVariable("goal")], type: .object(UpdateBudget.selections)),
+      GraphQLField("updateBudget", arguments: ["id": GraphQLVariable("id"), "name": GraphQLVariable("name"), "goal": GraphQLVariable("goal")], type: .object(UpdateBudget.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -1050,6 +1137,230 @@ public final class ListTransactionsQuery: GraphQLQuery {
   }
 }
 
+public final class GetTransactionQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    query GetTransaction($id: ID!) {
+      transaction(id: $id) {
+        __typename
+        name
+        note
+        amount
+        date
+        budget {
+          __typename
+          id
+        }
+        category {
+          __typename
+          id
+        }
+      }
+    }
+    """
+
+  public let operationName = "GetTransaction"
+
+  public var id: GraphQLID
+
+  public init(id: GraphQLID) {
+    self.id = id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["RootQueryType"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("transaction", arguments: ["id": GraphQLVariable("id")], type: .object(Transaction.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(transaction: Transaction? = nil) {
+      self.init(unsafeResultMap: ["__typename": "RootQueryType", "transaction": transaction.flatMap { (value: Transaction) -> ResultMap in value.resultMap }])
+    }
+
+    public var transaction: Transaction? {
+      get {
+        return (resultMap["transaction"] as? ResultMap).flatMap { Transaction(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "transaction")
+      }
+    }
+
+    public struct Transaction: GraphQLSelectionSet {
+      public static let possibleTypes = ["Transaction"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("note", type: .scalar(String.self)),
+        GraphQLField("amount", type: .scalar(String.self)),
+        GraphQLField("date", type: .scalar(String.self)),
+        GraphQLField("budget", type: .object(Budget.selections)),
+        GraphQLField("category", type: .object(Category.selections)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(name: String? = nil, note: String? = nil, amount: String? = nil, date: String? = nil, budget: Budget? = nil, category: Category? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Transaction", "name": name, "note": note, "amount": amount, "date": date, "budget": budget.flatMap { (value: Budget) -> ResultMap in value.resultMap }, "category": category.flatMap { (value: Category) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var name: String? {
+        get {
+          return resultMap["name"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var note: String? {
+        get {
+          return resultMap["note"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "note")
+        }
+      }
+
+      public var amount: String? {
+        get {
+          return resultMap["amount"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "amount")
+        }
+      }
+
+      public var date: String? {
+        get {
+          return resultMap["date"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "date")
+        }
+      }
+
+      public var budget: Budget? {
+        get {
+          return (resultMap["budget"] as? ResultMap).flatMap { Budget(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "budget")
+        }
+      }
+
+      public var category: Category? {
+        get {
+          return (resultMap["category"] as? ResultMap).flatMap { Category(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "category")
+        }
+      }
+
+      public struct Budget: GraphQLSelectionSet {
+        public static let possibleTypes = ["Budget"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Budget", "id": id])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID? {
+          get {
+            return resultMap["id"] as? GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+      }
+
+      public struct Category: GraphQLSelectionSet {
+        public static let possibleTypes = ["Category"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Category", "id": id])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID? {
+          get {
+            return resultMap["id"] as? GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class ListCategoriesQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
@@ -1158,10 +1469,21 @@ public final class UpdateTransactionMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
     """
-    mutation UpdateTransaction($id: ID!, $name: String, $note: String, $categoryId: ID, $budgetId: ID) {
-      updateTransaction(id: $id, name: $name, note: $note, categoryId: $categoryId, budgetId: $budgetId) {
+    mutation UpdateTransaction($id: ID!, $amount: String!, $name: String, $note: String, $categoryId: ID, $budgetId: ID) {
+      updateTransaction(id: $id, amount: $amount, name: $name, note: $note, categoryId: $categoryId, budgetId: $budgetId) {
         __typename
-        id
+        name
+        note
+        amount
+        date
+        budget {
+          __typename
+          id
+        }
+        category {
+          __typename
+          id
+        }
       }
     }
     """
@@ -1169,13 +1491,15 @@ public final class UpdateTransactionMutation: GraphQLMutation {
   public let operationName = "UpdateTransaction"
 
   public var id: GraphQLID
+  public var amount: String
   public var name: String?
   public var note: String?
   public var categoryId: GraphQLID?
   public var budgetId: GraphQLID?
 
-  public init(id: GraphQLID, name: String? = nil, note: String? = nil, categoryId: GraphQLID? = nil, budgetId: GraphQLID? = nil) {
+  public init(id: GraphQLID, amount: String, name: String? = nil, note: String? = nil, categoryId: GraphQLID? = nil, budgetId: GraphQLID? = nil) {
     self.id = id
+    self.amount = amount
     self.name = name
     self.note = note
     self.categoryId = categoryId
@@ -1183,14 +1507,14 @@ public final class UpdateTransactionMutation: GraphQLMutation {
   }
 
   public var variables: GraphQLMap? {
-    return ["id": id, "name": name, "note": note, "categoryId": categoryId, "budgetId": budgetId]
+    return ["id": id, "amount": amount, "name": name, "note": note, "categoryId": categoryId, "budgetId": budgetId]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["RootMutationType"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateTransaction", arguments: ["id": GraphQLVariable("id"), "name": GraphQLVariable("name"), "note": GraphQLVariable("note"), "categoryId": GraphQLVariable("categoryId"), "budgetId": GraphQLVariable("budgetId")], type: .object(UpdateTransaction.selections)),
+      GraphQLField("updateTransaction", arguments: ["id": GraphQLVariable("id"), "amount": GraphQLVariable("amount"), "name": GraphQLVariable("name"), "note": GraphQLVariable("note"), "categoryId": GraphQLVariable("categoryId"), "budgetId": GraphQLVariable("budgetId")], type: .object(UpdateTransaction.selections)),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -1217,7 +1541,12 @@ public final class UpdateTransactionMutation: GraphQLMutation {
 
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("note", type: .scalar(String.self)),
+        GraphQLField("amount", type: .scalar(String.self)),
+        GraphQLField("date", type: .scalar(String.self)),
+        GraphQLField("budget", type: .object(Budget.selections)),
+        GraphQLField("category", type: .object(Category.selections)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -1226,8 +1555,8 @@ public final class UpdateTransactionMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Transaction", "id": id])
+      public init(name: String? = nil, note: String? = nil, amount: String? = nil, date: String? = nil, budget: Budget? = nil, category: Category? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Transaction", "name": name, "note": note, "amount": amount, "date": date, "budget": budget.flatMap { (value: Budget) -> ResultMap in value.resultMap }, "category": category.flatMap { (value: Category) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -1239,12 +1568,131 @@ public final class UpdateTransactionMutation: GraphQLMutation {
         }
       }
 
-      public var id: GraphQLID? {
+      public var name: String? {
         get {
-          return resultMap["id"] as? GraphQLID
+          return resultMap["name"] as? String
         }
         set {
-          resultMap.updateValue(newValue, forKey: "id")
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var note: String? {
+        get {
+          return resultMap["note"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "note")
+        }
+      }
+
+      public var amount: String? {
+        get {
+          return resultMap["amount"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "amount")
+        }
+      }
+
+      public var date: String? {
+        get {
+          return resultMap["date"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "date")
+        }
+      }
+
+      public var budget: Budget? {
+        get {
+          return (resultMap["budget"] as? ResultMap).flatMap { Budget(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "budget")
+        }
+      }
+
+      public var category: Category? {
+        get {
+          return (resultMap["category"] as? ResultMap).flatMap { Category(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "category")
+        }
+      }
+
+      public struct Budget: GraphQLSelectionSet {
+        public static let possibleTypes = ["Budget"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Budget", "id": id])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID? {
+          get {
+            return resultMap["id"] as? GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+      }
+
+      public struct Category: GraphQLSelectionSet {
+        public static let possibleTypes = ["Category"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Category", "id": id])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID? {
+          get {
+            return resultMap["id"] as? GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
         }
       }
     }
@@ -1609,192 +2057,6 @@ public final class UpdateCurrentUserMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "email")
-        }
-      }
-    }
-  }
-}
-
-public final class UpdateBankAccountMutation: GraphQLMutation {
-  /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
-    """
-    mutation UpdateBankAccount($id: ID!, $sync: Boolean!) {
-      updateBankAccount(id: $id, sync: $sync) {
-        __typename
-        id
-      }
-    }
-    """
-
-  public let operationName = "UpdateBankAccount"
-
-  public var id: GraphQLID
-  public var sync: Bool
-
-  public init(id: GraphQLID, sync: Bool) {
-    self.id = id
-    self.sync = sync
-  }
-
-  public var variables: GraphQLMap? {
-    return ["id": id, "sync": sync]
-  }
-
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootMutationType"]
-
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateBankAccount", arguments: ["id": GraphQLVariable("id"), "sync": GraphQLVariable("sync")], type: .object(UpdateBankAccount.selections)),
-    ]
-
-    public private(set) var resultMap: ResultMap
-
-    public init(unsafeResultMap: ResultMap) {
-      self.resultMap = unsafeResultMap
-    }
-
-    public init(updateBankAccount: UpdateBankAccount? = nil) {
-      self.init(unsafeResultMap: ["__typename": "RootMutationType", "updateBankAccount": updateBankAccount.flatMap { (value: UpdateBankAccount) -> ResultMap in value.resultMap }])
-    }
-
-    public var updateBankAccount: UpdateBankAccount? {
-      get {
-        return (resultMap["updateBankAccount"] as? ResultMap).flatMap { UpdateBankAccount(unsafeResultMap: $0) }
-      }
-      set {
-        resultMap.updateValue(newValue?.resultMap, forKey: "updateBankAccount")
-      }
-    }
-
-    public struct UpdateBankAccount: GraphQLSelectionSet {
-      public static let possibleTypes = ["BankAccount"]
-
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
-      ]
-
-      public private(set) var resultMap: ResultMap
-
-      public init(unsafeResultMap: ResultMap) {
-        self.resultMap = unsafeResultMap
-      }
-
-      public init(id: GraphQLID? = nil) {
-        self.init(unsafeResultMap: ["__typename": "BankAccount", "id": id])
-      }
-
-      public var __typename: String {
-        get {
-          return resultMap["__typename"]! as! String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "__typename")
-        }
-      }
-
-      public var id: GraphQLID? {
-        get {
-          return resultMap["id"] as? GraphQLID
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "id")
-        }
-      }
-    }
-  }
-}
-
-public final class UpdateBugdetMutation: GraphQLMutation {
-  /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
-    """
-    mutation UpdateBugdet($id: ID!, $name: String!, $balance: String!, $goal: String) {
-      updateBudget(id: $id, name: $name, balance: $balance, goal: $goal) {
-        __typename
-        id
-      }
-    }
-    """
-
-  public let operationName = "UpdateBugdet"
-
-  public var id: GraphQLID
-  public var name: String
-  public var balance: String
-  public var goal: String?
-
-  public init(id: GraphQLID, name: String, balance: String, goal: String? = nil) {
-    self.id = id
-    self.name = name
-    self.balance = balance
-    self.goal = goal
-  }
-
-  public var variables: GraphQLMap? {
-    return ["id": id, "name": name, "balance": balance, "goal": goal]
-  }
-
-  public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootMutationType"]
-
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateBudget", arguments: ["id": GraphQLVariable("id"), "name": GraphQLVariable("name"), "balance": GraphQLVariable("balance"), "goal": GraphQLVariable("goal")], type: .object(UpdateBudget.selections)),
-    ]
-
-    public private(set) var resultMap: ResultMap
-
-    public init(unsafeResultMap: ResultMap) {
-      self.resultMap = unsafeResultMap
-    }
-
-    public init(updateBudget: UpdateBudget? = nil) {
-      self.init(unsafeResultMap: ["__typename": "RootMutationType", "updateBudget": updateBudget.flatMap { (value: UpdateBudget) -> ResultMap in value.resultMap }])
-    }
-
-    public var updateBudget: UpdateBudget? {
-      get {
-        return (resultMap["updateBudget"] as? ResultMap).flatMap { UpdateBudget(unsafeResultMap: $0) }
-      }
-      set {
-        resultMap.updateValue(newValue?.resultMap, forKey: "updateBudget")
-      }
-    }
-
-    public struct UpdateBudget: GraphQLSelectionSet {
-      public static let possibleTypes = ["Budget"]
-
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
-      ]
-
-      public private(set) var resultMap: ResultMap
-
-      public init(unsafeResultMap: ResultMap) {
-        self.resultMap = unsafeResultMap
-      }
-
-      public init(id: GraphQLID? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Budget", "id": id])
-      }
-
-      public var __typename: String {
-        get {
-          return resultMap["__typename"]! as! String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "__typename")
-        }
-      }
-
-      public var id: GraphQLID? {
-        get {
-          return resultMap["id"] as? GraphQLID
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "id")
         }
       }
     }

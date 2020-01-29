@@ -25,7 +25,7 @@ final class BankData: ObservableObject  {
         }
     }
     
-    private func processData(data: ListBankMembersQuery.Data) {
+    func processData(data: ListBankMembersQuery.Data) {
         var list: [BankMember] = []
         
         for bankMemberData in data.bankMembers ?? [] {

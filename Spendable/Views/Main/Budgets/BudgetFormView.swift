@@ -23,14 +23,6 @@ struct BudgetFormView: View {
                 }
                 
                 HStack {
-                    Text("Balance").foregroundColor(.secondary)
-                    
-                    Spacer()
-                    
-                    TextField("", text: $budgetInput.balance).multilineTextAlignment(.trailing)
-                }
-                
-                HStack {
                     Text("Goal").foregroundColor(.secondary)
                     
                     Spacer()

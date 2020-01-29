@@ -23,3 +23,9 @@ mutation CreateBankMember($publicToken: String!) {
     }
   }
 }
+
+mutation UpdateBankAccount($id: ID!, $sync: Boolean!) {
+  updateBankAccount(id: $id, sync: $sync) {
+    id
+  }
+}

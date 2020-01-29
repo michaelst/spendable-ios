@@ -19,6 +19,16 @@ struct BudgetPickerRowView: View {
                     Text(budget.name)
                     Spacer()
                 }
+                
+                HStack {
+                    if budget.balance.doubleValue < 0 {
+                        Text("$" + String(format: "%.2f", abs(budget.balance.doubleValue))).foregroundColor(.red).font(.footnote)
+                    } else {
+                        Text("$" + String(format: "%.2f", budget.balance.doubleValue)).font(.footnote)
+                    }
+                    
+                    Spacer()
+                }.padding(.top, 8)
             }
             
             Spacer()

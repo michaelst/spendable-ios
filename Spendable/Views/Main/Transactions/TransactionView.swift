@@ -11,62 +11,20 @@ import SwiftUI
 struct TransactionView: View {
     @EnvironmentObject var userData: UserData
     @ObservedObject var transaction: Transaction
-    
-    var budget: Budget? {
-        get {
-            if transaction.budgetId != nil {
-                return userData.budgetsById[transaction.budgetId!]
-            } else {
-                return nil
-            }
-        }
-    }
-    
-    var category: Category? {
-        get {
-            if transaction.categoryId != nil {
-                return userData.categoriesById[transaction.categoryId!]
-            } else {
-                return nil
-            }
-        }
-    }
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        Form {
-            Section {
-                HStack {
-                    Text("Name").foregroundColor(.secondary)
-                    
-                    Spacer()
-                    
-                    TextField("", text: $transaction.nameBinding).multilineTextAlignment(.trailing)
-                }
-                
-                NavigationLink(destination: CategoryPickerView(transaction: transaction)) {
-                    HStack {
-                        Text("Category").foregroundColor(.secondary)
-                        
-                        Spacer()
-                        
-                        Text(category?.name ?? "")
-                    }
-                }
-                
-                NavigationLink(destination: BudgetPickerView(transaction: transaction)) {
-                    HStack {
-                        Text("Budget").foregroundColor(.secondary)
-                        
-                        Spacer()
-                        
-                        Text(budget?.name ?? "")
-                    }
-                }
-            }
-            
-            Section(header: Text("Notes").foregroundColor(.secondary)) {
-                TextField("", text: $transaction.noteBinding)
-            }
-        }
+        TransactionFormView(transaction: transaction)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            leading: Button("Cancel", action: {
+                self.userData.reload(transaction: self.transaction)
+                self.presentationMode.wrappedValue.dismiss()
+            }),
+            trailing: Button("Save", action: {
+                self.userData.update(transaction: self.transaction)
+                self.presentationMode.wrappedValue.dismiss()
+            })
+        )
     }
 }

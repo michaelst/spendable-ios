@@ -9,17 +9,8 @@
 import Foundation
 import Combine
 
-class Budget: ObservableObject, Identifiable {
-    
-    init(id: String, name: String, balance: String, goal: String? = nil) {
-        self.id = id
-        self.name = name
-        self.balance = balance
-        self.goal = goal
-    }
-    
+class Budget: ObservableObject, Identifiable {    
     let objectWillChange = ObservableObjectPublisher()
-    let apollo = Apollo()
     
     let id: String
     var name: String { willSet { self.objectWillChange.send() } }
@@ -34,4 +25,11 @@ class Budget: ObservableObject, Identifiable {
             self.goal = newValue.isEmpty ? nil : newValue
         }
     }
+    
+     init(id: String, name: String, balance: String, goal: String? = nil) {
+         self.id = id
+         self.name = name
+         self.balance = balance
+         self.goal = goal
+     }
 }

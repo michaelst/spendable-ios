@@ -12,17 +12,8 @@ import Combine
 class BudgetInput: ObservableObject {
     let objectWillChange = ObservableObjectPublisher()
     
-    var name: String = "" {
-        willSet { self.objectWillChange.send() }
-    }
-    
-    var balance: String = "0" {
-        willSet { self.objectWillChange.send() }
-    }
-    
-    var goal: String? {
-        willSet { self.objectWillChange.send() }
-    }
+    var name: String = "" { willSet { self.objectWillChange.send() } }    
+    var goal: String? { willSet { self.objectWillChange.send() } }
     
     var goalBinding: String {
         get {
@@ -35,7 +26,6 @@ class BudgetInput: ObservableObject {
     
     func clear() {
         name = ""
-        balance = "0"
         goal = nil
     }
 }

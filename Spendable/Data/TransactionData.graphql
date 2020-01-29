@@ -6,10 +6,25 @@ query ListTransactions{
     amount
     date
     budget {
-        id
+      id
     }
     category {
-        id
+      id
+    }
+  }
+}
+
+query GetTransaction($id: ID!) {
+  transaction(id: $id) {
+    name
+    note
+    amount
+    date
+    budget {
+      id
+    }
+    category {
+      id
     }
   }
 }
@@ -22,8 +37,17 @@ query ListCategories{
   }
 }
 
-mutation UpdateTransaction($id: ID!, $name: String, $note: String, $categoryId: ID, $budgetId: ID) {
-  updateTransaction(id: $id, name: $name, note: $note, categoryId: $categoryId, budgetId: $budgetId) {
-    id
+mutation UpdateTransaction($id: ID!, $amount: String!, $name: String, $note: String, $categoryId: ID, $budgetId: ID) {
+  updateTransaction(id: $id, amount: $amount, name: $name, note: $note, categoryId: $categoryId, budgetId: $budgetId) {
+    name
+    note
+    amount
+    date
+    budget {
+      id
+    }
+    category {
+      id
+    }
   }
 }
