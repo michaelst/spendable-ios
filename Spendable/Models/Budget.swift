@@ -22,21 +22,9 @@ class Budget: ObservableObject, Identifiable {
     let apollo = Apollo()
     
     let id: String
-    
-    var name: String {
-        willSet { self.objectWillChange.send() }
-        didSet { self.save() }
-    }
-    
-    var balance: String {
-        willSet { self.objectWillChange.send() }
-        didSet { self.save() }
-    }
-    
-    var goal: String? {
-        willSet { self.objectWillChange.send() }
-        didSet { self.save() }
-    }
+    var name: String { willSet { self.objectWillChange.send() } }
+    var balance: String { willSet { self.objectWillChange.send() } }
+    var goal: String? { willSet { self.objectWillChange.send() } }
     
     var goalBinding: String {
         get {
@@ -45,9 +33,5 @@ class Budget: ObservableObject, Identifiable {
         set {
             self.goal = newValue.isEmpty ? nil : newValue
         }
-    }
-    
-    private func save() {
-        apollo.client.perform(mutation: UpdateBugdetMutation(id: id, name: name, balance: balance, goal: goal))
     }
 }

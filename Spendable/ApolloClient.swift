@@ -18,7 +18,7 @@ class Apollo {
     static let shared = Apollo()
     
     private lazy var networkTransport = HTTPNetworkTransport(
-        url: URL(string: "https://e4c87ec1.ngrok.io/graphql")!,
+        url: URL(string: "https://d5e3dfd8.ngrok.io/graphql")!,
         delegate: self
     )
     

@@ -28,6 +28,18 @@ extension UserData  {
         }
     }
     
+    func update(budget: Budget, budgetInput: BudgetInput) {
+        apollo.client.perform(mutation: UpdateBudgetMutation(id: budget.id, name: budgetInput.name, balance: budgetInput.balance, goal: budgetInput.goal)) { result in
+            guard let data = try? result.get().data?.updateBudget else { return }
+            
+            budget.name = data.name!
+            budget.balance = data.balance!
+            budget.goal = data.goal
+
+            self.apollo.client.clearCache()
+        }
+    }
+    
     func deleteBudgets(at offsets: IndexSet) {
         for offset in Array(offsets) {
             apollo.client.perform(mutation: DeleteBudgetMutation(id: budgets[offset].id)) { result in

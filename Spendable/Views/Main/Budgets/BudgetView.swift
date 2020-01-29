@@ -9,43 +9,29 @@
 import SwiftUI
 
 struct BudgetView: View {
+    @EnvironmentObject var userData: UserData
     @ObservedObject var budget: Budget
+    @ObservedObject var budgetInput: BudgetInput = BudgetInput()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @State private var name: String = ""
+    
+    private func setInitialValue() {
+        budgetInput.name = budget.name
+        budgetInput.balance = budget.balance
+        budgetInput.goal = budget.goal
+    }
     
     var body: some View {
-        Form {
-            Section {
-                NavigationLink(destination: EditBudgetNameView(budget: budget)) {
-                    HStack {
-                        Text("Name").foregroundColor(.secondary)
-                        
-                        Spacer()
-                        
-                        Text(budget.name).multilineTextAlignment(.trailing)
-                    }
-                }
-                
-                NavigationLink(destination: EditBudgetBalanceView(budget: budget)) {
-                    HStack {
-                        Text("Balance").foregroundColor(.secondary)
-                        
-                        Spacer()
-                        
-                        Text("$" + String(format: "%.2f", budget.balance.doubleValue)).multilineTextAlignment(.trailing)
-                    }
-                }
-                
-                NavigationLink(destination: EditBudgetGoalView(budget: budget)) {
-                    HStack {
-                        Text("Goal").foregroundColor(.secondary)
-                        
-                        Spacer()
-                        
-                        if budget.goal != nil {
-                            Text("$" + String(format: "%.2f", budget.goal!.doubleValue)).multilineTextAlignment(.trailing)
-                        }
-                    }
-                }
-            }
-        }
+        BudgetFormView(budgetInput: budgetInput)
+        .onAppear(perform: { self.setInitialValue() })
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            leading: Button("Cancel", action: { self.presentationMode.wrappedValue.dismiss() }),
+            trailing: Button("Save", action: {
+                self.userData.update(budget: self.budget, budgetInput: self.budgetInput)
+                self.presentationMode.wrappedValue.dismiss()
+            })
+        )
     }
 }
