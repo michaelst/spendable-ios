@@ -9,6 +9,7 @@
 import SwiftUI
 import Combine
 import KeychainSwift
+import Apollo
 
 final class UserData: ObservableObject  {
     let objectWillChange = ObservableObjectPublisher()
@@ -85,15 +86,16 @@ final class UserData: ObservableObject  {
         apollo.client.perform(mutation: UpdateCurrentUserMutation(email: self.email))
     }
     
+    var loginErrors: [GraphQLError] = [] {
+           willSet { self.objectWillChange.send() }
+       }
+    
     func login(email: String, password: String) {
         apollo.client.perform(mutation: LoginMutation(email: email, password: password)) { result in
-            switch result {
-            case .success(let body):
-                if let data = body.data?.login {
-                    self.apiToken = data.token
-                }
-            case .failure(let error):
-                print("error: \(error)")
+            if let token = try? result.get().data?.login?.token {
+                self.apiToken = token
+            } else if let errors = try? result.get().errors {
+                self.loginErrors = errors
             }
         }
     }

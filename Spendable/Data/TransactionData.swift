@@ -50,6 +50,7 @@ extension UserData {
     func update(transaction: Transaction) {        
         apollo.client.perform(mutation: UpdateTransactionMutation(id: transaction.id, amount: transaction.amount, name: transaction.name, note: transaction.note, categoryId: transaction.categoryId, budgetId: transaction.budgetId)) { result in
             self.apollo.client.clearCache()
+            self.loadBudgets()
         }
     }
 }

@@ -10,7 +10,9 @@ import SwiftUI
 
 struct LoginView : View {
     @EnvironmentObject var userData: UserData
+    
     @State var email : String = ""
+    
     @State var password : String = ""
     
     let apollo = Apollo()
@@ -20,6 +22,10 @@ struct LoginView : View {
             Color(red: 0, green: 116 / 255, blue: 217 / 255).edgesIgnoringSafeArea(.all)
             
             VStack() {
+                if userData.loginErrors.first?.description != nil {
+                    Text(userData.loginErrors.first!.description).foregroundColor(.red)
+                }
+                
                 ZStack(alignment: .leading) {
                     if email.isEmpty { Text("email").foregroundColor(Color(red: 216 / 255, green: 216 / 255, blue: 216 / 255)) }
                     TextField("email", text: $email)

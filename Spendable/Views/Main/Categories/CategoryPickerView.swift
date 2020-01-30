@@ -45,9 +45,7 @@ struct CategoryPickerView: View {
             
             List(categories) { category in
                 CategoryPickerRowView(category: category, isSelected: category.id == self.transaction.categoryId)
-                    .onTapGesture {
-                        print(category.id)
-                        self.transaction.categoryId = category.id }
+                    .onTapGesture { self.transaction.categoryId = category.id }
             }
         }
         .navigationBarTitle("Categories")
