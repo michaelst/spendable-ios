@@ -15,7 +15,7 @@ final class UserData: ObservableObject  {
     let objectWillChange = ObservableObjectPublisher()
     let apollo = Apollo()
     let keychain = KeychainSwift()
-    let formatter = DateFormatter()
+    let dateFormatter = DateFormatter()
     
     var showPlaidModal = false {
         willSet { self.objectWillChange.send() }

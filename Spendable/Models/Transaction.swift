@@ -13,11 +13,12 @@ class Transaction: ObservableObject, Identifiable {
     let objectWillChange = ObservableObjectPublisher()
     
     let id: String
+    let negative: Bool
     var name: String? { willSet { self.objectWillChange.send() } }
     var note: String? { willSet { self.objectWillChange.send() } }
     var amount: String { willSet { self.objectWillChange.send() } }
     var date: Date { willSet { self.objectWillChange.send() } }
-    var budgetId: String? { willSet { self.objectWillChange.send() } }
+    var allocations: [Allocation] = [] { willSet { self.objectWillChange.send() } }
     var categoryId: String? { willSet { self.objectWillChange.send() } }
     
     var nameBinding: String {
@@ -38,13 +39,24 @@ class Transaction: ObservableObject, Identifiable {
         }
     }
     
-    init(id: String, name: String? = nil, note: String? = nil, amount: String, date: Date, categoryId: String? = nil, budgetId: String? = nil) {
+    init(id: String, negative: Bool, name: String? = nil, note: String? = nil, amount: String, date: Date, categoryId: String? = nil, allocations: [Allocation] = []) {
         self.id = id
+        self.negative = negative
         self.name = name
         self.note = note
-        self.amount = amount
+        self.amount = amount.removePrefix("-")
         self.date = date
         self.categoryId = categoryId
-        self.budgetId = budgetId
+        self.allocations = allocations
+    }
+    
+    func spendableAmount() -> Double {
+        allocations.map { allocation in
+            return allocation.amount.doubleValue
+        }.reduce(amount.doubleValue, -)
+    }
+    
+    func deleteAllocations(at offsets: IndexSet) {
+        allocations.remove(atOffsets: offsets)
     }
 }

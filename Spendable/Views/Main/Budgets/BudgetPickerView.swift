@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BudgetPickerView: View {
     @EnvironmentObject var userData: UserData
-    @ObservedObject var transaction: Transaction
+    @ObservedObject var allocation: Allocation
     @State private var searchText = ""
     
     var budgets: [Budget] {
@@ -44,8 +44,8 @@ struct BudgetPickerView: View {
             }.padding(.horizontal)
             
             List(budgets) { budget in
-                BudgetPickerRowView(budget: budget, isSelected: budget.id == self.transaction.budgetId)
-                    .onTapGesture { self.transaction.budgetId = budget.id }
+                BudgetPickerRowView(budget: budget, isSelected: budget.id == self.allocation.budgetId)
+                    .onTapGesture { self.allocation.budgetId = budget.id }
             }
         }
         .navigationBarTitle("Budgets")

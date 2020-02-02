@@ -27,7 +27,9 @@ struct BudgetFormView: View {
                     
                     Spacer()
                     
-                    TextField("", text: $budgetInput.goalBinding).multilineTextAlignment(.trailing)
+                    TextField("", text: $budgetInput.goalBinding)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
                 }
             }
         }

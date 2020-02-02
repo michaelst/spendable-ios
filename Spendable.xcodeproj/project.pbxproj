@@ -22,13 +22,18 @@
 		4C0985C7237659C0007CBA43 /* TransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0985C6237659C0007CBA43 /* TransactionData.swift */; };
 		4C0985C923765DCC007CBA43 /* TransactionData.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C0985C823765DCC007CBA43 /* TransactionData.graphql */; };
 		4C0985CB2376610B007CBA43 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0985CA2376610B007CBA43 /* Category.swift */; };
+		4C2FBEB323E6246300C6DF00 /* Pods_Spendable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA1C44FF7680674E9E53837 /* Pods_Spendable.framework */; };
+		4C2FBEB423E6246300C6DF00 /* Pods_Spendable.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA1C44FF7680674E9E53837 /* Pods_Spendable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C2FBEB623E6658100C6DF00 /* Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEB523E6658100C6DF00 /* Allocation.swift */; };
+		4C2FBEB923E67B4800C6DF00 /* AllocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEB823E67B4800C6DF00 /* AllocationsView.swift */; };
+		4C2FBEBD23E67BD800C6DF00 /* AllocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEBC23E67BD800C6DF00 /* AllocationRowView.swift */; };
+		4C2FBEBF23E67DA400C6DF00 /* AllocationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEBE23E67DA400C6DF00 /* AllocationFormView.swift */; };
+		4C2FBEC123E6864D00C6DF00 /* CreateAllocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEC023E6864D00C6DF00 /* CreateAllocationView.swift */; };
 		4C43ACDC23E1207E00315996 /* BudgetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43ACDB23E1207E00315996 /* BudgetFormView.swift */; };
 		4C43ACE123E1442B00315996 /* TransactionFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43ACE023E1442B00315996 /* TransactionFormView.swift */; };
 		4C48B1DC236FA32F00C1D234 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */; };
 		4C48B1DE236FA50B00C1D234 /* PlaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C48B1DD236FA50B00C1D234 /* PlaidViewController.swift */; };
 		4C49919523694916002A4D7C /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49919423694916002A4D7C /* SignupView.swift */; };
-		4C5780E723DE26750053117F /* LinkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F61F236A912F00CE5F38 /* LinkKit.framework */; };
-		4C5780E823DE26750053117F /* LinkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F61F236A912F00CE5F38 /* LinkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C5780EC23DE2C810053117F /* KeyboardResponsive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5780EB23DE2C810053117F /* KeyboardResponsive.swift */; };
 		4C5780F323DE85B60053117F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5780F223DE85B60053117F /* String.swift */; };
 		4C5780F823DE95BB0053117F /* CreateBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5780F723DE95BB0053117F /* CreateBudgetView.swift */; };
@@ -84,13 +89,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4C5780E923DE26750053117F /* Embed Frameworks */ = {
+		4C5C2E9B23E5FFDB00CF7B2B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4C5780E823DE26750053117F /* LinkKit.framework in Embed Frameworks */,
+				4C2FBEB423E6246300C6DF00 /* Pods_Spendable.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +103,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		446969BD668C903588AA43D8 /* Pods-Spendable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spendable.debug.xcconfig"; path = "Target Support Files/Pods-Spendable/Pods-Spendable.debug.xcconfig"; sourceTree = "<group>"; };
 		4C08F4482353F8800000C2FC /* Spendable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spendable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C08F44B2353F8800000C2FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C08F44D2353F8800000C2FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,9 +124,14 @@
 		4C0985C6237659C0007CBA43 /* TransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionData.swift; sourceTree = "<group>"; };
 		4C0985C823765DCC007CBA43 /* TransactionData.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = TransactionData.graphql; sourceTree = "<group>"; };
 		4C0985CA2376610B007CBA43 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		4C2FBEB523E6658100C6DF00 /* Allocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allocation.swift; sourceTree = "<group>"; };
+		4C2FBEB823E67B4800C6DF00 /* AllocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationsView.swift; sourceTree = "<group>"; };
+		4C2FBEBC23E67BD800C6DF00 /* AllocationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationRowView.swift; sourceTree = "<group>"; };
+		4C2FBEBE23E67DA400C6DF00 /* AllocationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationFormView.swift; sourceTree = "<group>"; };
+		4C2FBEC023E6864D00C6DF00 /* CreateAllocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllocationView.swift; sourceTree = "<group>"; };
+		4C2FBEC223E692C300C6DF00 /* Spendable.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spendable.entitlements; sourceTree = "<group>"; };
 		4C43ACDB23E1207E00315996 /* BudgetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetFormView.swift; sourceTree = "<group>"; };
 		4C43ACE023E1442B00315996 /* TransactionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFormView.swift; sourceTree = "<group>"; };
-		4C43F61F236A912F00CE5F38 /* LinkKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkKit.framework; sourceTree = "<group>"; };
 		4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
 		4C48B1DD236FA50B00C1D234 /* PlaidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidViewController.swift; sourceTree = "<group>"; };
 		4C49919423694916002A4D7C /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
@@ -158,6 +169,8 @@
 		4CE24CE023DEAA520020604B /* BankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankData.swift; sourceTree = "<group>"; };
 		4CE24CE223DEAA8B0020604B /* BankData.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = BankData.graphql; sourceTree = "<group>"; };
 		4CE24CE423DEB37B0020604B /* BankMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankMemberView.swift; sourceTree = "<group>"; };
+		7CA1C44FF7680674E9E53837 /* Pods_Spendable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spendable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEA6C1915EAD94B501552639 /* Pods-Spendable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spendable.release.xcconfig"; path = "Target Support Files/Pods-Spendable/Pods-Spendable.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +180,7 @@
 			files = (
 				4CE1FB9423691C030071BF74 /* KeychainSwift in Frameworks */,
 				4C08F4812353F8E90000C2FC /* Apollo in Frameworks */,
-				4C5780E723DE26750053117F /* LinkKit.framework in Frameworks */,
+				4C2FBEB323E6246300C6DF00 /* Pods_Spendable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +209,7 @@
 				4C08F44A2353F8800000C2FC /* Spendable */,
 				4C08F4612353F8810000C2FC /* SpendableTests */,
 				4C08F46C2353F8810000C2FC /* SpendableUITests */,
+				9BF49A871EFC79DB4493469E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +226,7 @@
 		4C08F44A2353F8800000C2FC /* Spendable */ = {
 			isa = PBXGroup;
 			children = (
+				4C2FBEC223E692C300C6DF00 /* Spendable.entitlements */,
 				4C5780F123DE85AB0053117F /* Extensions */,
 				4C5780EA23DE2C710053117F /* Utils */,
 				4C0985C5237659A9007CBA43 /* Data */,
@@ -272,6 +287,17 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		4C2FBEB723E67B3C00C6DF00 /* Allocations */ = {
+			isa = PBXGroup;
+			children = (
+				4C2FBEB823E67B4800C6DF00 /* AllocationsView.swift */,
+				4C2FBEBC23E67BD800C6DF00 /* AllocationRowView.swift */,
+				4C2FBEBE23E67DA400C6DF00 /* AllocationFormView.swift */,
+				4C2FBEC023E6864D00C6DF00 /* CreateAllocationView.swift */,
+			);
+			path = Allocations;
+			sourceTree = "<group>";
+		};
 		4C43ACDD23E13D8200315996 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,7 +310,7 @@
 		4C43F619236A8B8A00CE5F38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4C43F61F236A912F00CE5F38 /* LinkKit.framework */,
+				7CA1C44FF7680674E9E53837 /* Pods_Spendable.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -331,6 +357,7 @@
 		4C9E2288237529720045E6D6 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				4C2FBEB723E67B3C00C6DF00 /* Allocations */,
 				4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */,
 				4C0985C123764CB2007CBA43 /* TransactionRowView.swift */,
 				4C9E228D23752FA20045E6D6 /* TransactionView.swift */,
@@ -375,6 +402,7 @@
 		4CA3F5F72370E4850083E471 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4C2FBEB523E6658100C6DF00 /* Allocation.swift */,
 				4C5EA9422371254D000EDF15 /* BankAccount.swift */,
 				4C5EA93E23712166000EDF15 /* BankMember.swift */,
 				4C9FE56523DC169D00489EB1 /* Budget.swift */,
@@ -414,6 +442,15 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		9BF49A871EFC79DB4493469E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				446969BD668C903588AA43D8 /* Pods-Spendable.debug.xcconfig */,
+				DEA6C1915EAD94B501552639 /* Pods-Spendable.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -421,11 +458,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C08F4722353F8810000C2FC /* Build configuration list for PBXNativeTarget "Spendable" */;
 			buildPhases = (
+				5B3693BD98ACAABC3772FF8E /* [CP] Check Pods Manifest.lock */,
 				4C08F4822353F9440000C2FC /* Generate Apollo GraphQL API */,
 				4C08F4442353F8800000C2FC /* Sources */,
 				4C08F4452353F8800000C2FC /* Frameworks */,
 				4C08F4462353F8800000C2FC /* Resources */,
-				4C5780E923DE26750053117F /* Embed Frameworks */,
+				4C5C2E9B23E5FFDB00CF7B2B /* Embed Frameworks */,
+				A4CA0B6184E5DB49066AA44A /* [CP] Embed Pods Frameworks */,
 				4C43F61B236A8C3F00CE5F38 /* Prepare for Distribution */,
 			);
 			buildRules = (
@@ -594,6 +633,45 @@
 			shellScript = "LINK_ROOT=${PODS_ROOT:+$PODS_ROOT/Plaid/ios}\ncp \"${LINK_ROOT:-$PROJECT_DIR}\"/LinkKit.framework/prepare_for_distribution.sh \"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n\"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n";
 			showEnvVarsInLog = 0;
 		};
+		5B3693BD98ACAABC3772FF8E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Spendable-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4CA0B6184E5DB49066AA44A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spendable/Pods-Spendable-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spendable/Pods-Spendable-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spendable/Pods-Spendable-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -609,7 +687,9 @@
 				4C43ACE123E1442B00315996 /* TransactionFormView.swift in Sources */,
 				4CE1FB98236938DD0071BF74 /* SettingsView.swift in Sources */,
 				4C9FE56623DC169D00489EB1 /* Budget.swift in Sources */,
+				4C2FBEBF23E67DA400C6DF00 /* AllocationFormView.swift in Sources */,
 				4C5EA94523712FBA000EDF15 /* BankMemberRowView.swift in Sources */,
+				4C2FBEC123E6864D00C6DF00 /* CreateAllocationView.swift in Sources */,
 				4C9FE56823DC1B9E00489EB1 /* BudgetRowView.swift in Sources */,
 				4C08F44C2353F8800000C2FC /* AppDelegate.swift in Sources */,
 				4C0985C223764CB2007CBA43 /* TransactionRowView.swift in Sources */,
@@ -618,6 +698,7 @@
 				4C08F4502353F8800000C2FC /* RootView.swift in Sources */,
 				4C0985CB2376610B007CBA43 /* Category.swift in Sources */,
 				4C48B1DC236FA32F00C1D234 /* TransactionsView.swift in Sources */,
+				4C2FBEB623E6658100C6DF00 /* Allocation.swift in Sources */,
 				4C5EA94723713518000EDF15 /* BankAccountRowView.swift in Sources */,
 				4CE1FB8F23691A870071BF74 /* LoginView.swift in Sources */,
 				4CE1FB9C2369402E0071BF74 /* AuthView.swift in Sources */,
@@ -642,8 +723,10 @@
 				4C6B631123E0088C00189931 /* BudgetPickerRowView.swift in Sources */,
 				4C5EA9432371254D000EDF15 /* BankAccount.swift in Sources */,
 				4C49919523694916002A4D7C /* SignupView.swift in Sources */,
+				4C2FBEB923E67B4800C6DF00 /* AllocationsView.swift in Sources */,
 				4CE1FB9623691F920071BF74 /* API.swift in Sources */,
 				4C5780F823DE95BB0053117F /* CreateBudgetView.swift in Sources */,
+				4C2FBEBD23E67BD800C6DF00 /* AllocationRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,8 +889,10 @@
 		};
 		4C08F4732353F8810000C2FC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 446969BD668C903588AA43D8 /* Pods-Spendable.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Spendable/Spendable.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Spendable/Preview Content\"";
 				DEVELOPMENT_TEAM = A4TA99R8XM;
@@ -823,15 +908,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fiftysevenmedia.Spendable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		4C08F4742353F8810000C2FC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEA6C1915EAD94B501552639 /* Pods-Spendable.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Spendable/Spendable.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Spendable/Preview Content\"";
 				DEVELOPMENT_TEAM = A4TA99R8XM;
@@ -847,8 +935,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fiftysevenmedia.Spendable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

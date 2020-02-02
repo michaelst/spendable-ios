@@ -1,32 +1,40 @@
 query ListTransactions{
-  transactions {
-    id
-    name
-    note
-    amount
-    date
-    budget {
-      id
-    }
-    category {
-      id
-    }
-  }
+      transactions {
+            id
+            name
+            note
+            amount
+            date
+            allocations {
+                id
+                budget {
+                    id
+                }
+                amount
+            }
+            category {
+                id
+            }
+      }
 }
 
 query GetTransaction($id: ID!) {
-  transaction(id: $id) {
-    name
-    note
-    amount
-    date
-    budget {
-      id
-    }
-    category {
-      id
-    }
-  }
+      transaction(id: $id) {
+            name
+            note
+            amount
+            date
+            allocations {
+                id
+                budget {
+                    id
+                }
+                amount
+            }
+            category {
+                id
+            }
+      }
 }
 
 query ListCategories{
@@ -37,17 +45,16 @@ query ListCategories{
   }
 }
 
-mutation UpdateTransaction($id: ID!, $amount: String!, $name: String, $note: String, $categoryId: ID, $budgetId: ID) {
-  updateTransaction(id: $id, amount: $amount, name: $name, note: $note, categoryId: $categoryId, budgetId: $budgetId) {
-    name
-    note
-    amount
-    date
-    budget {
-      id
+mutation UpdateTransaction($id: ID!, $amount: String!, $name: String, $date: String, $note: String, $categoryId: ID, $allocations: [AllocationInputObject]) {
+    updateTransaction(
+        id: $id
+        amount: $amount
+        name: $name
+        date: $date
+        note: $note
+        categoryId: $categoryId
+        allocations: $allocations
+    ) {
+        id
     }
-    category {
-      id
-    }
-  }
 }

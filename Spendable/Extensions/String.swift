@@ -16,4 +16,9 @@ extension String {
     var doubleValue: Double {
         return Number.formatter.number(from: self)?.doubleValue ?? 0
     }
+    
+    func removePrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
+    }
 }

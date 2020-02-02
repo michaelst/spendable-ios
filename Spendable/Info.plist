@@ -20,6 +20,17 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>PLKPlaidLinkConfiguration</key>
+	<dict>
+		<key>clientName</key>
+		<string>$(PRODUCT_NAME)</string>
+		<key>env</key>
+		<string>sandbox</string>
+		<key>key</key>
+		<string>37cc44ed343b19bae3920edf047df1</string>
+		<key>product</key>
+		<string>transactions</string>
+	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -46,8 +57,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -56,16 +65,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>PLKPlaidLinkConfiguration</key>
-	<dict>
-		<key>env</key>
-		<string>sandbox</string>
-		<key>product</key>
-		<string>transactions</string>
-		<key>key</key>
-		<string>37cc44ed343b19bae3920edf047df1</string>
-		<key>clientName</key>
-		<string>$(PRODUCT_NAME)</string>
-	</dict>
 </dict>
 </plist>

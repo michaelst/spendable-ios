@@ -37,8 +37,8 @@ struct TransactionRowView: View {
                 
                 HStack {
                     Spacer()
-                    if transaction.amount.doubleValue < 0 {
-                        Text("$" + String(format: "%.2f", abs(transaction.amount.doubleValue))).foregroundColor(.red)
+                    if transaction.negative {
+                        Text("$" + String(format: "%.2f", transaction.amount.doubleValue)).foregroundColor(.red)
                     } else {
                         Text("+ $" + String(format: "%.2f", transaction.amount.doubleValue)).foregroundColor(.green)
                     }

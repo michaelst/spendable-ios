@@ -12,16 +12,6 @@ struct TransactionFormView: View {
     @EnvironmentObject var userData: UserData
     @ObservedObject var transaction: Transaction
     
-    var budget: Budget? {
-        get {
-            if transaction.budgetId != nil {
-                return userData.budgetsById[transaction.budgetId!]
-            } else {
-                return nil
-            }
-        }
-    }
-    
     var category: Category? {
         get {
             if transaction.categoryId != nil {
@@ -43,6 +33,22 @@ struct TransactionFormView: View {
                     TextField("", text: $transaction.nameBinding).multilineTextAlignment(.trailing)
                 }
                 
+                HStack {
+                    Text("Amount").foregroundColor(.secondary)
+                    
+                    Spacer()
+                    
+                    TextField("", text: $transaction.amount)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
+                }
+                
+                DatePicker(selection: $transaction.date, in: ...Date(), displayedComponents: .date) {
+                    Text("Date").foregroundColor(.secondary)
+                }
+            }
+            
+            Section {                
                 NavigationLink(destination: CategoryPickerView(transaction: transaction)) {
                     HStack {
                         Text("Category").foregroundColor(.secondary)
@@ -53,14 +59,8 @@ struct TransactionFormView: View {
                     }
                 }
                 
-                NavigationLink(destination: BudgetPickerView(transaction: transaction)) {
-                    HStack {
-                        Text("Budget").foregroundColor(.secondary)
-                        
-                        Spacer()
-                        
-                        Text(budget?.name ?? "")
-                    }
+                NavigationLink(destination: AllocationsView(transaction: transaction)) {
+                    Text("Budget").foregroundColor(.secondary)
                 }
             }
             

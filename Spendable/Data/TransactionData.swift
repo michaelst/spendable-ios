@@ -20,11 +20,26 @@ extension UserData {
     
     func load(data: ListTransactionsQuery.Data) {
         var transactionsFromData: [Transaction] = []
-        formatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         for transactionData in data.transactions ?? [] {
-            if let id = transactionData?.id, let amount = transactionData?.amount, let date = formatter.date(from: transactionData?.date ?? "") {
-                let transaction = Transaction(id: id, name: transactionData?.name, note: transactionData?.note, amount: amount, date: date, categoryId: transactionData?.category?.id, budgetId: transactionData?.budget?.id)
+            if let id = transactionData?.id, let amount = transactionData?.amount, let date = dateFormatter.date(from: transactionData?.date ?? "") {
+                let allocations = transactionData?.allocations?.map { allocation in
+                    return Allocation(id: allocation!.id!, amount: allocation!.amount!, budgetId: allocation!.budget!.id!)
+                }
+                
+                let transaction = Transaction(
+                    id: id,
+                    negative: amount.hasPrefix("-"),
+                    name: transactionData?.name,
+                    note: transactionData?.note,
+                    amount: amount,
+                    date: date,
+                    categoryId:
+                    transactionData?.category?.id,
+                    allocations: allocations ?? []
+                )
+                
                 transactionsFromData.append(transaction)
             }
         }
@@ -34,21 +49,40 @@ extension UserData {
     
     func reload(transaction: Transaction) {
         apollo.client.fetch(query: GetTransactionQuery(id: transaction.id)) { result in
-            guard let data = try? result.get().data else { return }
+            guard let data = try? result.get().data?.transaction else { return }
             
-            if let amount = data.transaction?.amount, let date = self.formatter.date(from: data.transaction?.date ?? "") {
-                transaction.name = data.transaction?.name
-                transaction.note = data.transaction?.note
+            if let amount = data.amount, let date = self.dateFormatter.date(from: data.date!) {
+                transaction.name = data.name
+                transaction.note = data.note
                 transaction.amount = amount
                 transaction.date = date
-                transaction.categoryId = data.transaction?.category?.id
-                transaction.budgetId = data.transaction?.budget?.id
+                transaction.categoryId = data.category?.id
             }
         }
     }
     
-    func update(transaction: Transaction) {        
-        apollo.client.perform(mutation: UpdateTransactionMutation(id: transaction.id, amount: transaction.amount, name: transaction.name, note: transaction.note, categoryId: transaction.categoryId, budgetId: transaction.budgetId)) { result in
+    func update(transaction: Transaction) {
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let allocations = transaction.allocations.map { allocation in
+            return AllocationInputObject(
+                amount: transaction.negative ? "-\(allocation.amount)" : allocation.amount,
+                budgetId: allocation.budgetId,
+                id: allocation.id
+            )
+        }
+        
+        let mutation = UpdateTransactionMutation(
+            id: transaction.id,
+            amount: transaction.negative ? "-\(transaction.amount)" : transaction.amount,
+            name: transaction.name,
+            date: self.dateFormatter.string(from: transaction.date),
+            note: transaction.note,
+            categoryId: transaction.categoryId,
+            allocations: allocations
+        )
+        
+        apollo.client.perform(mutation: mutation) { result in
             self.apollo.client.clearCache()
             self.loadBudgets()
         }

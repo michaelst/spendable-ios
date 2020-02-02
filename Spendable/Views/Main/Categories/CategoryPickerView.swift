@@ -15,11 +15,8 @@ struct CategoryPickerView: View {
     
     var categories: [Category] {
         get {
-            if searchText == "" {
-                return self.userData.categories
-            } else {
-                return self.userData.categories.filter({$0.name.lowercased().hasPrefix(searchText.lowercased()) || ($0.parentName != nil && $0.parentName!.lowercased().hasPrefix(searchText.lowercased()))})
-            }
+            return self.userData.categories.filter { searchText.isEmpty || $0.name.range(of: searchText, options: [.caseInsensitive, .anchored]) != nil
+                || $0.parentName?.range(of: searchText, options: [.caseInsensitive, .anchored]) != nil }
         }
     }
     
@@ -34,7 +31,7 @@ struct CategoryPickerView: View {
                     Button(action: {
                         self.searchText = ""
                     }) {
-                        Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
+                        Image(systemName: "xmark.circle.fill").opacity(searchText.isEmpty ? 0 : 1)
                     }
                 }
                 .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
