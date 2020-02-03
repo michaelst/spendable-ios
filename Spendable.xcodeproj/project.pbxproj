@@ -73,10 +73,16 @@
 		4CA3F5F4236FE04B0083E471 /* PlaidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3F5F3236FE04B0083E471 /* PlaidView.swift */; };
 		4CA3F5F92370E4900083E471 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3F5F82370E4900083E471 /* User.swift */; };
 		4CA3F5FC2370FADE0083E471 /* BankMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA3F5FB2370FADE0083E471 /* BankMembersView.swift */; };
+		4CCCB39D23E8BD2B00E77787 /* TransactionData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCB39623E8BD2B00E77787 /* TransactionData.graphql.swift */; };
+		4CCCB39E23E8BD2B00E77787 /* UserData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCB39723E8BD2B00E77787 /* UserData.graphql.swift */; };
+		4CCCB39F23E8BD2B00E77787 /* Types.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCB39823E8BD2B00E77787 /* Types.graphql.swift */; };
+		4CCCB3A023E8BD2B00E77787 /* AllocationTemplateData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCB39923E8BD2B00E77787 /* AllocationTemplateData.graphql.swift */; };
+		4CCCB3A123E8BD2B00E77787 /* BudgetData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCB39A23E8BD2B00E77787 /* BudgetData.graphql.swift */; };
+		4CCCB3A223E8BD2B00E77787 /* BankData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCB39B23E8BD2B00E77787 /* BankData.graphql.swift */; };
+		4CCCB3A323E8BD2B00E77787 /* BankMembersView.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCB39C23E8BD2B00E77787 /* BankMembersView.graphql.swift */; };
 		4CE1FB8F23691A870071BF74 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE1FB8E23691A870071BF74 /* LoginView.swift */; };
 		4CE1FB9123691B8C0071BF74 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE1FB9023691B8C0071BF74 /* UserData.swift */; };
 		4CE1FB9423691C030071BF74 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4CE1FB9323691C030071BF74 /* KeychainSwift */; };
-		4CE1FB9623691F920071BF74 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE1FB9523691F920071BF74 /* API.swift */; };
 		4CE1FB98236938DD0071BF74 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE1FB97236938DD0071BF74 /* SettingsView.swift */; };
 		4CE1FB9A23693AA20071BF74 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE1FB9923693AA20071BF74 /* MainView.swift */; };
 		4CE1FB9C2369402E0071BF74 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE1FB9B2369402E0071BF74 /* AuthView.swift */; };
@@ -187,9 +193,15 @@
 		4CA3F5F3236FE04B0083E471 /* PlaidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidView.swift; sourceTree = "<group>"; };
 		4CA3F5F82370E4900083E471 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4CA3F5FB2370FADE0083E471 /* BankMembersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankMembersView.swift; sourceTree = "<group>"; };
+		4CCCB39623E8BD2B00E77787 /* TransactionData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionData.graphql.swift; sourceTree = "<group>"; };
+		4CCCB39723E8BD2B00E77787 /* UserData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.graphql.swift; sourceTree = "<group>"; };
+		4CCCB39823E8BD2B00E77787 /* Types.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.graphql.swift; sourceTree = "<group>"; };
+		4CCCB39923E8BD2B00E77787 /* AllocationTemplateData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllocationTemplateData.graphql.swift; sourceTree = "<group>"; };
+		4CCCB39A23E8BD2B00E77787 /* BudgetData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetData.graphql.swift; sourceTree = "<group>"; };
+		4CCCB39B23E8BD2B00E77787 /* BankData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankData.graphql.swift; sourceTree = "<group>"; };
+		4CCCB39C23E8BD2B00E77787 /* BankMembersView.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankMembersView.graphql.swift; sourceTree = "<group>"; };
 		4CE1FB8E23691A870071BF74 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4CE1FB9023691B8C0071BF74 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		4CE1FB9523691F920071BF74 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		4CE1FB97236938DD0071BF74 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4CE1FB9923693AA20071BF74 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4CE1FB9B2369402E0071BF74 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
@@ -257,7 +269,6 @@
 				4C2FBEC223E692C300C6DF00 /* Spendable.entitlements */,
 				4C08F47B2353F8C10000C2FC /* schema.json */,
 				4C08F4592353F8800000C2FC /* Info.plist */,
-				4CE1FB9523691F920071BF74 /* API.swift */,
 				4C08F486235402DC0000C2FC /* ApolloClient.swift */,
 				4C08F44B2353F8800000C2FC /* AppDelegate.swift */,
 				4C08F44D2353F8800000C2FC /* SceneDelegate.swift */,
@@ -484,6 +495,13 @@
 		4CCCB39523E8BB3600E77787 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				4CCCB39923E8BD2B00E77787 /* AllocationTemplateData.graphql.swift */,
+				4CCCB39B23E8BD2B00E77787 /* BankData.graphql.swift */,
+				4CCCB39C23E8BD2B00E77787 /* BankMembersView.graphql.swift */,
+				4CCCB39A23E8BD2B00E77787 /* BudgetData.graphql.swift */,
+				4CCCB39623E8BD2B00E77787 /* TransactionData.graphql.swift */,
+				4CCCB39823E8BD2B00E77787 /* Types.graphql.swift */,
+				4CCCB39723E8BD2B00E77787 /* UserData.graphql.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -673,17 +691,17 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/${TARGET_NAME}/**/*.graphql",
+				"$(SRCROOT)/$(TARGET_NAME)/**/*.graphql",
 			);
 			name = "Generate Apollo GraphQL API";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/${TARGET_NAME}/API.swift",
+				"$(SRCROOT)/$(TARGET_NAME)/**/*.graphql.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+			shellScript = "# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API\n";
 		};
 		4C43F61B236A8C3F00CE5F38 /* Prepare for Distribution */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -751,6 +769,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C5780F323DE85B60053117F /* String.swift in Sources */,
+				4CCCB39D23E8BD2B00E77787 /* TransactionData.graphql.swift in Sources */,
 				4C6B630C23DFFDE400189931 /* CategoryData.swift in Sources */,
 				4CE1FB9123691B8C0071BF74 /* UserData.swift in Sources */,
 				4C5780EC23DE2C810053117F /* KeyboardResponsive.swift in Sources */,
@@ -774,7 +793,10 @@
 				4C08F44E2353F8800000C2FC /* SceneDelegate.swift in Sources */,
 				4C9E228E23752FA20045E6D6 /* TransactionView.swift in Sources */,
 				4C08F4502353F8800000C2FC /* RootView.swift in Sources */,
+				4CCCB3A023E8BD2B00E77787 /* AllocationTemplateData.graphql.swift in Sources */,
 				4C0985CB2376610B007CBA43 /* Category.swift in Sources */,
+				4CCCB3A323E8BD2B00E77787 /* BankMembersView.graphql.swift in Sources */,
+				4CCCB3A223E8BD2B00E77787 /* BankData.graphql.swift in Sources */,
 				4C48B1DC236FA32F00C1D234 /* TransactionsView.swift in Sources */,
 				4C2FBECA23E7829000C6DF00 /* AllocationTemplate.swift in Sources */,
 				4C2FBEB623E6658100C6DF00 /* Allocation.swift in Sources */,
@@ -785,8 +807,10 @@
 				4CA3F5F92370E4900083E471 /* User.swift in Sources */,
 				4C08F487235402DC0000C2FC /* ApolloClient.swift in Sources */,
 				4C2FBEE123E7DA0E00C6DF00 /* Budgetable.swift in Sources */,
+				4CCCB3A123E8BD2B00E77787 /* BudgetData.graphql.swift in Sources */,
 				4C43ACDC23E1207E00315996 /* BudgetFormView.swift in Sources */,
 				4C5EA93F23712166000EDF15 /* BankMember.swift in Sources */,
+				4CCCB39F23E8BD2B00E77787 /* Types.graphql.swift in Sources */,
 				4C9E228C237529E40045E6D6 /* Transaction.swift in Sources */,
 				4C2FBED223E7C07E00C6DF00 /* AllocationTemplatesView.swift in Sources */,
 				4CA3F5F4236FE04B0083E471 /* PlaidView.swift in Sources */,
@@ -805,9 +829,9 @@
 				4C0985C7237659C0007CBA43 /* TransactionData.swift in Sources */,
 				4C6B631123E0088C00189931 /* BudgetPickerRowView.swift in Sources */,
 				4C5EA9432371254D000EDF15 /* BankAccount.swift in Sources */,
+				4CCCB39E23E8BD2B00E77787 /* UserData.graphql.swift in Sources */,
 				4C49919523694916002A4D7C /* SignupView.swift in Sources */,
 				4C2FBEB923E67B4800C6DF00 /* AllocationsView.swift in Sources */,
-				4CE1FB9623691F920071BF74 /* API.swift in Sources */,
 				4C5780F823DE95BB0053117F /* CreateBudgetView.swift in Sources */,
 				4C2FBEBD23E67BD800C6DF00 /* AllocationRowView.swift in Sources */,
 			);
