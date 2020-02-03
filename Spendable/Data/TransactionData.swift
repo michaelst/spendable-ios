@@ -35,8 +35,7 @@ extension UserData {
                     note: transactionData?.note,
                     amount: amount,
                     date: date,
-                    categoryId:
-                    transactionData?.category?.id,
+                    categoryId: transactionData?.category?.id,
                     allocations: allocations ?? []
                 )
                 

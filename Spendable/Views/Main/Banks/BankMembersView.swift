@@ -13,26 +13,24 @@ struct BankMembersView: View {
     @EnvironmentObject var data: BankData
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                if userData.showPlaidModal {
-                    PlaidView()
-                }
-                
-                List {
-                    ForEach(data.bankMembers) { bankMember in
-                        BankMemberRowView(bankMember: bankMember)
-                    }
-                }.listStyle(GroupedListStyle())
+        ZStack {
+            if userData.showPlaidModal {
+                PlaidView()
             }
-            .navigationBarTitle("Bank Accounts")
-            .navigationBarItems(trailing:
-                Button(action: { self.userData.showPlaidModal = true }) {
-                    Image(systemName: "plus.circle").font(.system(size: 24, weight: .regular))
+            
+            List {
+                ForEach(data.bankMembers) { bankMember in
+                    BankMemberRowView(bankMember: bankMember)
                 }
-            )
+            }.listStyle(GroupedListStyle())
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: { self.data.load() })
+        .navigationBarTitle("Bank Accounts")
+        .navigationBarItems(trailing:
+            Button(action: { self.userData.showPlaidModal = true }) {
+                Image(systemName: "plus.circle").font(.system(size: 24, weight: .regular))
+            }
+        )
+            .navigationViewStyle(StackNavigationViewStyle())
+            .onAppear(perform: { self.data.load() })
     }
 }

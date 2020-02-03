@@ -29,6 +29,19 @@
 		4C2FBEBD23E67BD800C6DF00 /* AllocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEBC23E67BD800C6DF00 /* AllocationRowView.swift */; };
 		4C2FBEBF23E67DA400C6DF00 /* AllocationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEBE23E67DA400C6DF00 /* AllocationFormView.swift */; };
 		4C2FBEC123E6864D00C6DF00 /* CreateAllocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEC023E6864D00C6DF00 /* CreateAllocationView.swift */; };
+		4C2FBEC723E77A3900C6DF00 /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 4C2FBEC623E77A3900C6DF00 /* SwiftUIRefresh */; };
+		4C2FBECA23E7829000C6DF00 /* AllocationTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEC923E7829000C6DF00 /* AllocationTemplate.swift */; };
+		4C2FBECC23E782DA00C6DF00 /* AllocationTemplateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBECB23E782DA00C6DF00 /* AllocationTemplateLine.swift */; };
+		4C2FBECE23E784E800C6DF00 /* AllocationTemplateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBECD23E784E800C6DF00 /* AllocationTemplateData.swift */; };
+		4C2FBED023E784F800C6DF00 /* AllocationTemplateData.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C2FBECF23E784F800C6DF00 /* AllocationTemplateData.graphql */; };
+		4C2FBED223E7C07E00C6DF00 /* AllocationTemplatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBED123E7C07E00C6DF00 /* AllocationTemplatesView.swift */; };
+		4C2FBED423E7C0C600C6DF00 /* AllocationTemplateRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBED323E7C0C600C6DF00 /* AllocationTemplateRowView.swift */; };
+		4C2FBED623E7C11600C6DF00 /* AllocationTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBED523E7C11600C6DF00 /* AllocationTemplateView.swift */; };
+		4C2FBED823E7C60E00C6DF00 /* CreateAllocationTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBED723E7C60E00C6DF00 /* CreateAllocationTemplateView.swift */; };
+		4C2FBEDA23E7CA8900C6DF00 /* AllocationTemplateFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBED923E7CA8900C6DF00 /* AllocationTemplateFormView.swift */; };
+		4C2FBEDC23E7D7BF00C6DF00 /* CreateAllocationTemplateLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEDB23E7D7BF00C6DF00 /* CreateAllocationTemplateLineView.swift */; };
+		4C2FBEDE23E7D8C500C6DF00 /* AllocationTemplateLineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEDD23E7D8C500C6DF00 /* AllocationTemplateLineFormView.swift */; };
+		4C2FBEE123E7DA0E00C6DF00 /* Budgetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEE023E7DA0E00C6DF00 /* Budgetable.swift */; };
 		4C43ACDC23E1207E00315996 /* BudgetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43ACDB23E1207E00315996 /* BudgetFormView.swift */; };
 		4C43ACE123E1442B00315996 /* TransactionFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43ACE023E1442B00315996 /* TransactionFormView.swift */; };
 		4C48B1DC236FA32F00C1D234 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */; };
@@ -130,6 +143,18 @@
 		4C2FBEBE23E67DA400C6DF00 /* AllocationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationFormView.swift; sourceTree = "<group>"; };
 		4C2FBEC023E6864D00C6DF00 /* CreateAllocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllocationView.swift; sourceTree = "<group>"; };
 		4C2FBEC223E692C300C6DF00 /* Spendable.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spendable.entitlements; sourceTree = "<group>"; };
+		4C2FBEC923E7829000C6DF00 /* AllocationTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTemplate.swift; sourceTree = "<group>"; };
+		4C2FBECB23E782DA00C6DF00 /* AllocationTemplateLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTemplateLine.swift; sourceTree = "<group>"; };
+		4C2FBECD23E784E800C6DF00 /* AllocationTemplateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTemplateData.swift; sourceTree = "<group>"; };
+		4C2FBECF23E784F800C6DF00 /* AllocationTemplateData.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = AllocationTemplateData.graphql; sourceTree = "<group>"; };
+		4C2FBED123E7C07E00C6DF00 /* AllocationTemplatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTemplatesView.swift; sourceTree = "<group>"; };
+		4C2FBED323E7C0C600C6DF00 /* AllocationTemplateRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTemplateRowView.swift; sourceTree = "<group>"; };
+		4C2FBED523E7C11600C6DF00 /* AllocationTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTemplateView.swift; sourceTree = "<group>"; };
+		4C2FBED723E7C60E00C6DF00 /* CreateAllocationTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllocationTemplateView.swift; sourceTree = "<group>"; };
+		4C2FBED923E7CA8900C6DF00 /* AllocationTemplateFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTemplateFormView.swift; sourceTree = "<group>"; };
+		4C2FBEDB23E7D7BF00C6DF00 /* CreateAllocationTemplateLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllocationTemplateLineView.swift; sourceTree = "<group>"; };
+		4C2FBEDD23E7D8C500C6DF00 /* AllocationTemplateLineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTemplateLineFormView.swift; sourceTree = "<group>"; };
+		4C2FBEE023E7DA0E00C6DF00 /* Budgetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budgetable.swift; sourceTree = "<group>"; };
 		4C43ACDB23E1207E00315996 /* BudgetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetFormView.swift; sourceTree = "<group>"; };
 		4C43ACE023E1442B00315996 /* TransactionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFormView.swift; sourceTree = "<group>"; };
 		4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
@@ -178,6 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2FBEC723E77A3900C6DF00 /* SwiftUIRefresh in Frameworks */,
 				4CE1FB9423691C030071BF74 /* KeychainSwift in Frameworks */,
 				4C08F4812353F8E90000C2FC /* Apollo in Frameworks */,
 				4C2FBEB323E6246300C6DF00 /* Pods_Spendable.framework in Frameworks */,
@@ -227,20 +253,21 @@
 			isa = PBXGroup;
 			children = (
 				4C2FBEC223E692C300C6DF00 /* Spendable.entitlements */,
-				4C5780F123DE85AB0053117F /* Extensions */,
-				4C5780EA23DE2C710053117F /* Utils */,
-				4C0985C5237659A9007CBA43 /* Data */,
-				4CA3F5F72370E4850083E471 /* Models */,
-				4C08F4532353F8800000C2FC /* Preview Content */,
-				4CE1FB8C23691A610071BF74 /* Views */,
+				4C08F47B2353F8C10000C2FC /* schema.json */,
+				4C08F4592353F8800000C2FC /* Info.plist */,
 				4CE1FB9523691F920071BF74 /* API.swift */,
 				4C08F486235402DC0000C2FC /* ApolloClient.swift */,
 				4C08F44B2353F8800000C2FC /* AppDelegate.swift */,
-				4C08F4512353F8800000C2FC /* Assets.xcassets */,
-				4C08F4592353F8800000C2FC /* Info.plist */,
-				4C08F4562353F8800000C2FC /* LaunchScreen.storyboard */,
 				4C08F44D2353F8800000C2FC /* SceneDelegate.swift */,
-				4C08F47B2353F8C10000C2FC /* schema.json */,
+				4C08F4512353F8800000C2FC /* Assets.xcassets */,
+				4C0985C5237659A9007CBA43 /* Data */,
+				4C5780F123DE85AB0053117F /* Extensions */,
+				4C08F4562353F8800000C2FC /* LaunchScreen.storyboard */,
+				4CA3F5F72370E4850083E471 /* Models */,
+				4C08F4532353F8800000C2FC /* Preview Content */,
+				4C2FBEDF23E7D9FB00C6DF00 /* Protocols */,
+				4C5780EA23DE2C710053117F /* Utils */,
+				4CE1FB8C23691A610071BF74 /* Views */,
 			);
 			path = Spendable;
 			sourceTree = "<group>";
@@ -274,13 +301,15 @@
 		4C0985C5237659A9007CBA43 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4C2FBECF23E784F800C6DF00 /* AllocationTemplateData.graphql */,
+				4C2FBECD23E784E800C6DF00 /* AllocationTemplateData.swift */,
 				4CE24CE223DEAA8B0020604B /* BankData.graphql */,
 				4CE24CE023DEAA520020604B /* BankData.swift */,
 				4C9FE56323DC15ED00489EB1 /* BudgetData.graphql */,
 				4C9FE56123DC15DB00489EB1 /* BudgetData.swift */,
+				4C6B630B23DFFDE400189931 /* CategoryData.swift */,
 				4C0985C823765DCC007CBA43 /* TransactionData.graphql */,
 				4C0985C6237659C0007CBA43 /* TransactionData.swift */,
-				4C6B630B23DFFDE400189931 /* CategoryData.swift */,
 				4C9FE55C23DC04F000489EB1 /* UserData.graphql */,
 				4CE1FB9023691B8C0071BF74 /* UserData.swift */,
 			);
@@ -296,6 +325,29 @@
 				4C2FBEC023E6864D00C6DF00 /* CreateAllocationView.swift */,
 			);
 			path = Allocations;
+			sourceTree = "<group>";
+		};
+		4C2FBEC823E7821600C6DF00 /* AllocationTemplates */ = {
+			isa = PBXGroup;
+			children = (
+				4C2FBED123E7C07E00C6DF00 /* AllocationTemplatesView.swift */,
+				4C2FBED323E7C0C600C6DF00 /* AllocationTemplateRowView.swift */,
+				4C2FBED523E7C11600C6DF00 /* AllocationTemplateView.swift */,
+				4C2FBED723E7C60E00C6DF00 /* CreateAllocationTemplateView.swift */,
+				4C2FBED923E7CA8900C6DF00 /* AllocationTemplateFormView.swift */,
+				4C2FBEDB23E7D7BF00C6DF00 /* CreateAllocationTemplateLineView.swift */,
+				4C2FBEDD23E7D8C500C6DF00 /* AllocationTemplateLineFormView.swift */,
+			);
+			name = AllocationTemplates;
+			path = Budgets;
+			sourceTree = "<group>";
+		};
+		4C2FBEDF23E7D9FB00C6DF00 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4C2FBEE023E7DA0E00C6DF00 /* Budgetable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		4C43ACDD23E13D8200315996 /* Categories */ = {
@@ -319,10 +371,12 @@
 			isa = PBXGroup;
 			children = (
 				4CE1FB9923693AA20071BF74 /* MainView.swift */,
-				4C9FE56B23DC255400489EB1 /* Plaid */,
+				4C2FBEB723E67B3C00C6DF00 /* Allocations */,
+				4C2FBEC823E7821600C6DF00 /* AllocationTemplates */,
 				4C9FE55923DABFEB00489EB1 /* Banks */,
 				4C9FE55E23DC14FE00489EB1 /* Budgets */,
 				4C43ACDD23E13D8200315996 /* Categories */,
+				4C9FE56B23DC255400489EB1 /* Plaid */,
 				4CA3F5FA2370FAC40083E471 /* Settings */,
 				4C9E2288237529720045E6D6 /* Transactions */,
 			);
@@ -357,7 +411,6 @@
 		4C9E2288237529720045E6D6 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
-				4C2FBEB723E67B3C00C6DF00 /* Allocations */,
 				4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */,
 				4C0985C123764CB2007CBA43 /* TransactionRowView.swift */,
 				4C9E228D23752FA20045E6D6 /* TransactionView.swift */,
@@ -369,10 +422,10 @@
 		4C9FE55923DABFEB00489EB1 /* Banks */ = {
 			isa = PBXGroup;
 			children = (
-				4C5EA94623713518000EDF15 /* BankAccountRowView.swift */,
 				4CA3F5FB2370FADE0083E471 /* BankMembersView.swift */,
 				4C5EA94423712FBA000EDF15 /* BankMemberRowView.swift */,
 				4CE24CE423DEB37B0020604B /* BankMemberView.swift */,
+				4C5EA94623713518000EDF15 /* BankAccountRowView.swift */,
 			);
 			path = Banks;
 			sourceTree = "<group>";
@@ -403,6 +456,8 @@
 			isa = PBXGroup;
 			children = (
 				4C2FBEB523E6658100C6DF00 /* Allocation.swift */,
+				4C2FBEC923E7829000C6DF00 /* AllocationTemplate.swift */,
+				4C2FBECB23E782DA00C6DF00 /* AllocationTemplateLine.swift */,
 				4C5EA9422371254D000EDF15 /* BankAccount.swift */,
 				4C5EA93E23712166000EDF15 /* BankMember.swift */,
 				4C9FE56523DC169D00489EB1 /* Budget.swift */,
@@ -475,6 +530,7 @@
 			packageProductDependencies = (
 				4C08F4802353F8E90000C2FC /* Apollo */,
 				4CE1FB9323691C030071BF74 /* KeychainSwift */,
+				4C2FBEC623E77A3900C6DF00 /* SwiftUIRefresh */,
 			);
 			productName = Spendable;
 			productReference = 4C08F4482353F8800000C2FC /* Spendable.app */;
@@ -551,6 +607,7 @@
 			packageReferences = (
 				4C08F47F2353F8E90000C2FC /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				4CE1FB9223691C030071BF74 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				4C2FBEC523E77A3900C6DF00 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
 			);
 			productRefGroup = 4C08F4492353F8800000C2FC /* Products */;
 			projectDirPath = "";
@@ -571,6 +628,7 @@
 				4C08F47D2353F8C20000C2FC /* schema.json in Resources */,
 				4C08F4582353F8800000C2FC /* LaunchScreen.storyboard in Resources */,
 				4C9FE56423DC15ED00489EB1 /* BudgetData.graphql in Resources */,
+				4C2FBED023E784F800C6DF00 /* AllocationTemplateData.graphql in Resources */,
 				4C08F4552353F8800000C2FC /* Preview Assets.xcassets in Resources */,
 				4C9FE55D23DC04F000489EB1 /* UserData.graphql in Resources */,
 				4C0985C923765DCC007CBA43 /* TransactionData.graphql in Resources */,
@@ -604,11 +662,13 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/${TARGET_NAME}/**/*.graphql",
 			);
 			name = "Generate Apollo GraphQL API";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(SRCROOT)/${TARGET_NAME}/API.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -616,7 +676,7 @@
 		};
 		4C43F61B236A8C3F00CE5F38 /* Prepare for Distribution */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -686,10 +746,16 @@
 				4C9FE56A23DC1BE900489EB1 /* BudgetView.swift in Sources */,
 				4C43ACE123E1442B00315996 /* TransactionFormView.swift in Sources */,
 				4CE1FB98236938DD0071BF74 /* SettingsView.swift in Sources */,
+				4C2FBED823E7C60E00C6DF00 /* CreateAllocationTemplateView.swift in Sources */,
+				4C2FBEDA23E7CA8900C6DF00 /* AllocationTemplateFormView.swift in Sources */,
+				4C2FBECC23E782DA00C6DF00 /* AllocationTemplateLine.swift in Sources */,
 				4C9FE56623DC169D00489EB1 /* Budget.swift in Sources */,
 				4C2FBEBF23E67DA400C6DF00 /* AllocationFormView.swift in Sources */,
 				4C5EA94523712FBA000EDF15 /* BankMemberRowView.swift in Sources */,
+				4C2FBECE23E784E800C6DF00 /* AllocationTemplateData.swift in Sources */,
 				4C2FBEC123E6864D00C6DF00 /* CreateAllocationView.swift in Sources */,
+				4C2FBED423E7C0C600C6DF00 /* AllocationTemplateRowView.swift in Sources */,
+				4C2FBEDE23E7D8C500C6DF00 /* AllocationTemplateLineFormView.swift in Sources */,
 				4C9FE56823DC1B9E00489EB1 /* BudgetRowView.swift in Sources */,
 				4C08F44C2353F8800000C2FC /* AppDelegate.swift in Sources */,
 				4C0985C223764CB2007CBA43 /* TransactionRowView.swift in Sources */,
@@ -698,6 +764,7 @@
 				4C08F4502353F8800000C2FC /* RootView.swift in Sources */,
 				4C0985CB2376610B007CBA43 /* Category.swift in Sources */,
 				4C48B1DC236FA32F00C1D234 /* TransactionsView.swift in Sources */,
+				4C2FBECA23E7829000C6DF00 /* AllocationTemplate.swift in Sources */,
 				4C2FBEB623E6658100C6DF00 /* Allocation.swift in Sources */,
 				4C5EA94723713518000EDF15 /* BankAccountRowView.swift in Sources */,
 				4CE1FB8F23691A870071BF74 /* LoginView.swift in Sources */,
@@ -705,13 +772,17 @@
 				4CA3F5FC2370FADE0083E471 /* BankMembersView.swift in Sources */,
 				4CA3F5F92370E4900083E471 /* User.swift in Sources */,
 				4C08F487235402DC0000C2FC /* ApolloClient.swift in Sources */,
+				4C2FBEE123E7DA0E00C6DF00 /* Budgetable.swift in Sources */,
 				4C43ACDC23E1207E00315996 /* BudgetFormView.swift in Sources */,
 				4C5EA93F23712166000EDF15 /* BankMember.swift in Sources */,
 				4C9E228C237529E40045E6D6 /* Transaction.swift in Sources */,
+				4C2FBED223E7C07E00C6DF00 /* AllocationTemplatesView.swift in Sources */,
 				4CA3F5F4236FE04B0083E471 /* PlaidView.swift in Sources */,
 				4C48B1DE236FA50B00C1D234 /* PlaidViewController.swift in Sources */,
+				4C2FBEDC23E7D7BF00C6DF00 /* CreateAllocationTemplateLineView.swift in Sources */,
 				4C750F1323777828005BAB1F /* CategoryPickerRowView.swift in Sources */,
 				4C9FE56023DC152700489EB1 /* BudgetsView.swift in Sources */,
+				4C2FBED623E7C11600C6DF00 /* AllocationTemplateView.swift in Sources */,
 				4C5780FD23DE98050053117F /* BudgetInput.swift in Sources */,
 				4CE1FB9A23693AA20071BF74 /* MainView.swift in Sources */,
 				4CE24CE123DEAA520020604B /* BankData.swift in Sources */,
@@ -1071,6 +1142,14 @@
 				minimumVersion = 0.16.1;
 			};
 		};
+		4C2FBEC523E77A3900C6DF00 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/timbersoftware/SwiftUIRefresh.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
 		4CE1FB9223691C030071BF74 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
@@ -1086,6 +1165,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4C08F47F2353F8E90000C2FC /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
+		};
+		4C2FBEC623E77A3900C6DF00 /* SwiftUIRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C2FBEC523E77A3900C6DF00 /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
+			productName = SwiftUIRefresh;
 		};
 		4CE1FB9323691C030071BF74 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;

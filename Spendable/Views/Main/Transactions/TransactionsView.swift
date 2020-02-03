@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TransactionsView: View {
     @EnvironmentObject var userData: UserData
+    @State private var isReloading = false
     
     var body: some View {
         NavigationView {
@@ -18,6 +19,11 @@ struct TransactionsView: View {
                     ForEach((userData.transactions).sorted { $0.date > $1.date}) { transaction in
                         TransactionRowView(transaction: transaction)
                     }
+                }
+                .pullToRefresh(isShowing: $isReloading) {
+                    self.userData.apollo.client.clearCache()
+                    self.userData.loadTransactions()
+                    self.isReloading = false
                 }
                 .listStyle(GroupedListStyle())
             }

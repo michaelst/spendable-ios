@@ -27,6 +27,16 @@ struct SettingsView: View {
                 }
                 
                 Section {
+                    NavigationLink(destination: BankMembersView()) {
+                        Text("Banks")
+                    }
+                    
+                    NavigationLink(destination: AllocationTemplatesView()) {
+                        Text("Budget Templates")
+                    }
+                }
+                
+                Section {
                     Button(action: { self.userData.logout() }, label: {
                         Text("Logout")
                     })

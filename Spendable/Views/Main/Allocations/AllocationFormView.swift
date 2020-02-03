@@ -31,7 +31,7 @@ struct AllocationFormView: View {
                         .multilineTextAlignment(.trailing)
                 }
                 
-                NavigationLink(destination: BudgetPickerView(allocation: allocation)) {
+                NavigationLink(destination: BudgetPickerView(budgetId: allocation.budgetId, updateBudget: { budgetId in self.allocation.budgetId = budgetId })) {
                     HStack {
                         Text("Budget").foregroundColor(.secondary)
                         

@@ -7,9 +7,12 @@
 //
 
 import SwiftUI
+import SwiftUIRefresh
 
 struct BudgetsView: View {
     @EnvironmentObject var userData: UserData
+    @State private var showingSheet = false
+    @State private var isReloading = false
     
     var body: some View {
         NavigationView {
@@ -18,6 +21,11 @@ struct BudgetsView: View {
                     BudgetRowView(budget: budget)
                 }
                 .onDelete(perform: userData.deleteBudgets)
+            }
+            .pullToRefresh(isShowing: $isReloading) {
+                self.userData.apollo.client.clearCache()
+                self.userData.loadBudgets()
+                self.isReloading = false
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Budgets")

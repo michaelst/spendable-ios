@@ -1,0 +1,27 @@
+query ListAllocationTemplates{
+    allocationTemplates {
+        id
+        name
+        lines {
+            id
+            amount
+            budget {
+                id
+            }
+        }
+    }
+}
+
+mutation CreateAllocationTemplate($name: String!, $lines: [AllocationTemplateLineInputObject]) {
+    createAllocationTemplate(name: $name, lines: $lines) {
+        id
+        name
+        lines {
+            id
+            amount
+            budget {
+                id
+            }
+        }
+    }
+}

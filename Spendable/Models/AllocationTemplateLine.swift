@@ -1,15 +1,15 @@
 //
-//  Allocation.swift
+//  AllocationTemplateLines.swift
 //  Spendable
 //
-//  Created by Michael St Clair on 2/1/20.
+//  Created by Michael St Clair on 2/2/20.
 //  Copyright © 2020 Fifty Seven Media. All rights reserved.
 //
 
 import Foundation
 import Combine
 
-class Allocation: ObservableObject, Identifiable, Budgetable {
+class AllocationTemplateLine: ObservableObject, Identifiable, Budgetable {
     let objectWillChange = ObservableObjectPublisher()
     
     let id: String?
@@ -18,7 +18,7 @@ class Allocation: ObservableObject, Identifiable, Budgetable {
 
     init(id: String? = nil, amount: String, budgetId: String) {
         self.id = id
-        self.amount = amount.removePrefix("-")
+        self.amount = amount
         self.budgetId = budgetId
     }
 }

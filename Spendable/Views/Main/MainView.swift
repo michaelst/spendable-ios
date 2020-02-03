@@ -34,16 +34,6 @@ struct MainView: View {
             }
             .tag(2)
             
-            BankMembersView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "creditcard")
-                        Text("Banks")
-                    }
-                    
-            }
-            .tag(3)
-            
             SettingsView()
                 .tabItem {
                     VStack {
@@ -52,7 +42,7 @@ struct MainView: View {
                     }
                     
             }
-            .tag(4)
+            .tag(3)
         }
         .accentColor(Color(red: 67 / 255, green: 150 / 255, blue: 223 / 255))
         .onAppear(perform: { self.userData.loadData() })

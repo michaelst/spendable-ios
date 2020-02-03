@@ -42,6 +42,10 @@ final class UserData: ObservableObject  {
     
     // MODELS
     
+    var allocationTemplates: [AllocationTemplate] = [] {
+        willSet { self.objectWillChange.send() }
+    }
+    
     var budgets: [Budget] = [] {
         willSet { self.objectWillChange.send() }
     }
