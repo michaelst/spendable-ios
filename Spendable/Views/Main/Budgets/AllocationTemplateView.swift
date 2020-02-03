@@ -9,10 +9,25 @@
 import SwiftUI
 
 struct AllocationTemplateView: View {
+    @EnvironmentObject var userData: UserData
     @ObservedObject var template: AllocationTemplate
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        AllocationTemplateFormView(template: template)
+            .navigationBarTitle("Template")
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(
+                leading:
+                Button("Cancel", action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }),
+                trailing:
+                Button("Save", action: {
+                    self.userData.update(template: self.template)
+                    self.presentationMode.wrappedValue.dismiss()
+                }).disabled(self.template.name.isEmpty || self.template.lines.count == 0)
+        )
     }
 }
 

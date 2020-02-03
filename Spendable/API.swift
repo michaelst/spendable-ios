@@ -503,6 +503,223 @@ public final class CreateAllocationTemplateMutation: GraphQLMutation {
   }
 }
 
+public final class UpdateAllocationTemplateMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    mutation UpdateAllocationTemplate($id: ID!, $name: String!, $lines: [AllocationTemplateLineInputObject]) {
+      updateAllocationTemplate(id: $id, name: $name, lines: $lines) {
+        __typename
+        id
+        name
+        lines {
+          __typename
+          id
+          amount
+          budget {
+            __typename
+            id
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName = "UpdateAllocationTemplate"
+
+  public var id: GraphQLID
+  public var name: String
+  public var lines: [AllocationTemplateLineInputObject?]?
+
+  public init(id: GraphQLID, name: String, lines: [AllocationTemplateLineInputObject?]? = nil) {
+    self.id = id
+    self.name = name
+    self.lines = lines
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id, "name": name, "lines": lines]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["RootMutationType"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateAllocationTemplate", arguments: ["id": GraphQLVariable("id"), "name": GraphQLVariable("name"), "lines": GraphQLVariable("lines")], type: .object(UpdateAllocationTemplate.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(updateAllocationTemplate: UpdateAllocationTemplate? = nil) {
+      self.init(unsafeResultMap: ["__typename": "RootMutationType", "updateAllocationTemplate": updateAllocationTemplate.flatMap { (value: UpdateAllocationTemplate) -> ResultMap in value.resultMap }])
+    }
+
+    public var updateAllocationTemplate: UpdateAllocationTemplate? {
+      get {
+        return (resultMap["updateAllocationTemplate"] as? ResultMap).flatMap { UpdateAllocationTemplate(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "updateAllocationTemplate")
+      }
+    }
+
+    public struct UpdateAllocationTemplate: GraphQLSelectionSet {
+      public static let possibleTypes = ["AllocationTemplate"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(GraphQLID.self)),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("lines", type: .list(.object(Line.selections))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID? = nil, name: String? = nil, lines: [Line?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "AllocationTemplate", "id": id, "name": name, "lines": lines.flatMap { (value: [Line?]) -> [ResultMap?] in value.map { (value: Line?) -> ResultMap? in value.flatMap { (value: Line) -> ResultMap in value.resultMap } } }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID? {
+        get {
+          return resultMap["id"] as? GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var name: String? {
+        get {
+          return resultMap["name"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "name")
+        }
+      }
+
+      public var lines: [Line?]? {
+        get {
+          return (resultMap["lines"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Line?] in value.map { (value: ResultMap?) -> Line? in value.flatMap { (value: ResultMap) -> Line in Line(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [Line?]) -> [ResultMap?] in value.map { (value: Line?) -> ResultMap? in value.flatMap { (value: Line) -> ResultMap in value.resultMap } } }, forKey: "lines")
+        }
+      }
+
+      public struct Line: GraphQLSelectionSet {
+        public static let possibleTypes = ["AllocationTemplateLine"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("amount", type: .scalar(String.self)),
+          GraphQLField("budget", type: .object(Budget.selections)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID? = nil, amount: String? = nil, budget: Budget? = nil) {
+          self.init(unsafeResultMap: ["__typename": "AllocationTemplateLine", "id": id, "amount": amount, "budget": budget.flatMap { (value: Budget) -> ResultMap in value.resultMap }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID? {
+          get {
+            return resultMap["id"] as? GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var amount: String? {
+          get {
+            return resultMap["amount"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "amount")
+          }
+        }
+
+        public var budget: Budget? {
+          get {
+            return (resultMap["budget"] as? ResultMap).flatMap { Budget(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "budget")
+          }
+        }
+
+        public struct Budget: GraphQLSelectionSet {
+          public static let possibleTypes = ["Budget"]
+
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .scalar(GraphQLID.self)),
+          ]
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: GraphQLID? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Budget", "id": id])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: GraphQLID? {
+            get {
+              return resultMap["id"] as? GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class ListBankMembersQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =

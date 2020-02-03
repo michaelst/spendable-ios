@@ -22,7 +22,7 @@ class AllocationTemplate: ObservableObject, Identifiable {
         self.lines = lines
     }
     
-    func deleteAllocationTemplateLines(at offsets: IndexSet) {
+    func deleteLines(at offsets: IndexSet) {
         lines.remove(atOffsets: offsets)
     }
 }

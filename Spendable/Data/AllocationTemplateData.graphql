@@ -25,3 +25,17 @@ mutation CreateAllocationTemplate($name: String!, $lines: [AllocationTemplateLin
         }
     }
 }
+
+mutation UpdateAllocationTemplate($id: ID!, $name: String!, $lines: [AllocationTemplateLineInputObject]) {
+    updateAllocationTemplate(id: $id, name: $name, lines: $lines) {
+        id
+        name
+        lines {
+            id
+            amount
+            budget {
+                id
+            }
+        }
+    }
+}

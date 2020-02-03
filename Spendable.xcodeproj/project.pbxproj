@@ -42,6 +42,7 @@
 		4C2FBEDC23E7D7BF00C6DF00 /* CreateAllocationTemplateLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEDB23E7D7BF00C6DF00 /* CreateAllocationTemplateLineView.swift */; };
 		4C2FBEDE23E7D8C500C6DF00 /* AllocationTemplateLineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEDD23E7D8C500C6DF00 /* AllocationTemplateLineFormView.swift */; };
 		4C2FBEE123E7DA0E00C6DF00 /* Budgetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEE023E7DA0E00C6DF00 /* Budgetable.swift */; };
+		4C2FBEE323E7E84D00C6DF00 /* AllocationTemplateLineRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEE223E7E84D00C6DF00 /* AllocationTemplateLineRowView.swift */; };
 		4C43ACDC23E1207E00315996 /* BudgetFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43ACDB23E1207E00315996 /* BudgetFormView.swift */; };
 		4C43ACE123E1442B00315996 /* TransactionFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43ACE023E1442B00315996 /* TransactionFormView.swift */; };
 		4C48B1DC236FA32F00C1D234 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */; };
@@ -155,6 +156,7 @@
 		4C2FBEDB23E7D7BF00C6DF00 /* CreateAllocationTemplateLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllocationTemplateLineView.swift; sourceTree = "<group>"; };
 		4C2FBEDD23E7D8C500C6DF00 /* AllocationTemplateLineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTemplateLineFormView.swift; sourceTree = "<group>"; };
 		4C2FBEE023E7DA0E00C6DF00 /* Budgetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budgetable.swift; sourceTree = "<group>"; };
+		4C2FBEE223E7E84D00C6DF00 /* AllocationTemplateLineRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocationTemplateLineRowView.swift; sourceTree = "<group>"; };
 		4C43ACDB23E1207E00315996 /* BudgetFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetFormView.swift; sourceTree = "<group>"; };
 		4C43ACE023E1442B00315996 /* TransactionFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFormView.swift; sourceTree = "<group>"; };
 		4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				4C2FBED523E7C11600C6DF00 /* AllocationTemplateView.swift */,
 				4C2FBED723E7C60E00C6DF00 /* CreateAllocationTemplateView.swift */,
 				4C2FBED923E7CA8900C6DF00 /* AllocationTemplateFormView.swift */,
+				4C2FBEE223E7E84D00C6DF00 /* AllocationTemplateLineRowView.swift */,
 				4C2FBEDB23E7D7BF00C6DF00 /* CreateAllocationTemplateLineView.swift */,
 				4C2FBEDD23E7D8C500C6DF00 /* AllocationTemplateLineFormView.swift */,
 			);
@@ -743,6 +746,7 @@
 				4C6B630C23DFFDE400189931 /* CategoryData.swift in Sources */,
 				4CE1FB9123691B8C0071BF74 /* UserData.swift in Sources */,
 				4C5780EC23DE2C810053117F /* KeyboardResponsive.swift in Sources */,
+				4C2FBEE323E7E84D00C6DF00 /* AllocationTemplateLineRowView.swift in Sources */,
 				4C9FE56A23DC1BE900489EB1 /* BudgetView.swift in Sources */,
 				4C43ACE123E1442B00315996 /* TransactionFormView.swift in Sources */,
 				4CE1FB98236938DD0071BF74 /* SettingsView.swift in Sources */,

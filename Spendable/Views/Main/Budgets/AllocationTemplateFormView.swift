@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct AllocationTemplateFormView: View {
+    @EnvironmentObject var userData: UserData
     @ObservedObject var template: AllocationTemplate
     
     var body: some View {
@@ -25,8 +26,9 @@ struct AllocationTemplateFormView: View {
             
             Section(header: Text("Budgets"), footer: AllocationTemplateFormViewFooter(template: template)) {
                 ForEach(template.lines) { line in
-                    Text(line.amount)
+                    AllocationTemplateLineRowView(line: line)
                 }
+                .onDelete(perform: template.deleteLines)
             }
         }
     }

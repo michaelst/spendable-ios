@@ -58,4 +58,27 @@ extension UserData  {
             self.apollo.client.clearCache()
         }
     }
+    
+    func update(template: AllocationTemplate) {
+        let inputLines = template.lines.map { line in
+            return AllocationTemplateLineInputObject(
+                amount: line.amount,
+                budgetId: line.budgetId
+            )
+        }
+        
+        let mutation = UpdateAllocationTemplateMutation(id: template.id!, name: template.name, lines: inputLines)
+        
+        apollo.client.perform(mutation: mutation) { result in
+            guard let data = try? result.get().data?.updateAllocationTemplate else { return }
+            
+            let lines = data.lines?.map { line in
+                return AllocationTemplateLine(id: line!.id!, amount: line!.amount!, budgetId: line!.budget!.id!)
+            }
+            
+            template.lines = lines ?? []
+            
+            self.apollo.client.clearCache()
+        }
+    }
 }

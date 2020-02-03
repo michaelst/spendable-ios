@@ -31,15 +31,15 @@ struct AllocationTemplateLineFormView: View {
                         .multilineTextAlignment(.trailing)
                 }
                 
-                //NavigationLink(destination: BudgetPickerView(allocation: allocation)) {
-                //    HStack {
-                //        Text("Budget").foregroundColor(.secondary)
-                //
-                //        Spacer()
-                //
-                //        Text(budget)
-                //    }
-                //}
+                NavigationLink(destination: BudgetPickerView(budgetId: line.budgetId, updateBudget: { budgetId in self.line.budgetId = budgetId })) {
+                    HStack {
+                        Text("Budget").foregroundColor(.secondary)
+                        
+                        Spacer()
+                        
+                        Text(budget)
+                    }
+                }
             }
         }
     }
