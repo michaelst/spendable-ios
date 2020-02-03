@@ -18,6 +18,7 @@ struct AllocationTemplatesView: View {
                 ForEach(userData.allocationTemplates) { template in
                     AllocationTemplateRowView(template: template)
                 }
+                .onDelete(perform: userData.deleteAllocationTemplates)
             }
             .pullToRefresh(isShowing: $isReloading) {
                 self.userData.apollo.client.clearCache()

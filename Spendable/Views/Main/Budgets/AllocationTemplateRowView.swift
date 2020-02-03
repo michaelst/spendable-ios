@@ -13,7 +13,13 @@ struct AllocationTemplateRowView: View {
     
     var body: some View {
         NavigationLink(destination: AllocationTemplateView(template: template)) {
-            Text(template.name).lineLimit(1)
+            HStack {
+                Text(template.name).lineLimit(1)
+                
+                Spacer()
+                
+                Text("$" + String(format: "%.2f", template.budgeted))
+            }
         }.padding(.vertical)
     }
 }

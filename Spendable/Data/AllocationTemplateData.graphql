@@ -39,3 +39,9 @@ mutation UpdateAllocationTemplate($id: ID!, $name: String!, $lines: [AllocationT
         }
     }
 }
+
+mutation DeleteAllocationTemplate($id: ID!) {
+  deleteAllocationTemplate(id: $id) {
+    id
+  }
+}

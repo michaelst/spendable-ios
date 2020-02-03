@@ -51,7 +51,7 @@ extension UserData  {
                 return AllocationTemplateLine(id: line!.id!, amount: line!.amount!, budgetId: line!.budget!.id!)
             }
             
-            template.id = data.id
+            template.id = data.id!
             template.lines = lines ?? []
             
             self.allocationTemplates.append(template)
@@ -67,7 +67,7 @@ extension UserData  {
             )
         }
         
-        let mutation = UpdateAllocationTemplateMutation(id: template.id!, name: template.name, lines: inputLines)
+        let mutation = UpdateAllocationTemplateMutation(id: template.id, name: template.name, lines: inputLines)
         
         apollo.client.perform(mutation: mutation) { result in
             guard let data = try? result.get().data?.updateAllocationTemplate else { return }
@@ -80,5 +80,14 @@ extension UserData  {
             
             self.apollo.client.clearCache()
         }
+    }
+    
+    func deleteAllocationTemplates(at offsets: IndexSet) {
+        for offset in Array(offsets) {
+            apollo.client.perform(mutation: DeleteAllocationTemplateMutation(id: allocationTemplates[offset].id))
+        }
+        
+        allocationTemplates.remove(atOffsets: offsets)
+        self.apollo.client.clearCache()
     }
 }

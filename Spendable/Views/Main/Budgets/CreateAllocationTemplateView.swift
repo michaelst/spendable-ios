@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CreateAllocationTemplateView: View {
     @EnvironmentObject var userData: UserData
-    @ObservedObject var template: AllocationTemplate = AllocationTemplate(name: "")
+    @ObservedObject var template: AllocationTemplate = AllocationTemplate(id: "", name: "")
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {

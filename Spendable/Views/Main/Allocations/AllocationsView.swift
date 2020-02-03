@@ -11,7 +11,14 @@ import SwiftUI
 struct AllocationsView: View {
     @EnvironmentObject var userData: UserData
     @ObservedObject var transaction: Transaction
-    @State private var spendableAmount: Double = 0
+    
+    var spendableAmount: Double {
+        get {
+            return transaction.allocations.map { allocation in
+                return allocation.amount.doubleValue
+            }.reduce(transaction.amount.doubleValue, -)
+        }
+    }
     
     var body: some View {
         List {
@@ -21,7 +28,7 @@ struct AllocationsView: View {
                     
                     Spacer()
                     
-                    Text("$" + String(format: "%.2f", spendableAmount as Double))
+                    Text("$" + String(format: "%.2f", spendableAmount))
                 }.padding(.vertical)
                 
                 ForEach(transaction.allocations) { allocation in
@@ -29,8 +36,55 @@ struct AllocationsView: View {
                 }.onDelete(perform: transaction.deleteAllocations)
             }
         }
-        .onAppear(perform: { self.spendableAmount = self.transaction.spendableAmount() })
         .navigationBarTitle("Budgets")
+    }
+}
+
+struct AllocationsFooterView: View {
+    @EnvironmentObject var userData: UserData
+    @ObservedObject var transaction: Transaction
+    @State var showTemplates = false
+    
+    private func onSelect(templateId: String) {
+        let template = userData.allocationTemplatesById[templateId]
+        
+        let allocations = template!.lines.map { line in
+            return Allocation(amount: line.amount, budgetId: line.budgetId)
+        }
+        
+        transaction.allocations.append(contentsOf: allocations)
+        showTemplates = false
+    }
+    
+    var body: some View {
+        HStack {
+            NavigationLink(destination: CreateAllocationView(transaction: transaction)) {
+                Text("Add budget")
+            }
+            
+            Spacer()
+            
+            Button("Apply template", action: { self.showTemplates.toggle() })
+                .sheet(isPresented: $showTemplates) {
+                    AllocationTemplateSelector(onSelect: self.onSelect).environmentObject(self.userData)
+            }
+        }
+    }
+}
+
+struct AllocationTemplateSelector: View {
+    @EnvironmentObject var userData: UserData
+    var onSelect: (String) -> ()
+    
+    var body: some View {
+        Section {
+            List {
+                ForEach(userData.allocationTemplates) { template in
+                    AllocationTemplateRowView(template: template)
+                        .onTapGesture { self.onSelect(template.id) }
+                }
+            }.listStyle(GroupedListStyle())
+        }.onAppear(perform: { self.userData.loadAllocationTemplates() })
     }
 }
 
@@ -47,30 +101,6 @@ struct AllocationsView_Previews: PreviewProvider {
                     allocations: []
                 )
             )
-        }
-    }
-}
-
-struct AllocationsFooterView: View {
-    @EnvironmentObject var userData: UserData
-    @ObservedObject var transaction: Transaction
-    @State var showTemplates = false
-    
-    var body: some View {
-        HStack {
-            NavigationLink(destination: CreateAllocationView(transaction: transaction)) {
-                Text("Add budget")
-            }
-            
-            Spacer()
-            
-            Button(action: { self.showTemplates.toggle() }) {
-                if transaction.allocations.count == 0 {
-                    Text("Apply template")
-                }
-            }.sheet(isPresented: $showTemplates) {
-                AllocationsView(transaction: self.transaction).environmentObject(self.userData)
-            }
         }
     }
 }

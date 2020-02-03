@@ -6,8 +6,8 @@ import Foundation
 public struct AllocationTemplateLineInputObject: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(amount: Swift.Optional<String?> = nil, budgetId: Swift.Optional<GraphQLID?> = nil, id: Swift.Optional<GraphQLID?> = nil, priority: Swift.Optional<Int?> = nil) {
-    graphQLMap = ["amount": amount, "budgetId": budgetId, "id": id, "priority": priority]
+  public init(amount: Swift.Optional<String?> = nil, budgetId: Swift.Optional<GraphQLID?> = nil, id: Swift.Optional<GraphQLID?> = nil) {
+    graphQLMap = ["amount": amount, "budgetId": budgetId, "id": id]
   }
 
   public var amount: Swift.Optional<String?> {
@@ -34,15 +34,6 @@ public struct AllocationTemplateLineInputObject: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "id")
-    }
-  }
-
-  public var priority: Swift.Optional<Int?> {
-    get {
-      return graphQLMap["priority"] as? Swift.Optional<Int?> ?? Swift.Optional<Int?>.none
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "priority")
     }
   }
 }
@@ -714,6 +705,95 @@ public final class UpdateAllocationTemplateMutation: GraphQLMutation {
               resultMap.updateValue(newValue, forKey: "id")
             }
           }
+        }
+      }
+    }
+  }
+}
+
+public final class DeleteAllocationTemplateMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    mutation DeleteAllocationTemplate($id: ID!) {
+      deleteAllocationTemplate(id: $id) {
+        __typename
+        id
+      }
+    }
+    """
+
+  public let operationName = "DeleteAllocationTemplate"
+
+  public var id: GraphQLID
+
+  public init(id: GraphQLID) {
+    self.id = id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["RootMutationType"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("deleteAllocationTemplate", arguments: ["id": GraphQLVariable("id")], type: .object(DeleteAllocationTemplate.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(deleteAllocationTemplate: DeleteAllocationTemplate? = nil) {
+      self.init(unsafeResultMap: ["__typename": "RootMutationType", "deleteAllocationTemplate": deleteAllocationTemplate.flatMap { (value: DeleteAllocationTemplate) -> ResultMap in value.resultMap }])
+    }
+
+    public var deleteAllocationTemplate: DeleteAllocationTemplate? {
+      get {
+        return (resultMap["deleteAllocationTemplate"] as? ResultMap).flatMap { DeleteAllocationTemplate(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "deleteAllocationTemplate")
+      }
+    }
+
+    public struct DeleteAllocationTemplate: GraphQLSelectionSet {
+      public static let possibleTypes = ["AllocationTemplate"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(GraphQLID.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID? = nil) {
+        self.init(unsafeResultMap: ["__typename": "AllocationTemplate", "id": id])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID? {
+        get {
+          return resultMap["id"] as? GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
     }

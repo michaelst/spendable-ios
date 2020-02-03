@@ -262,6 +262,7 @@
 				4C08F44B2353F8800000C2FC /* AppDelegate.swift */,
 				4C08F44D2353F8800000C2FC /* SceneDelegate.swift */,
 				4C08F4512353F8800000C2FC /* Assets.xcassets */,
+				4CCCB39523E8BB3600E77787 /* API */,
 				4C0985C5237659A9007CBA43 /* Data */,
 				4C5780F123DE85AB0053117F /* Extensions */,
 				4C08F4562353F8800000C2FC /* LaunchScreen.storyboard */,
@@ -478,6 +479,13 @@
 				4CE1FB97236938DD0071BF74 /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		4CCCB39523E8BB3600E77787 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		4CE1FB8C23691A610071BF74 /* Views */ = {

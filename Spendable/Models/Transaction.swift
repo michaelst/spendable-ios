@@ -50,12 +50,6 @@ class Transaction: ObservableObject, Identifiable {
         self.allocations = allocations
     }
     
-    func spendableAmount() -> Double {
-        allocations.map { allocation in
-            return allocation.amount.doubleValue
-        }.reduce(amount.doubleValue, -)
-    }
-    
     func deleteAllocations(at offsets: IndexSet) {
         allocations.remove(atOffsets: offsets)
     }

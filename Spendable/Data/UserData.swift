@@ -46,6 +46,12 @@ final class UserData: ObservableObject  {
         willSet { self.objectWillChange.send() }
     }
     
+    var allocationTemplatesById: [String: AllocationTemplate] {
+        get {
+            Dictionary(uniqueKeysWithValues: allocationTemplates.map { ($0.id, $0) })
+        }
+    }
+    
     var budgets: [Budget] = [] {
         willSet { self.objectWillChange.send() }
     }
