@@ -90,11 +90,14 @@ final class UserData: ObservableObject  {
             guard let data = try? result.get().data else { return }
             self.user.email = data.currentUser?.email ?? ""
             self.user.spendable = data.currentUser?.spendable ?? "0"
+            self.user.bankLimit = data.currentUser?.bankLimit ?? 0
         }
     }
     
     func updateCurrentUser() {
-        apollo.client.perform(mutation: UpdateCurrentUserMutation(email: self.user.email))
+        apollo.client.perform(mutation: UpdateCurrentUserMutation(email: self.user.email)) { result in
+            self.apollo.client.clearCache()
+        }
     }
     
     var loginErrors: [GraphQLError] = [] {
@@ -103,8 +106,11 @@ final class UserData: ObservableObject  {
     
     func login(email: String, password: String) {
         apollo.client.perform(mutation: LoginMutation(email: email, password: password)) { result in
-            if let token = try? result.get().data?.login?.token {
-                self.apiToken = token
+            if let data = try? result.get().data?.login {
+                self.apiToken = data.token
+                self.user.email = data.email ?? ""
+                self.user.spendable = data.spendable ?? "0"
+                self.user.bankLimit = data.bankLimit ?? 0
             } else if let errors = try? result.get().errors {
                 self.loginErrors = errors
             }
@@ -113,8 +119,11 @@ final class UserData: ObservableObject  {
     
     func signup(email: String, password: String) {
         apollo.client.perform(mutation: CreateUserMutation(email: email, password: password)) { result in
-            guard let data = try? result.get().data else { return }
-            self.apiToken = data.createUser?.token
+            guard let data = try? result.get().data?.createUser else { return }
+            self.apiToken = data.token
+            self.user.email = data.email ?? ""
+            self.user.spendable = data.spendable ?? "0"
+            self.user.bankLimit = data.bankLimit ?? 0
         }
     }
     

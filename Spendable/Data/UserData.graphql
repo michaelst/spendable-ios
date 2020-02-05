@@ -1,5 +1,6 @@
 query CurrentUser{
   currentUser {
+    bankLimit
     email
     spendable
   }
@@ -8,12 +9,18 @@ query CurrentUser{
 mutation Login($email : String!, $password: String!) {
   login(email: $email, password: $password) {
     token
+    bankLimit
+    email
+    spendable
   }
 }
 
 mutation CreateUser($email: String!, $password: String!) {
     createUser(email: $email, password: $password) {
         token
+        bankLimit
+        email
+        spendable
     }
 }
 

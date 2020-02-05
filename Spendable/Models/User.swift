@@ -11,4 +11,5 @@ import Foundation
 struct User {
     var email: String
     var spendable: String
+    var bankLimit: Int = 0
 }

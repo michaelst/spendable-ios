@@ -23,7 +23,6 @@
 		4C0985C923765DCC007CBA43 /* TransactionData.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C0985C823765DCC007CBA43 /* TransactionData.graphql */; };
 		4C0985CB2376610B007CBA43 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0985CA2376610B007CBA43 /* Category.swift */; };
 		4C2FBEB323E6246300C6DF00 /* Pods_Spendable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA1C44FF7680674E9E53837 /* Pods_Spendable.framework */; };
-		4C2FBEB423E6246300C6DF00 /* Pods_Spendable.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA1C44FF7680674E9E53837 /* Pods_Spendable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C2FBEB623E6658100C6DF00 /* Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEB523E6658100C6DF00 /* Allocation.swift */; };
 		4C2FBEB923E67B4800C6DF00 /* AllocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEB823E67B4800C6DF00 /* AllocationsView.swift */; };
 		4C2FBEBD23E67BD800C6DF00 /* AllocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEBC23E67BD800C6DF00 /* AllocationRowView.swift */; };
@@ -116,7 +115,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4C2FBEB423E6246300C6DF00 /* Pods_Spendable.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -700,7 +698,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/$(TARGET_NAME)/**/*.graphql.swift",
+				"$(SRCROOT)/$(TARGET_NAME)/API/*.graphql.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1017,6 +1015,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_ENV = sandbox;
+				LINK_KEY = 37cc44ed343b19bae3920edf047df1;
 				PRODUCT_BUNDLE_IDENTIFIER = fiftysevenmedia.Spendable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
@@ -1044,6 +1044,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LINK_ENV = development;
+				LINK_KEY = 37cc44ed343b19bae3920edf047df1;
 				PRODUCT_BUNDLE_IDENTIFIER = fiftysevenmedia.Spendable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;

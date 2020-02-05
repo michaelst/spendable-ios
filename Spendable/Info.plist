@@ -25,9 +25,9 @@
 		<key>clientName</key>
 		<string>$(PRODUCT_NAME)</string>
 		<key>env</key>
-		<string>sandbox</string>
+		<string>$(LINK_ENV)</string>
 		<key>key</key>
-		<string>37cc44ed343b19bae3920edf047df1</string>
+		<string>$(LINK_KEY)</string>
 		<key>product</key>
 		<string>transactions</string>
 	</dict>
