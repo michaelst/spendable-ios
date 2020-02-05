@@ -1,13 +1,13 @@
 query CurrentUser{
   currentUser {
     email
+    spendable
   }
 }
 
 mutation Login($email : String!, $password: String!) {
   login(email: $email, password: $password) {
     token
-    email
   }
 }
 

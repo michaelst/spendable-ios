@@ -17,6 +17,18 @@ struct BudgetsView: View {
     var body: some View {
         NavigationView {
             List {
+                HStack {
+                    Text("Spendable")
+                    
+                    Spacer()
+                    
+                    if userData.user.spendable.doubleValue < 0 {
+                        Text("($" + String(format: "%.2f", abs(userData.user.spendable.doubleValue)) + ")").foregroundColor(.red)
+                    } else {
+                        Text("+ $" + String(format: "%.2f", userData.user.spendable.doubleValue))
+                    }
+                }.padding(.vertical)
+                
                 ForEach((userData.budgets).sorted { $0.balance.doubleValue > $1.balance.doubleValue}) { budget in
                     BudgetRowView(budget: budget)
                 }
@@ -24,6 +36,7 @@ struct BudgetsView: View {
             }
             .pullToRefresh(isShowing: $isReloading) {
                 self.userData.apollo.client.clearCache()
+                self.userData.loadCurrentUser()
                 self.userData.loadBudgets()
                 self.isReloading = false
             }

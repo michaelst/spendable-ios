@@ -9,14 +9,6 @@
 import Foundation
 
 struct User {
-    let id: String
-    var firstName: String?
-    var lastName: String?
     var email: String
-}
-
-extension User: Codable {
-    init(dictionary: [String: Any]) throws {
-        self = try JSONDecoder().decode(User.self, from: JSONSerialization.data(withJSONObject: dictionary))
-    }
+    var spendable: String
 }

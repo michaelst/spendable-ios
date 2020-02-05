@@ -7,12 +7,11 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct LoginView : View {
     @EnvironmentObject var userData: UserData
-    
     @State var email : String = ""
-    
     @State var password : String = ""
     
     let apollo = Apollo()
@@ -21,7 +20,7 @@ struct LoginView : View {
         ZStack {
             Color(red: 0, green: 116 / 255, blue: 217 / 255).edgesIgnoringSafeArea(.all)
             
-            VStack() {
+            VStack {
                 if userData.loginErrors.first?.description != nil {
                     Text(userData.loginErrors.first!.description).foregroundColor(.red)
                 }
@@ -60,7 +59,6 @@ struct LoginView : View {
             .padding()
             .background(Color.white)
             .clipped()
-            .shadow(radius: 8)
             .padding(.horizontal)
             .keyboardResponsive()
             .animation(.default)

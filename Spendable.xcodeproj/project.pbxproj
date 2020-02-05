@@ -80,6 +80,7 @@
 		4CCCB3A123E8BD2B00E77787 /* BudgetData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCB39A23E8BD2B00E77787 /* BudgetData.graphql.swift */; };
 		4CCCB3A223E8BD2B00E77787 /* BankData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCB39B23E8BD2B00E77787 /* BankData.graphql.swift */; };
 		4CCCB3A323E8BD2B00E77787 /* BankMembersView.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCB39C23E8BD2B00E77787 /* BankMembersView.graphql.swift */; };
+		4CCCB3A723E8DE8900E77787 /* SignInWithApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCB3A623E8DE8900E77787 /* SignInWithApple.swift */; };
 		4CE1FB8F23691A870071BF74 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE1FB8E23691A870071BF74 /* LoginView.swift */; };
 		4CE1FB9123691B8C0071BF74 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE1FB9023691B8C0071BF74 /* UserData.swift */; };
 		4CE1FB9423691C030071BF74 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4CE1FB9323691C030071BF74 /* KeychainSwift */; };
@@ -200,6 +201,7 @@
 		4CCCB39A23E8BD2B00E77787 /* BudgetData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetData.graphql.swift; sourceTree = "<group>"; };
 		4CCCB39B23E8BD2B00E77787 /* BankData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankData.graphql.swift; sourceTree = "<group>"; };
 		4CCCB39C23E8BD2B00E77787 /* BankMembersView.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankMembersView.graphql.swift; sourceTree = "<group>"; };
+		4CCCB3A623E8DE8900E77787 /* SignInWithApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithApple.swift; sourceTree = "<group>"; };
 		4CE1FB8E23691A870071BF74 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4CE1FB9023691B8C0071BF74 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		4CE1FB97236938DD0071BF74 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				4C5780EB23DE2C810053117F /* KeyboardResponsive.swift */,
+				4CCCB3A623E8DE8900E77787 /* SignInWithApple.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				4C2FBECE23E784E800C6DF00 /* AllocationTemplateData.swift in Sources */,
 				4C2FBEC123E6864D00C6DF00 /* CreateAllocationView.swift in Sources */,
 				4C2FBED423E7C0C600C6DF00 /* AllocationTemplateRowView.swift in Sources */,
+				4CCCB3A723E8DE8900E77787 /* SignInWithApple.swift in Sources */,
 				4C2FBEDE23E7D8C500C6DF00 /* AllocationTemplateLineFormView.swift in Sources */,
 				4C9FE56823DC1B9E00489EB1 /* BudgetRowView.swift in Sources */,
 				4C08F44C2353F8800000C2FC /* AppDelegate.swift in Sources */,

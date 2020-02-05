@@ -17,7 +17,7 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("email", text: $userData.email)
+                    TextField("email", text: $userData.user.email)
                 }
                 
                 Section {

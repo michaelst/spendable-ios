@@ -11,6 +11,7 @@ public final class CurrentUserQuery: GraphQLQuery {
       currentUser {
         __typename
         email
+        spendable
       }
     }
     """
@@ -52,6 +53,7 @@ public final class CurrentUserQuery: GraphQLQuery {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("email", type: .scalar(String.self)),
+        GraphQLField("spendable", type: .scalar(String.self)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -60,8 +62,8 @@ public final class CurrentUserQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(email: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "User", "email": email])
+      public init(email: String? = nil, spendable: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "email": email, "spendable": spendable])
       }
 
       public var __typename: String {
@@ -81,6 +83,15 @@ public final class CurrentUserQuery: GraphQLQuery {
           resultMap.updateValue(newValue, forKey: "email")
         }
       }
+
+      public var spendable: String? {
+        get {
+          return resultMap["spendable"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "spendable")
+        }
+      }
     }
   }
 }
@@ -93,7 +104,6 @@ public final class LoginMutation: GraphQLMutation {
       login(email: $email, password: $password) {
         __typename
         token
-        email
       }
     }
     """
@@ -144,7 +154,6 @@ public final class LoginMutation: GraphQLMutation {
       public static let selections: [GraphQLSelection] = [
         GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
         GraphQLField("token", type: .scalar(String.self)),
-        GraphQLField("email", type: .scalar(String.self)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -153,8 +162,8 @@ public final class LoginMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(token: String? = nil, email: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "User", "token": token, "email": email])
+      public init(token: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "token": token])
       }
 
       public var __typename: String {
@@ -172,15 +181,6 @@ public final class LoginMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "token")
-        }
-      }
-
-      public var email: String? {
-        get {
-          return resultMap["email"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "email")
         }
       }
     }

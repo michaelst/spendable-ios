@@ -21,10 +21,6 @@ final class UserData: ObservableObject  {
         willSet { self.objectWillChange.send() }
     }
     
-    var email = "" {
-        willSet { self.objectWillChange.send() }
-    }
-    
     var apiToken : String? {
         get {
             keychain.get("api-token")
@@ -41,6 +37,10 @@ final class UserData: ObservableObject  {
     }
     
     // MODELS
+    
+    var user = User(email: "", spendable: "0") {
+        willSet { self.objectWillChange.send() }
+    }
     
     var allocationTemplates: [AllocationTemplate] = [] {
         willSet { self.objectWillChange.send() }
@@ -88,17 +88,18 @@ final class UserData: ObservableObject  {
     func loadCurrentUser() {
         apollo.client.fetch(query: CurrentUserQuery()) { result in
             guard let data = try? result.get().data else { return }
-            self.email = data.currentUser?.email ?? ""
+            self.user.email = data.currentUser?.email ?? ""
+            self.user.spendable = data.currentUser?.spendable ?? "0"
         }
     }
     
     func updateCurrentUser() {
-        apollo.client.perform(mutation: UpdateCurrentUserMutation(email: self.email))
+        apollo.client.perform(mutation: UpdateCurrentUserMutation(email: self.user.email))
     }
     
     var loginErrors: [GraphQLError] = [] {
-           willSet { self.objectWillChange.send() }
-       }
+        willSet { self.objectWillChange.send() }
+    }
     
     func login(email: String, password: String) {
         apollo.client.perform(mutation: LoginMutation(email: email, password: password)) { result in
@@ -118,6 +119,6 @@ final class UserData: ObservableObject  {
     }
     
     func logout() {
-        self.apiToken = nil
+        apiToken = nil
     }
 }
