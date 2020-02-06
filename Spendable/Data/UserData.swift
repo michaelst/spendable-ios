@@ -52,6 +52,10 @@ final class UserData: ObservableObject  {
         }
     }
     
+    var bankMembers: [BankMember] = [] {
+        willSet { self.objectWillChange.send() }
+    }
+    
     var budgets: [Budget] = [] {
         willSet { self.objectWillChange.send() }
     }

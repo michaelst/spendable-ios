@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BankMembersView: View {
     @EnvironmentObject var userData: UserData
-    @EnvironmentObject var data: BankData
+    @State private var isReloading = false
     
     var body: some View {
         ZStack {
@@ -22,16 +22,23 @@ struct BankMembersView: View {
                 }
                 
                 List {
-                    ForEach(data.bankMembers) { bankMember in
+                    ForEach(userData.bankMembers) { bankMember in
                         BankMemberRowView(bankMember: bankMember)
                     }
-                }.listStyle(GroupedListStyle())
+                }
+                .pullToRefresh(isShowing: $isReloading) {
+                    self.userData.apollo.client.clearCache()
+                    self.userData.loadCurrentUser()
+                    self.userData.loadBankMembers()
+                    self.isReloading = false
+                }
+                .listStyle(GroupedListStyle())
             }
         }
         .navigationBarTitle("Bank Accounts")
         .navigationBarItems(trailing:
             ZStack {
-                if userData.user.bankLimit > 0 {
+                if userData.user.bankLimit > userData.bankMembers.count {
                     Button(action: { self.userData.showPlaidModal = true }) {
                         Image(systemName: "plus.circle").font(.system(size: 24, weight: .regular))
                     }
@@ -39,6 +46,6 @@ struct BankMembersView: View {
             }
         )
             .navigationViewStyle(StackNavigationViewStyle())
-            .onAppear(perform: { self.data.load() })
+            .onAppear(perform: { self.userData.loadBankMembers() })
     }
 }

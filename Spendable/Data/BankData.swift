@@ -6,26 +6,17 @@
 //  Copyright © 2020 Fifty Seven Media. All rights reserved.
 //
 
-import SwiftUI
-import Combine
-import KeychainSwift
+import Foundation
 
-final class BankData: ObservableObject  {
-    let objectWillChange = ObservableObjectPublisher()
-    let apollo = Apollo()
-    
-    var bankMembers: [BankMember] = [] {
-        willSet { self.objectWillChange.send() }
-    }
-    
-    func load() {
+extension UserData  {
+    func loadBankMembers() {
         apollo.client.fetch(query: ListBankMembersQuery(), cachePolicy: .fetchIgnoringCacheCompletely) { result in
             guard let data = try? result.get().data else { return }
-            self.processData(data: data)
+            self.load(data: data)
         }
     }
     
-    func processData(data: ListBankMembersQuery.Data) {
+    func load(data: ListBankMembersQuery.Data) {
         var list: [BankMember] = []
         
         for bankMemberData in data.bankMembers ?? [] {
@@ -47,7 +38,7 @@ final class BankData: ObservableObject  {
         bankMembers = list
     }
     
-    func createMember(publicToken: String) {
+    func createBankMember(publicToken: String) {
         apollo.client.perform(mutation: CreateBankMemberMutation(publicToken: publicToken)) { result in
             guard let data = try? result.get().data?.createBankMember else { return }
             
