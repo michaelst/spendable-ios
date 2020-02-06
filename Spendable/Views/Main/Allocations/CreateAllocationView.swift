@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CreateAllocationView: View {
     @ObservedObject var transaction: Transaction
-    @ObservedObject var allocation: Allocation = Allocation(amount: "0.00", budgetId: "")
+    @ObservedObject var allocation: Allocation = Allocation(id: "temp-" + UUID().uuidString, amount: "0.00", budgetId: "")
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {

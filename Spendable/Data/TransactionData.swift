@@ -51,11 +51,16 @@ extension UserData {
             guard let data = try? result.get().data?.transaction else { return }
             
             if let amount = data.amount, let date = self.dateFormatter.date(from: data.date!) {
+                let allocations = data.allocations?.map { allocation in
+                    return Allocation(id: allocation!.id!, amount: allocation!.amount!, budgetId: allocation!.budget!.id!)
+                }
+                
                 transaction.name = data.name
                 transaction.note = data.note
                 transaction.amount = amount
                 transaction.date = date
                 transaction.categoryId = data.category?.id
+                transaction.allocations = allocations ?? []
             }
         }
     }
@@ -67,7 +72,7 @@ extension UserData {
             return AllocationInputObject(
                 amount: transaction.negative ? "-\(allocation.amount)" : allocation.amount,
                 budgetId: allocation.budgetId,
-                id: allocation.id
+                id: allocation.id.hasPrefix("temp-") ? nil : allocation.id
             )
         }
         

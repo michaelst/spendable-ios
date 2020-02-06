@@ -31,7 +31,7 @@ struct AllocationsView: View {
                     Text("$" + String(format: "%.2f", spendableAmount))
                 }.padding(.vertical)
                 
-                ForEach(transaction.allocations) { allocation in
+                ForEach(transaction.allocations.sorted { $0.amount.doubleValue > $1.amount.doubleValue}) { allocation in
                     AllocationRowView(allocation: allocation)
                 }.onDelete(perform: transaction.deleteAllocations)
             }
@@ -49,7 +49,7 @@ struct AllocationsFooterView: View {
         let template = userData.allocationTemplatesById[templateId]
         
         let allocations = template!.lines.map { line in
-            return Allocation(amount: line.amount, budgetId: line.budgetId)
+            return Allocation(id: "temp-" + UUID().uuidString, amount: line.amount, budgetId: line.budgetId)
         }
         
         transaction.allocations.append(contentsOf: allocations)

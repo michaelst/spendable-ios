@@ -25,7 +25,7 @@ struct BudgetsView: View {
                     if userData.user.spendable.doubleValue < 0 {
                         Text("($" + String(format: "%.2f", abs(userData.user.spendable.doubleValue)) + ")").foregroundColor(.red)
                     } else {
-                        Text("+ $" + String(format: "%.2f", userData.user.spendable.doubleValue))
+                        Text("$" + String(format: "%.2f", userData.user.spendable.doubleValue))
                     }
                 }.padding(.vertical)
                 
