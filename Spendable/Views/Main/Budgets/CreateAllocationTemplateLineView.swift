@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CreateAllocationTemplateLineView: View {
     @ObservedObject var template: AllocationTemplate
-    @ObservedObject var line: AllocationTemplateLine = AllocationTemplateLine(amount: "0.00", budgetId: "")
+    @ObservedObject var line: AllocationTemplateLine = AllocationTemplateLine(id: "temp-" + UUID().uuidString, amount: "0.00", budgetId: "")
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {

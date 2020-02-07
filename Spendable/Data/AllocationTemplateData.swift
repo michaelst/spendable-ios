@@ -63,7 +63,8 @@ extension UserData  {
         let inputLines = template.lines.map { line in
             return AllocationTemplateLineInputObject(
                 amount: line.amount,
-                budgetId: line.budgetId
+                budgetId: line.budgetId,
+                id: line.id.hasPrefix("temp-") ? nil : line.id
             )
         }
         
