@@ -14,9 +14,7 @@ struct AllocationsView: View {
     
     var spendableAmount: Double {
         get {
-            return transaction.allocations.map { allocation in
-                return allocation.amount.doubleValue
-            }.reduce(transaction.amount.doubleValue, -)
+            return transaction.allocations.map({ $0.amount.doubleValue }).reduce(transaction.amount.doubleValue, -)
         }
     }
     

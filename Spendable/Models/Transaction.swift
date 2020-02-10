@@ -51,6 +51,13 @@ class Transaction: ObservableObject, Identifiable {
     }
     
     func deleteAllocations(at offsets: IndexSet) {
-        allocations.remove(atOffsets: offsets)
+        let sortedAllocations = allocations.sorted(by: { $0.amount.doubleValue > $1.amount.doubleValue })
+        let unsoretdOffsets = IndexSet(offsets.compactMap {offset in
+            allocations.firstIndex(where: {line in
+                sortedAllocations[offset].id == line.id
+            })
+        })
+        
+        allocations.remove(atOffsets: unsoretdOffsets)
     }
 }

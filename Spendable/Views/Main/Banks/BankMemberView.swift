@@ -13,7 +13,7 @@ struct BankMemberView: View {
     
     var body: some View {
         List {
-            ForEach(bankMember.bankAccounts) { bankAccount in
+            ForEach(bankMember.bankAccounts.sorted(by: { $0.balance.doubleValue > $1.balance.doubleValue})) { bankAccount in
                 BankAccountRowView(bankAccount: bankAccount)
             }
         }

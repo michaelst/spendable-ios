@@ -11,6 +11,14 @@ import SwiftUI
 struct AllocationTemplateRowView: View {
     @ObservedObject var template: AllocationTemplate
     
+    var budgeted: Double {
+        get {
+            template.lines.map { line in
+                return line.amount.doubleValue
+            }.reduce(0, +)
+        }
+    }
+    
     var body: some View {
         NavigationLink(destination: AllocationTemplateView(template: template)) {
             HStack {
@@ -18,7 +26,7 @@ struct AllocationTemplateRowView: View {
                 
                 Spacer()
                 
-                Text("$" + String(format: "%.2f", template.budgeted))
+                Text("$" + String(format: "%.2f", budgeted))
             }
         }.padding(.vertical)
     }

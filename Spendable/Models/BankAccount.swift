@@ -15,19 +15,19 @@ class BankAccount: ObservableObject, Identifiable {
     
     let id: String
     
-    var name: String {
-           willSet { self.objectWillChange.send() }
-       }
+    var name: String { willSet { self.objectWillChange.send() } }
+    var balance: String { willSet { self.objectWillChange.send() } }
     
     var sync: Bool {
         willSet { self.objectWillChange.send() }
         didSet { self.save() }
     }
     
-    init(id: String, name: String, sync: Bool) {
+    init(id: String, name: String, sync: Bool, balance: String) {
         self.id = id
         self.name = name
         self.sync = sync
+        self.balance = balance
     }
     
     func save() {

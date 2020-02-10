@@ -59,7 +59,7 @@ extension UserData  {
         }
     }
     
-    func update(template: AllocationTemplate) {
+    func update(template: AllocationTemplate, completion: @escaping () -> Void = {}) {
         let inputLines = template.lines.map { line in
             return AllocationTemplateLineInputObject(
                 amount: line.amount,
@@ -80,6 +80,7 @@ extension UserData  {
             template.lines = lines ?? []
             
             self.apollo.client.clearCache()
+            completion()
         }
     }
     

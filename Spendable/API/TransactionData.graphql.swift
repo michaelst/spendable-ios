@@ -7,8 +7,8 @@ public final class ListTransactionsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
     """
-    query ListTransactions {
-      transactions {
+    query ListTransactions($offset: Int!) {
+      transactions(offset: $offset) {
         __typename
         id
         name
@@ -34,14 +34,21 @@ public final class ListTransactionsQuery: GraphQLQuery {
 
   public let operationName = "ListTransactions"
 
-  public init() {
+  public var offset: Int
+
+  public init(offset: Int) {
+    self.offset = offset
+  }
+
+  public var variables: GraphQLMap? {
+    return ["offset": offset]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["RootQueryType"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("transactions", type: .list(.object(Transaction.selections))),
+      GraphQLField("transactions", arguments: ["offset": GraphQLVariable("offset")], type: .list(.object(Transaction.selections))),
     ]
 
     public private(set) var resultMap: ResultMap

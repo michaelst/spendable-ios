@@ -1,5 +1,5 @@
-query ListTransactions{
-      transactions {
+query ListTransactions($offset: Int){
+      transactions(offset: $offset) {
             id
             name
             note

@@ -22,45 +22,67 @@ struct TransactionFormView: View {
         }
     }
     
+    var budgetNames: String {
+        get {
+            transaction.allocations
+                .sorted(by: { $0.amount.doubleValue > $1.amount.doubleValue })
+                .map({ userData.budgetsById[$0.budgetId]!.name })
+                .joined(separator: ", ")
+        }
+    }
+    
     var body: some View {
         Form {
             Section {
                 HStack {
-                    Text("Name").foregroundColor(.secondary)
+                    Text("Name").frame(width: 80, alignment: .leading)
                     
                     Spacer()
                     
-                    TextField("", text: $transaction.nameBinding).multilineTextAlignment(.trailing)
+                    TextField("Name", text: $transaction.nameBinding)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.trailing)
                 }
                 
                 HStack {
-                    Text("Amount").foregroundColor(.secondary)
+                    Text("Amount")
                     
                     Spacer()
                     
                     TextField("", text: $transaction.amount)
+                        .foregroundColor(.secondary)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                 }
                 
                 DatePicker(selection: $transaction.date, in: ...Date(), displayedComponents: .date) {
-                    Text("Date").foregroundColor(.secondary)
+                    Text("Date")
                 }
             }
             
             Section {                
                 NavigationLink(destination: CategoryPickerView(transaction: transaction)) {
                     HStack {
-                        Text("Category").foregroundColor(.secondary)
+                        Text("Category").frame(width: 80, alignment: .leading)
                         
                         Spacer()
                         
-                        Text(category?.name ?? "")
+                        Text(category?.name ?? "").lineLimit(1).foregroundColor(.secondary)
                     }
                 }
                 
                 NavigationLink(destination: AllocationsView(transaction: transaction)) {
-                    Text("Budget").foregroundColor(.secondary)
+                    HStack {
+                        if transaction.allocations.count > 1 {
+                            Text("Budgets").frame(width: 80, alignment: .leading)
+                        } else {
+                            Text("Budget").frame(width: 80, alignment: .leading)
+                        }
+                        
+                        Spacer()
+                        
+                        Text(budgetNames).lineLimit(1).foregroundColor(.secondary)
+                    }
                 }
             }
             

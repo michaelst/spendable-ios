@@ -24,8 +24,9 @@ struct AllocationTemplateView: View {
                 }),
                 trailing:
                 Button("Save", action: {
-                    self.userData.update(template: self.template)
-                    self.presentationMode.wrappedValue.dismiss()
+                    self.userData.update(template: self.template, completion: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    })
                 }).disabled(self.template.name.isEmpty || self.template.lines.count == 0)
         )
     }

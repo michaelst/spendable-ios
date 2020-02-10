@@ -76,8 +76,17 @@ final class UserData: ObservableObject  {
         }
     }
     
+    var loadingTransactions = false
+    var hasMoreTransactions = true
+    
     var transactions: [Transaction] = [] {
         willSet { self.objectWillChange.send() }
+    }
+    
+    var sortedTransactions: [Transaction] {
+        get {
+            transactions.sorted(by: { $0.date > $1.date})
+        }
     }
     
     // FUNCTIONS

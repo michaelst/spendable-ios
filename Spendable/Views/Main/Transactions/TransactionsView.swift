@@ -11,13 +11,15 @@ import SwiftUI
 struct TransactionsView: View {
     @EnvironmentObject var userData: UserData
     @State private var isReloading = false
+    @State private var page = 0
     
     var body: some View {
         NavigationView {
             Section {
                 List {
-                    ForEach((userData.transactions).sorted { $0.date > $1.date}) { transaction in
-                        TransactionRowView(transaction: transaction)
+                    ForEach(userData.sortedTransactions.indices, id: \.self) { index in
+                        TransactionRowView(transaction: self.userData.sortedTransactions[index])
+                            .onAppear(perform: { self.loadMore(index: index) })
                     }
                 }
                 .pullToRefresh(isShowing: $isReloading) {
@@ -31,5 +33,12 @@ struct TransactionsView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onAppear(perform: { self.userData.loadTransactions() })
+    }
+    
+    private func loadMore(index: Int) {
+        if userData.hasMoreTransactions && !userData.loadingTransactions && Double(index) > (Double(userData.transactions.count) * 0.7) {
+            userData.loadTransactions(page: page + 1)
+            page += 1
+        }
     }
 }

@@ -10,8 +10,16 @@ import SwiftUI
 
 struct CreateAllocationView: View {
     @ObservedObject var transaction: Transaction
-    @ObservedObject var allocation: Allocation = Allocation(id: "temp-" + UUID().uuidString, amount: "0.00", budgetId: "")
+    @ObservedObject var allocation: Allocation
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    init(transaction: Transaction) {
+        self.transaction = transaction
+        
+        let spendable = transaction.allocations.map({ $0.amount.doubleValue }).reduce(transaction.amount.doubleValue, -)
+        
+        self.allocation = Allocation(id: "temp-" + UUID().uuidString, amount: String(format: "%.2f", spendable), budgetId: "")
+    }
     
     var body: some View {
         AllocationFormView(allocation: allocation)

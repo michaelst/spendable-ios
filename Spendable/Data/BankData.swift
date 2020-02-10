@@ -24,7 +24,12 @@ extension UserData  {
             
             for bankAccountData in bankMemberData?.bankAccounts ?? [] {
                 if let bankAccountid = bankAccountData?.id {
-                    let bankAccount = BankAccount(id: bankAccountid, name: bankAccountData?.name ?? "", sync: bankAccountData?.sync ?? false)
+                    let bankAccount = BankAccount(
+                        id: bankAccountid,
+                        name: bankAccountData?.name ?? "",
+                        sync: bankAccountData?.sync ?? false,
+                        balance: bankAccountData?.balance ?? "0"
+                    )
                     bankAccounts.append(bankAccount)
                 }
             }
@@ -46,7 +51,13 @@ extension UserData  {
             
             for bankAccountData in data.bankAccounts ?? [] {
                 if let bankAccountid = bankAccountData?.id {
-                    let bankAccount = BankAccount(id: bankAccountid, name: bankAccountData?.name ?? "", sync: bankAccountData?.sync ?? false)
+                    let bankAccount = BankAccount(
+                        id: bankAccountid,
+                        name: bankAccountData?.name ?? "",
+                        sync: bankAccountData?.sync ?? false,
+                        balance: bankAccountData?.balance ?? "0"
+                    )
+                    
                     bankAccounts.append(bankAccount)
                 }
             }

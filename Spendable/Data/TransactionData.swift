@@ -11,39 +11,43 @@ import Combine
 import KeychainSwift
 
 extension UserData {
-    func loadTransactions() {
-        apollo.client.fetch(query: ListTransactionsQuery()) { result in
+    func loadTransactions(page: Int = 0) {
+        loadingTransactions = true
+        apollo.client.fetch(query: ListTransactionsQuery(offset: page * 100)) { result in
             guard let data = try? result.get().data else { return }
+            if page == 0 { self.transactions = [] }
             self.load(data: data)
+            self.loadingTransactions = false
         }
     }
     
     func load(data: ListTransactionsQuery.Data) {
-        var transactionsFromData: [Transaction] = []
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        for transactionData in data.transactions ?? [] {
-            if let id = transactionData?.id, let amount = transactionData?.amount, let date = dateFormatter.date(from: transactionData?.date ?? "") {
-                let allocations = transactionData?.allocations?.map { allocation in
-                    return Allocation(id: allocation!.id!, amount: allocation!.amount!, budgetId: allocation!.budget!.id!)
+        if data.transactions?.count ?? 0 > 0 {
+            for transactionData in data.transactions! {
+                if let id = transactionData?.id, let amount = transactionData?.amount, let date = dateFormatter.date(from: transactionData?.date ?? "") {
+                    let allocations = transactionData?.allocations?.map { allocation in
+                        return Allocation(id: allocation!.id!, amount: allocation!.amount!, budgetId: allocation!.budget!.id!)
+                    }
+                    
+                    let transaction = Transaction(
+                        id: id,
+                        negative: amount.hasPrefix("-"),
+                        name: transactionData?.name,
+                        note: transactionData?.note,
+                        amount: amount,
+                        date: date,
+                        categoryId: transactionData?.category?.id,
+                        allocations: allocations ?? []
+                    )
+                    
+                    transactions.append(transaction)
                 }
-                
-                let transaction = Transaction(
-                    id: id,
-                    negative: amount.hasPrefix("-"),
-                    name: transactionData?.name,
-                    note: transactionData?.note,
-                    amount: amount,
-                    date: date,
-                    categoryId: transactionData?.category?.id,
-                    allocations: allocations ?? []
-                )
-                
-                transactionsFromData.append(transaction)
             }
+        } else {
+            hasMoreTransactions = false
         }
-        
-        transactions = transactionsFromData
     }
     
     func reload(transaction: Transaction) {

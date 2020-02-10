@@ -13,7 +13,13 @@ struct BankAccountRowView: View {
     
     var body: some View {
         Toggle(isOn: $bankAccount.sync) {
-            Text(bankAccount.name)
+            VStack {
+                Text(bankAccount.name).frame(width: 80, alignment: .leading)
+                
+                Spacer()
+                
+                Text(String(format: "$%.2f", bankAccount.balance.doubleValue)).frame(width: 80, alignment: .leading)
+            }
         }.padding(.vertical)
     }
 }

@@ -22,15 +22,14 @@ class AllocationTemplate: ObservableObject, Identifiable {
         self.lines = lines
     }
     
-    var budgeted: Double {
-        get {
-            lines.map { line in
-                return line.amount.doubleValue
-            }.reduce(0, +)
-        }
-    }
-    
     func deleteLines(at offsets: IndexSet) {
-        lines.remove(atOffsets: offsets)
+        let sortedLines = lines.sorted(by: { $0.amount.doubleValue > $1.amount.doubleValue })
+        let unsoretdOffsets = IndexSet(offsets.compactMap {offset in
+            lines.firstIndex(where: {line in
+                sortedLines[offset].id == line.id
+            })
+        })
+        
+        lines.remove(atOffsets: unsoretdOffsets)
     }
 }

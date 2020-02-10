@@ -24,8 +24,8 @@ struct AllocationTemplateFormView: View {
                 }
             }
             
-            Section(header: Text("Budgets"), footer: AllocationTemplateFormViewFooter(template: template)) {
-                ForEach(template.lines) { line in
+            Section(header: AllocationTemplateFormViewHeader(template: template), footer: AllocationTemplateFormViewFooter(template: template)) {
+                ForEach(template.lines.sorted { $0.amount.doubleValue > $1.amount.doubleValue}) { line in
                     AllocationTemplateLineRowView(line: line)
                 }
                 .onDelete(perform: template.deleteLines)
@@ -39,6 +39,28 @@ struct AllocationTemplateFormView_Previews: PreviewProvider {
         AllocationTemplateFormView(
             template: AllocationTemplate(id: "1", name: "Payday")
         )
+    }
+}
+
+struct AllocationTemplateFormViewHeader: View {
+    @ObservedObject var template: AllocationTemplate
+    
+    var budgeted: Double {
+        get {
+            return template.lines.map { line in
+                return line.amount.doubleValue
+            }.reduce(0, +)
+        }
+    }
+    
+    var body: some View {
+        HStack {
+            Text("Budgets")
+            
+            Spacer()
+            
+            Text("$" + String(format: "%.2f", budgeted))
+        }
     }
 }
 
