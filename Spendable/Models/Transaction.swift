@@ -17,6 +17,7 @@ class Transaction: ObservableObject, Identifiable {
     var pending: Bool
     var name: String? { willSet { self.objectWillChange.send() } }
     var note: String? { willSet { self.objectWillChange.send() } }
+    var bankMemo: String? { willSet { self.objectWillChange.send() } }
     var amount: String {
         willSet { self.objectWillChange.send() }
         didSet { amount = amount.removePrefix("-")}
@@ -43,12 +44,13 @@ class Transaction: ObservableObject, Identifiable {
         }
     }
     
-    init(id: String, pending: Bool, name: String? = nil, note: String? = nil, amount: String, date: Date, categoryId: String? = nil, allocations: [Allocation] = []) {
+    init(id: String, pending: Bool, name: String? = nil, note: String? = nil, bankMemo: String? = nil, amount: String, date: Date, categoryId: String? = nil, allocations: [Allocation] = []) {
         self.id = id
         self.pending = pending
         self.negative = amount.hasPrefix("-")
         self.name = name
         self.note = note
+        self.bankMemo = bankMemo
         self.amount = amount.removePrefix("-")
         self.date = date
         self.categoryId = categoryId

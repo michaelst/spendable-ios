@@ -31,7 +31,9 @@ extension UserData  {
     }
     
     func create(budgetInput: BudgetInput) {
-        apollo.client.perform(mutation: CreateBudgetMutation(name: budgetInput.name, goal: budgetInput.goal)) { result in
+        let mutation = CreateBudgetMutation(name: budgetInput.name, balance: budgetInput.balance, goal: budgetInput.goal)
+        
+        apollo.client.perform(mutation: mutation) { result in
             guard let data = try? result.get().data?.createBudget else { return }
             if let id = data.id, let name = data.name, let balance = data.balance {
                 let budget = Budget(id: id, name: name, balance: balance, goal: data.goal)

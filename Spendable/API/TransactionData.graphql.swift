@@ -30,6 +30,7 @@ public final class ListTransactionsQuery: GraphQLQuery {
         }
         bankTransaction {
           __typename
+          name
           pending
         }
       }
@@ -316,6 +317,7 @@ public final class ListTransactionsQuery: GraphQLQuery {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("name", type: .scalar(String.self)),
           GraphQLField("pending", type: .scalar(Bool.self)),
         ]
 
@@ -325,8 +327,8 @@ public final class ListTransactionsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(pending: Bool? = nil) {
-          self.init(unsafeResultMap: ["__typename": "BankTransaction", "pending": pending])
+        public init(name: String? = nil, pending: Bool? = nil) {
+          self.init(unsafeResultMap: ["__typename": "BankTransaction", "name": name, "pending": pending])
         }
 
         public var __typename: String {
@@ -335,6 +337,15 @@ public final class ListTransactionsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var name: String? {
+          get {
+            return resultMap["name"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "name")
           }
         }
 
@@ -377,6 +388,7 @@ public final class GetTransactionQuery: GraphQLQuery {
         }
         bankTransaction {
           __typename
+          name
           pending
         }
       }
@@ -653,6 +665,7 @@ public final class GetTransactionQuery: GraphQLQuery {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("name", type: .scalar(String.self)),
           GraphQLField("pending", type: .scalar(Bool.self)),
         ]
 
@@ -662,8 +675,8 @@ public final class GetTransactionQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(pending: Bool? = nil) {
-          self.init(unsafeResultMap: ["__typename": "BankTransaction", "pending": pending])
+        public init(name: String? = nil, pending: Bool? = nil) {
+          self.init(unsafeResultMap: ["__typename": "BankTransaction", "name": name, "pending": pending])
         }
 
         public var __typename: String {
@@ -672,6 +685,15 @@ public final class GetTransactionQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var name: String? {
+          get {
+            return resultMap["name"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "name")
           }
         }
 

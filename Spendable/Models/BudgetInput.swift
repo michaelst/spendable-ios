@@ -13,7 +13,7 @@ class BudgetInput: ObservableObject {
     let objectWillChange = ObservableObjectPublisher()
     
     var name: String = "" { willSet { self.objectWillChange.send() } }
-    var balance: String = "0" { willSet { self.objectWillChange.send() } } 
+    var balance: String = "0.00" { willSet { self.objectWillChange.send() } }
     var goal: String? { willSet { self.objectWillChange.send() } }
     
     var goalBinding: String {
@@ -27,7 +27,7 @@ class BudgetInput: ObservableObject {
     
     func clear() {
         name = ""
-        balance = "0"
+        balance = "0.00"
         goal = nil
     }
 }

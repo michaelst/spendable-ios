@@ -36,6 +36,7 @@ extension UserData {
                         pending: transactionData?.bankTransaction?.pending ?? false,
                         name: transactionData?.name,
                         note: transactionData?.note,
+                        bankMemo: transactionData?.bankTransaction?.name,
                         amount: amount,
                         date: date,
                         categoryId: transactionData?.category?.id,
@@ -62,6 +63,7 @@ extension UserData {
                 transaction.pending = data.bankTransaction?.pending ?? false
                 transaction.name = data.name
                 transaction.note = data.note
+                transaction.bankMemo = data.bankTransaction?.name
                 transaction.amount = amount
                 transaction.date = date
                 transaction.categoryId = data.category?.id

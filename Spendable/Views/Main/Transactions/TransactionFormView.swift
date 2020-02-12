@@ -33,7 +33,7 @@ struct TransactionFormView: View {
     
     var body: some View {
         Form {
-            Section {
+            Section(footer: Text("BANK MEMO: " + (transaction.bankMemo ?? ""))) {
                 HStack {
                     Text("Name").frame(width: 80, alignment: .leading)
                     

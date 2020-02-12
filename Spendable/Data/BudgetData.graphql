@@ -7,8 +7,8 @@ query ListBudgets{
   }
 }
 
-mutation CreateBudget($name: String!, $goal: String) {
-  createBudget(name: $name, goal: $goal) {
+mutation CreateBudget($name: String!, $balance: String, $goal: String) {
+  createBudget(name: $name, balance: $balance, goal: $goal) {
     id
     name
     balance
@@ -16,7 +16,7 @@ mutation CreateBudget($name: String!, $goal: String) {
   }
 }
 
-mutation UpdateBudget($id: ID!, $name: String!, $balance: String!, $goal: String) {
+mutation UpdateBudget($id: ID!, $name: String!, $balance: String, $goal: String) {
   updateBudget(id: $id, name: $name, balance: $balance, goal: $goal) {
     id
     name
