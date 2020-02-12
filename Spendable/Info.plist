@@ -32,6 +32,8 @@
 		<string>$(LINK_KEY)</string>
 		<key>product</key>
 		<string>transactions</string>
+		<key>webhook</key>
+		<string>$(LINK_WEBHOOK)</string>
 	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
