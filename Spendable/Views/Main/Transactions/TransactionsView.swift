@@ -32,7 +32,6 @@ struct TransactionsView: View {
             .navigationBarTitle("Transactions")
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: { self.userData.loadTransactions() })
     }
     
     private func loadMore(index: Int) {

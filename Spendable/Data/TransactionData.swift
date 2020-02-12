@@ -33,7 +33,7 @@ extension UserData {
                     
                     let transaction = Transaction(
                         id: id,
-                        negative: amount.hasPrefix("-"),
+                        pending: transactionData?.bankTransaction?.pending ?? false,
                         name: transactionData?.name,
                         note: transactionData?.note,
                         amount: amount,
@@ -59,6 +59,7 @@ extension UserData {
                     return Allocation(id: allocation!.id!, amount: allocation!.amount!, budgetId: allocation!.budget!.id!)
                 }
                 
+                transaction.pending = data.bankTransaction?.pending ?? false
                 transaction.name = data.name
                 transaction.note = data.note
                 transaction.amount = amount
@@ -92,7 +93,6 @@ extension UserData {
         
         apollo.client.perform(mutation: mutation) { result in
             self.apollo.client.clearCache()
-            self.loadBudgets()
         }
     }
 }

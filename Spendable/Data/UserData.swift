@@ -60,6 +60,12 @@ final class UserData: ObservableObject  {
         willSet { self.objectWillChange.send() }
     }
     
+    var sortedBudgets: [Budget] {
+        get {
+            budgets.sorted(by: { $0.balance.doubleValue > $1.balance.doubleValue})
+        }
+    }
+    
     var budgetsById: [String: Budget] {
         get {
             Dictionary(uniqueKeysWithValues: budgets.map { ($0.id, $0) })
@@ -96,14 +102,16 @@ final class UserData: ObservableObject  {
         loadCategories()
         loadBudgets()
         loadTransactions()
+        loadAllocationTemplates()
+        loadBankMembers()
     }
     
     func loadCurrentUser() {
         apollo.client.fetch(query: CurrentUserQuery()) { result in
             guard let data = try? result.get().data else { return }
-            self.user.email = data.currentUser?.email ?? ""
-            self.user.spendable = data.currentUser?.spendable ?? "0"
-            self.user.bankLimit = data.currentUser?.bankLimit ?? 0
+            self.user.email = data.currentUser!.email!
+            self.user.spendable = data.currentUser!.spendable!
+            self.user.bankLimit = data.currentUser!.bankLimit!
         }
     }
     

@@ -15,6 +15,9 @@ query ListTransactions($offset: Int){
             category {
                 id
             }
+            bankTransaction {
+                pending
+            }
       }
 }
 
@@ -33,6 +36,9 @@ query GetTransaction($id: ID!) {
             }
             category {
                 id
+            }
+            bankTransaction {
+                pending
             }
       }
 }

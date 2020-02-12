@@ -42,7 +42,9 @@ extension UserData  {
     }
     
     func update(budget: Budget, budgetInput: BudgetInput) {
-        apollo.client.perform(mutation: UpdateBudgetMutation(id: budget.id, name: budgetInput.name, goal: budgetInput.goal)) { result in
+        let mutation = UpdateBudgetMutation(id: budget.id, name: budgetInput.name, balance: budgetInput.balance, goal: budgetInput.goal)
+        
+        apollo.client.perform(mutation: mutation) { result in
             guard let data = try? result.get().data?.updateBudget else { return }
             
             budget.name = data.name!
@@ -54,12 +56,20 @@ extension UserData  {
     }
     
     func deleteBudgets(at offsets: IndexSet) {
+        budgets.remove(atOffsets: offsets)
+        
+        let dispatch = DispatchGroup()
+        
         for offset in Array(offsets) {
-            apollo.client.perform(mutation: DeleteBudgetMutation(id: budgets[offset].id)) { result in
-                self.apollo.client.clearCache()
+            dispatch.enter()
+            
+            apollo.client.perform(mutation: DeleteBudgetMutation(id: budgets[offset].id)) { _result in
+                dispatch.leave()
             }
         }
         
-        budgets.remove(atOffsets: offsets)
+        dispatch.notify(queue: .main) {
+            self.apollo.client.clearCache()
+        }
     }
 }

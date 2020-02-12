@@ -44,7 +44,6 @@ struct SettingsView: View {
             }.navigationBarTitle("Settings")
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: { self.userData.loadCurrentUser() })
     }
 }
 

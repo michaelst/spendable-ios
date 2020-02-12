@@ -16,8 +16,8 @@ mutation CreateBudget($name: String!, $goal: String) {
   }
 }
 
-mutation UpdateBudget($id: ID!, $name: String!, $goal: String) {
-  updateBudget(id: $id, name: $name, goal: $goal) {
+mutation UpdateBudget($id: ID!, $name: String!, $balance: String!, $goal: String) {
+  updateBudget(id: $id, name: $name, balance: $balance, goal: $goal) {
     id
     name
     balance

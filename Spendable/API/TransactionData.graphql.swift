@@ -7,7 +7,7 @@ public final class ListTransactionsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
     """
-    query ListTransactions($offset: Int!) {
+    query ListTransactions($offset: Int) {
       transactions(offset: $offset) {
         __typename
         id
@@ -28,15 +28,19 @@ public final class ListTransactionsQuery: GraphQLQuery {
           __typename
           id
         }
+        bankTransaction {
+          __typename
+          pending
+        }
       }
     }
     """
 
   public let operationName = "ListTransactions"
 
-  public var offset: Int
+  public var offset: Int?
 
-  public init(offset: Int) {
+  public init(offset: Int? = nil) {
     self.offset = offset
   }
 
@@ -82,6 +86,7 @@ public final class ListTransactionsQuery: GraphQLQuery {
         GraphQLField("date", type: .scalar(String.self)),
         GraphQLField("allocations", type: .list(.object(Allocation.selections))),
         GraphQLField("category", type: .object(Category.selections)),
+        GraphQLField("bankTransaction", type: .object(BankTransaction.selections)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -90,8 +95,8 @@ public final class ListTransactionsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, name: String? = nil, note: String? = nil, amount: String? = nil, date: String? = nil, allocations: [Allocation?]? = nil, category: Category? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Transaction", "id": id, "name": name, "note": note, "amount": amount, "date": date, "allocations": allocations.flatMap { (value: [Allocation?]) -> [ResultMap?] in value.map { (value: Allocation?) -> ResultMap? in value.flatMap { (value: Allocation) -> ResultMap in value.resultMap } } }, "category": category.flatMap { (value: Category) -> ResultMap in value.resultMap }])
+      public init(id: GraphQLID? = nil, name: String? = nil, note: String? = nil, amount: String? = nil, date: String? = nil, allocations: [Allocation?]? = nil, category: Category? = nil, bankTransaction: BankTransaction? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Transaction", "id": id, "name": name, "note": note, "amount": amount, "date": date, "allocations": allocations.flatMap { (value: [Allocation?]) -> [ResultMap?] in value.map { (value: Allocation?) -> ResultMap? in value.flatMap { (value: Allocation) -> ResultMap in value.resultMap } } }, "category": category.flatMap { (value: Category) -> ResultMap in value.resultMap }, "bankTransaction": bankTransaction.flatMap { (value: BankTransaction) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -166,6 +171,15 @@ public final class ListTransactionsQuery: GraphQLQuery {
         }
       }
 
+      public var bankTransaction: BankTransaction? {
+        get {
+          return (resultMap["bankTransaction"] as? ResultMap).flatMap { BankTransaction(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "bankTransaction")
+        }
+      }
+
       public struct Allocation: GraphQLSelectionSet {
         public static let possibleTypes = ["Allocation"]
 
@@ -296,6 +310,43 @@ public final class ListTransactionsQuery: GraphQLQuery {
           }
         }
       }
+
+      public struct BankTransaction: GraphQLSelectionSet {
+        public static let possibleTypes = ["BankTransaction"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("pending", type: .scalar(Bool.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(pending: Bool? = nil) {
+          self.init(unsafeResultMap: ["__typename": "BankTransaction", "pending": pending])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var pending: Bool? {
+          get {
+            return resultMap["pending"] as? Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "pending")
+          }
+        }
+      }
     }
   }
 }
@@ -323,6 +374,10 @@ public final class GetTransactionQuery: GraphQLQuery {
         category {
           __typename
           id
+        }
+        bankTransaction {
+          __typename
+          pending
         }
       }
     }
@@ -377,6 +432,7 @@ public final class GetTransactionQuery: GraphQLQuery {
         GraphQLField("date", type: .scalar(String.self)),
         GraphQLField("allocations", type: .list(.object(Allocation.selections))),
         GraphQLField("category", type: .object(Category.selections)),
+        GraphQLField("bankTransaction", type: .object(BankTransaction.selections)),
       ]
 
       public private(set) var resultMap: ResultMap
@@ -385,8 +441,8 @@ public final class GetTransactionQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(name: String? = nil, note: String? = nil, amount: String? = nil, date: String? = nil, allocations: [Allocation?]? = nil, category: Category? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Transaction", "name": name, "note": note, "amount": amount, "date": date, "allocations": allocations.flatMap { (value: [Allocation?]) -> [ResultMap?] in value.map { (value: Allocation?) -> ResultMap? in value.flatMap { (value: Allocation) -> ResultMap in value.resultMap } } }, "category": category.flatMap { (value: Category) -> ResultMap in value.resultMap }])
+      public init(name: String? = nil, note: String? = nil, amount: String? = nil, date: String? = nil, allocations: [Allocation?]? = nil, category: Category? = nil, bankTransaction: BankTransaction? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Transaction", "name": name, "note": note, "amount": amount, "date": date, "allocations": allocations.flatMap { (value: [Allocation?]) -> [ResultMap?] in value.map { (value: Allocation?) -> ResultMap? in value.flatMap { (value: Allocation) -> ResultMap in value.resultMap } } }, "category": category.flatMap { (value: Category) -> ResultMap in value.resultMap }, "bankTransaction": bankTransaction.flatMap { (value: BankTransaction) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -452,6 +508,15 @@ public final class GetTransactionQuery: GraphQLQuery {
         }
       }
 
+      public var bankTransaction: BankTransaction? {
+        get {
+          return (resultMap["bankTransaction"] as? ResultMap).flatMap { BankTransaction(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "bankTransaction")
+        }
+      }
+
       public struct Allocation: GraphQLSelectionSet {
         public static let possibleTypes = ["Allocation"]
 
@@ -579,6 +644,43 @@ public final class GetTransactionQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+      }
+
+      public struct BankTransaction: GraphQLSelectionSet {
+        public static let possibleTypes = ["BankTransaction"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("pending", type: .scalar(Bool.self)),
+        ]
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(pending: Bool? = nil) {
+          self.init(unsafeResultMap: ["__typename": "BankTransaction", "pending": pending])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var pending: Bool? {
+          get {
+            return resultMap["pending"] as? Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "pending")
           }
         }
       }

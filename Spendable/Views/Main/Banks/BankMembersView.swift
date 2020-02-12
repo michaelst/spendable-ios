@@ -36,6 +36,7 @@ struct BankMembersView: View {
             }
         }
         .navigationBarTitle("Bank Accounts")
+        .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarItems(trailing:
             ZStack {
                 if userData.user.bankLimit > userData.bankMembers.count {
@@ -45,7 +46,5 @@ struct BankMembersView: View {
                 }
             }
         )
-            .navigationViewStyle(StackNavigationViewStyle())
-            .onAppear(perform: { self.userData.loadBankMembers() })
     }
 }

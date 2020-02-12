@@ -27,7 +27,6 @@ struct AllocationTemplatesView: View {
             }
             .listStyle(GroupedListStyle())
         }
-        .onAppear(perform: { self.userData.loadAllocationTemplates() })
         .navigationBarTitle("Templates")
         .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarItems(trailing:

@@ -246,8 +246,8 @@ public final class UpdateBudgetMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =
     """
-    mutation UpdateBudget($id: ID!, $name: String!, $goal: String) {
-      updateBudget(id: $id, name: $name, goal: $goal) {
+    mutation UpdateBudget($id: ID!, $name: String!, $balance: String!, $goal: String) {
+      updateBudget(id: $id, name: $name, balance: $balance, goal: $goal) {
         __typename
         id
         name
@@ -261,23 +261,25 @@ public final class UpdateBudgetMutation: GraphQLMutation {
 
   public var id: GraphQLID
   public var name: String
+  public var balance: String
   public var goal: String?
 
-  public init(id: GraphQLID, name: String, goal: String? = nil) {
+  public init(id: GraphQLID, name: String, balance: String, goal: String? = nil) {
     self.id = id
     self.name = name
+    self.balance = balance
     self.goal = goal
   }
 
   public var variables: GraphQLMap? {
-    return ["id": id, "name": name, "goal": goal]
+    return ["id": id, "name": name, "balance": balance, "goal": goal]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["RootMutationType"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateBudget", arguments: ["id": GraphQLVariable("id"), "name": GraphQLVariable("name"), "goal": GraphQLVariable("goal")], type: .object(UpdateBudget.selections)),
+      GraphQLField("updateBudget", arguments: ["id": GraphQLVariable("id"), "name": GraphQLVariable("name"), "balance": GraphQLVariable("balance"), "goal": GraphQLVariable("goal")], type: .object(UpdateBudget.selections)),
     ]
 
     public private(set) var resultMap: ResultMap

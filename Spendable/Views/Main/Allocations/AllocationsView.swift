@@ -82,7 +82,7 @@ struct AllocationTemplateSelector: View {
                         .onTapGesture { self.onSelect(template.id) }
                 }
             }.listStyle(GroupedListStyle())
-        }.onAppear(perform: { self.userData.loadAllocationTemplates() })
+        }
     }
 }
 
@@ -92,7 +92,7 @@ struct AllocationsView_Previews: PreviewProvider {
             AllocationsView(
                 transaction: Transaction(
                     id: "1",
-                    negative: true,
+                    pending: false,
                     name: "Expense",
                     amount: "25.24",
                     date: Date(),

@@ -29,7 +29,7 @@ struct BudgetsView: View {
                     }
                 }.padding(.vertical)
                 
-                ForEach((userData.budgets).sorted { $0.balance.doubleValue > $1.balance.doubleValue}) { budget in
+                ForEach(userData.sortedBudgets) { budget in
                     BudgetRowView(budget: budget)
                 }
                 .onDelete(perform: userData.deleteBudgets)
@@ -49,7 +49,6 @@ struct BudgetsView: View {
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: { self.userData.loadBudgets() })
     }
     
 }

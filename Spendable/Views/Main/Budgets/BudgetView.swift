@@ -16,6 +16,7 @@ struct BudgetView: View {
     
     private func setInitialValue() {
         budgetInput.name = budget.name
+        budgetInput.balance = budget.balance
         budgetInput.goal = budget.goal
     }
     

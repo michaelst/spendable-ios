@@ -20,29 +20,32 @@ struct TransactionRowView: View {
     var body: some View {
         NavigationLink(destination: TransactionView(transaction: transaction)) {
             HStack {
-                VStack {
-                    HStack {
-                        Text(transaction.name ?? "").lineLimit(1)
-                        Spacer()
-                    }
+                VStack(alignment: .leading) {
+                    Text(transaction.name ?? "")
+                        .lineLimit(1)
                     
-                    HStack {
-                        Text("\(transaction.date, formatter: self.dateFormatter)").font(.caption).foregroundColor(.gray)
-                        Spacer()
-                    }.padding(.top, 8)
+                    Text("\(transaction.date, formatter: self.dateFormatter)")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .padding(.top, 8)
                 }
                 
                 Spacer()
                 
-                
-                HStack {
-                    Spacer()
+                VStack(alignment: .trailing) {
                     if transaction.negative {
                         Text("$" + String(format: "%.2f", transaction.amount.doubleValue)).foregroundColor(.red)
                     } else {
                         Text("+ $" + String(format: "%.2f", transaction.amount.doubleValue)).foregroundColor(.green)
                     }
-                }
+                    
+                    if transaction.pending {
+                        Text("pending")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                            .padding(.top, 8)
+                    }
+                }.frame(width: 80, alignment: .trailing)
             }
         }.padding(.vertical)
     }

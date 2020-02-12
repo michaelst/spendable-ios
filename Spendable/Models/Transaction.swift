@@ -14,9 +14,13 @@ class Transaction: ObservableObject, Identifiable {
     
     let id: String
     let negative: Bool
+    var pending: Bool
     var name: String? { willSet { self.objectWillChange.send() } }
     var note: String? { willSet { self.objectWillChange.send() } }
-    var amount: String { willSet { self.objectWillChange.send() } }
+    var amount: String {
+        willSet { self.objectWillChange.send() }
+        didSet { amount = amount.removePrefix("-")}
+    }
     var date: Date { willSet { self.objectWillChange.send() } }
     var allocations: [Allocation] = [] { willSet { self.objectWillChange.send() } }
     var categoryId: String? { willSet { self.objectWillChange.send() } }
@@ -39,9 +43,10 @@ class Transaction: ObservableObject, Identifiable {
         }
     }
     
-    init(id: String, negative: Bool, name: String? = nil, note: String? = nil, amount: String, date: Date, categoryId: String? = nil, allocations: [Allocation] = []) {
+    init(id: String, pending: Bool, name: String? = nil, note: String? = nil, amount: String, date: Date, categoryId: String? = nil, allocations: [Allocation] = []) {
         self.id = id
-        self.negative = negative
+        self.pending = pending
+        self.negative = amount.hasPrefix("-")
         self.name = name
         self.note = note
         self.amount = amount.removePrefix("-")
