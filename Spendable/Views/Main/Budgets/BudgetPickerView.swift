@@ -16,11 +16,7 @@ struct BudgetPickerView: View {
     
     var budgets: [Budget] {
         get {
-            if searchText == "" {
-                return self.userData.budgets
-            } else {
-                return self.userData.budgets.filter({$0.name.lowercased().hasPrefix(searchText.lowercased())})
-            }
+            return self.userData.budgets.filter { searchText.isEmpty || $0.name.range(of: searchText, options: .caseInsensitive) != nil }
         }
     }
     

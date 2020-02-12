@@ -15,8 +15,8 @@ struct CategoryPickerView: View {
     
     var categories: [Category] {
         get {
-            return self.userData.categories.filter { searchText.isEmpty || $0.name.range(of: searchText, options: [.caseInsensitive, .anchored]) != nil
-                || $0.parentName?.range(of: searchText, options: [.caseInsensitive, .anchored]) != nil }
+            return self.userData.categories.filter { searchText.isEmpty || $0.name.range(of: searchText, options: .caseInsensitive) != nil
+                || $0.parentName?.range(of: searchText, options: .caseInsensitive) != nil }
         }
     }
     
