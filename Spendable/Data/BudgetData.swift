@@ -56,14 +56,20 @@ extension UserData  {
     }
     
     func deleteBudgets(at offsets: IndexSet) {
-        budgets.remove(atOffsets: offsets)
+        let unsoretdOffsets = IndexSet(offsets.compactMap {offset in
+            budgets.firstIndex(where: {line in
+                sortedBudgets[offset].id == line.id
+            })
+        })
+        
+        budgets.remove(atOffsets: unsoretdOffsets)
         
         let dispatch = DispatchGroup()
         
         for offset in Array(offsets) {
             dispatch.enter()
             
-            apollo.client.perform(mutation: DeleteBudgetMutation(id: budgets[offset].id)) { _result in
+            apollo.client.perform(mutation: DeleteBudgetMutation(id: sortedBudgets[offset].id)) { _result in
                 dispatch.leave()
             }
         }

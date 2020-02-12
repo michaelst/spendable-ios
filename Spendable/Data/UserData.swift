@@ -132,6 +132,7 @@ final class UserData: ObservableObject  {
                 self.user.email = data.email ?? ""
                 self.user.spendable = data.spendable ?? "0"
                 self.user.bankLimit = data.bankLimit ?? 0
+                self.loadData()
             } else if let errors = try? result.get().errors {
                 self.loginErrors = errors
             }
@@ -149,6 +150,7 @@ final class UserData: ObservableObject  {
     }
     
     func logout() {
+        apollo.client.clearCache()
         apiToken = nil
     }
 }
