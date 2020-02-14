@@ -107,6 +107,128 @@ public final class CurrentUserQuery: GraphQLQuery {
   }
 }
 
+public final class SignInWithAppleMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    mutation SignInWithApple($token: String!) {
+      signInWithApple(token: $token) {
+        __typename
+        token
+        bankLimit
+        email
+        spendable
+      }
+    }
+    """
+
+  public let operationName = "SignInWithApple"
+
+  public var token: String
+
+  public init(token: String) {
+    self.token = token
+  }
+
+  public var variables: GraphQLMap? {
+    return ["token": token]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["RootMutationType"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("signInWithApple", arguments: ["token": GraphQLVariable("token")], type: .object(SignInWithApple.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(signInWithApple: SignInWithApple? = nil) {
+      self.init(unsafeResultMap: ["__typename": "RootMutationType", "signInWithApple": signInWithApple.flatMap { (value: SignInWithApple) -> ResultMap in value.resultMap }])
+    }
+
+    public var signInWithApple: SignInWithApple? {
+      get {
+        return (resultMap["signInWithApple"] as? ResultMap).flatMap { SignInWithApple(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "signInWithApple")
+      }
+    }
+
+    public struct SignInWithApple: GraphQLSelectionSet {
+      public static let possibleTypes = ["User"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("token", type: .scalar(String.self)),
+        GraphQLField("bankLimit", type: .scalar(Int.self)),
+        GraphQLField("email", type: .scalar(String.self)),
+        GraphQLField("spendable", type: .scalar(String.self)),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(token: String? = nil, bankLimit: Int? = nil, email: String? = nil, spendable: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "token": token, "bankLimit": bankLimit, "email": email, "spendable": spendable])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var token: String? {
+        get {
+          return resultMap["token"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "token")
+        }
+      }
+
+      public var bankLimit: Int? {
+        get {
+          return resultMap["bankLimit"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "bankLimit")
+        }
+      }
+
+      public var email: String? {
+        get {
+          return resultMap["email"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      public var spendable: String? {
+        get {
+          return resultMap["spendable"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "spendable")
+        }
+      }
+    }
+  }
+}
+
 public final class LoginMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =

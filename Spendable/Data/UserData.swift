@@ -109,7 +109,7 @@ final class UserData: ObservableObject  {
     func loadCurrentUser() {
         apollo.client.fetch(query: CurrentUserQuery()) { result in
             guard let data = try? result.get().data else { return }
-            self.user.email = data.currentUser!.email!
+            self.user.email = data.currentUser!.email ?? ""
             self.user.spendable = data.currentUser!.spendable!
             self.user.bankLimit = data.currentUser!.bankLimit!
         }
@@ -123,6 +123,20 @@ final class UserData: ObservableObject  {
     
     var loginErrors: [GraphQLError] = [] {
         willSet { self.objectWillChange.send() }
+    }
+  
+    func signInWithApple(token: String) {
+        apollo.client.perform(mutation: SignInWithAppleMutation(token: token)) { result in
+            if let data = try? result.get().data?.signInWithApple {
+                self.apiToken = data.token
+                self.user.email = data.email ?? ""
+                self.user.spendable = data.spendable ?? "0"
+                self.user.bankLimit = data.bankLimit ?? 0
+                self.loadData()
+            } else if let errors = try? result.get().errors {
+                self.loginErrors = errors
+            }
+        }
     }
     
     func login(email: String, password: String) {

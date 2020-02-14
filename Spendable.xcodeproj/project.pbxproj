@@ -56,6 +56,7 @@
 		4C5EA94523712FBA000EDF15 /* BankMemberRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EA94423712FBA000EDF15 /* BankMemberRowView.swift */; };
 		4C5EA94723713518000EDF15 /* BankAccountRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EA94623713518000EDF15 /* BankAccountRowView.swift */; };
 		4C65D1E123F1166600E29F67 /* BankData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1E023F1166600E29F67 /* BankData.graphql.swift */; };
+		4C65D1E423F5018100E29F67 /* SignInWithAppleDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1E323F5018100E29F67 /* SignInWithAppleDelegates.swift */; };
 		4C6B630C23DFFDE400189931 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B630B23DFFDE400189931 /* CategoryData.swift */; };
 		4C6B630F23E0083C00189931 /* BudgetPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B630E23E0083C00189931 /* BudgetPickerView.swift */; };
 		4C6B631123E0088C00189931 /* BudgetPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B631023E0088B00189931 /* BudgetPickerRowView.swift */; };
@@ -175,6 +176,7 @@
 		4C5EA94423712FBA000EDF15 /* BankMemberRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankMemberRowView.swift; sourceTree = "<group>"; };
 		4C5EA94623713518000EDF15 /* BankAccountRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountRowView.swift; sourceTree = "<group>"; };
 		4C65D1E023F1166600E29F67 /* BankData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankData.graphql.swift; sourceTree = "<group>"; };
+		4C65D1E323F5018100E29F67 /* SignInWithAppleDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleDelegates.swift; sourceTree = "<group>"; };
 		4C6B630B23DFFDE400189931 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 		4C6B630E23E0083C00189931 /* BudgetPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPickerView.swift; sourceTree = "<group>"; };
 		4C6B631023E0088B00189931 /* BudgetPickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPickerRowView.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				4C08F4512353F8800000C2FC /* Assets.xcassets */,
 				4CCCB39523E8BB3600E77787 /* API */,
 				4C0985C5237659A9007CBA43 /* Data */,
+				4C65D1E223F5016B00E29F67 /* Delegates */,
 				4C5780F123DE85AB0053117F /* Extensions */,
 				4C08F4562353F8800000C2FC /* LaunchScreen.storyboard */,
 				4CA3F5F72370E4850083E471 /* Models */,
@@ -411,6 +414,14 @@
 				4C5780F223DE85B60053117F /* String.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C65D1E223F5016B00E29F67 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				4C65D1E323F5018100E29F67 /* SignInWithAppleDelegates.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		4C6B630D23E0082800189931 /* Picker */ = {
@@ -815,6 +826,7 @@
 				4C0985CB2376610B007CBA43 /* Category.swift in Sources */,
 				4C48B1DC236FA32F00C1D234 /* TransactionsView.swift in Sources */,
 				4C2FBECA23E7829000C6DF00 /* AllocationTemplate.swift in Sources */,
+				4C65D1E423F5018100E29F67 /* SignInWithAppleDelegates.swift in Sources */,
 				4C2FBEB623E6658100C6DF00 /* Allocation.swift in Sources */,
 				4C5EA94723713518000EDF15 /* BankAccountRowView.swift in Sources */,
 				4CE1FB8F23691A870071BF74 /* LoginView.swift in Sources */,

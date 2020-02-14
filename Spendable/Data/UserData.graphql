@@ -6,7 +6,16 @@ query CurrentUser{
   }
 }
 
-mutation Login($email : String!, $password: String!) {
+mutation SignInWithApple($token: String!) {
+  signInWithApple(token: $token) {
+    token
+    bankLimit
+    email
+    spendable
+  }
+}
+
+mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     token
     bankLimit
