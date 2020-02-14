@@ -15,7 +15,7 @@ struct BankMembersView: View {
     var body: some View {
         ZStack {
             if userData.user.bankLimit == 0 {
-                Text("Banks are currently only enabled for beta testers.")
+                Text("Banks are currently only enabled for select testers.")
             } else {
                 if userData.showPlaidModal {
                     PlaidView()

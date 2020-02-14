@@ -9,14 +9,38 @@
 import SwiftUI
 
 struct BankMemberView: View {
+    @EnvironmentObject var userData: UserData
     @ObservedObject var bankMember: BankMember
+    @State private var publicToken: String?
     
     var body: some View {
-        List {
-            ForEach(bankMember.bankAccounts.sorted(by: { $0.balance.doubleValue > $1.balance.doubleValue})) { bankAccount in
-                BankAccountRowView(bankAccount: bankAccount)
+        ZStack {
+            if userData.showPlaidModal {
+                PlaidView(publicToken: publicToken)
             }
+            
+            List {
+                ForEach(bankMember.bankAccounts.sorted(by: { $0.balance.doubleValue > $1.balance.doubleValue})) { bankAccount in
+                    BankAccountRowView(bankAccount: bankAccount)
+                }
+            }
+            .navigationBarTitle(bankMember.name)
+            .navigationBarItems(trailing:
+                ZStack {
+                    if userData.user.bankLimit > userData.bankMembers.count {
+                        Button("Reconnect", action: {
+                            self.userData.createPublicToken(bankMember: self.bankMember) { result in
+                                self.setPublicTokenAndOpenPlaid(publicToken: result)
+                            }
+                        })
+                    }
+                }
+            )
         }
-        .navigationBarTitle(bankMember.name)
+    }
+    
+    func setPublicTokenAndOpenPlaid(publicToken: String) {
+        self.publicToken = publicToken
+        userData.showPlaidModal = true
     }
 }

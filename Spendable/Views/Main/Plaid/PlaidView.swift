@@ -10,9 +10,10 @@ import SwiftUI
 
 struct PlaidView: UIViewControllerRepresentable {
     @EnvironmentObject var userData: UserData
+    var publicToken: String?
     
     func makeUIViewController(context: Context) -> PlaidViewController {
-        return PlaidViewController(userData: userData)
+        return PlaidViewController(userData: userData, publicToken: publicToken)
     }
     
     func updateUIViewController(_ uiViewController: PlaidViewController, context: Context) {

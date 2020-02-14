@@ -68,4 +68,11 @@ extension UserData  {
             }
         }
     }
+    
+    func createPublicToken(bankMember: BankMember, completion: @escaping (String) -> Void) {
+        apollo.client.perform(mutation: CreatePublicTokenMutation(id: bankMember.id)) { result in
+            guard let data = try? result.get().data?.createPublicToken else { return }
+            completion(data)
+        }
+    }
 }

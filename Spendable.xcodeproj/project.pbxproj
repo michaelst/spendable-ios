@@ -1043,7 +1043,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LINK_ENV = sandbox;
+				LINK_ENV = development;
 				LINK_KEY = 37cc44ed343b19bae3920edf047df1;
 				LINK_WEBHOOK = "";
 				PRODUCT_BUNDLE_IDENTIFIER = fiftysevenmedia.Spendable;

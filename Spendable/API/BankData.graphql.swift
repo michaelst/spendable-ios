@@ -386,6 +386,55 @@ public final class CreateBankMemberMutation: GraphQLMutation {
   }
 }
 
+public final class CreatePublicTokenMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition =
+    """
+    mutation CreatePublicToken($id: ID!) {
+      createPublicToken(id: $id)
+    }
+    """
+
+  public let operationName = "CreatePublicToken"
+
+  public var id: GraphQLID
+
+  public init(id: GraphQLID) {
+    self.id = id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["RootMutationType"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("createPublicToken", arguments: ["id": GraphQLVariable("id")], type: .scalar(String.self)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(createPublicToken: String? = nil) {
+      self.init(unsafeResultMap: ["__typename": "RootMutationType", "createPublicToken": createPublicToken])
+    }
+
+    public var createPublicToken: String? {
+      get {
+        return resultMap["createPublicToken"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "createPublicToken")
+      }
+    }
+  }
+}
+
 public final class UpdateBankAccountMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition =

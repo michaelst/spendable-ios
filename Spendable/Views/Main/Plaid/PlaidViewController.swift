@@ -13,18 +13,23 @@ import LinkKit
 class PlaidViewController: UIViewController {
     
     let apollo = Apollo()
+    var userData: UserData?
+    var publicToken: String?
     
-    convenience init(userData: UserData) {
+    convenience init(userData: UserData, publicToken: String? = nil) {
         self.init()
         self.userData = userData
+        self.publicToken = publicToken
     }
-    
-    var userData: UserData?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        presentPlaidLinkWithSharedConfiguration()
+        if publicToken != nil {
+            presentPlaidLinkInUpdateMode()
+        } else {
+            presentPlaidLinkWithSharedConfiguration()
+        }
     }
     
     func handleSuccessWithToken(_ publicToken: String, metadata: [String : Any]?) {
@@ -59,7 +64,7 @@ class PlaidViewController: UIViewController {
     func presentPlaidLinkInUpdateMode() {
         // <!-- SMARTDOWN_UPDATE_MODE -->
         let linkViewDelegate = self
-        let linkViewController = PLKPlaidLinkViewController(publicToken: "<#GENERATED_PUBLIC_TOKEN#>", delegate: linkViewDelegate)
+        let linkViewController = PLKPlaidLinkViewController(publicToken: publicToken!, delegate: linkViewDelegate)
         if (UIDevice.current.userInterfaceIdiom == .pad) {
             linkViewController.modalPresentationStyle = .formSheet
         }

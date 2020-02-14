@@ -13,7 +13,14 @@ struct BankMemberRowView: View {
     
     var body: some View {
         NavigationLink(destination: BankMemberView(bankMember: bankMember)) {
-            Text(bankMember.name)
+            HStack {
+                Text(bankMember.name)
+                
+                if bankMember.status != "CONNECTED" {
+                    Spacer()
+                    Image(systemName: "exclamationmark.circle").foregroundColor(.red)
+                }
+            }
         }
         .padding(.vertical)
     }
