@@ -27,7 +27,7 @@ struct BankMemberView: View {
             .navigationBarTitle(bankMember.name)
             .navigationBarItems(trailing:
                 ZStack {
-                    if userData.user.bankLimit > userData.bankMembers.count {
+                    if bankMember.status != "CONNECTED" {
                         Button("Reconnect", action: {
                             self.userData.createPublicToken(bankMember: self.bankMember) { result in
                                 self.setPublicTokenAndOpenPlaid(publicToken: result)
