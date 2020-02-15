@@ -58,14 +58,6 @@ extension UserData  {
     }
     
     func deleteBudgets(at offsets: IndexSet) {
-        let unsoretdOffsets = IndexSet(offsets.compactMap {offset in
-            budgets.firstIndex(where: {line in
-                sortedBudgets[offset].id == line.id
-            })
-        })
-        
-        budgets.remove(atOffsets: unsoretdOffsets)
-        
         let dispatch = DispatchGroup()
         
         for offset in Array(offsets) {
@@ -77,6 +69,13 @@ extension UserData  {
         }
         
         dispatch.notify(queue: .main) {
+            let unsoretdOffsets = IndexSet(offsets.compactMap {offset in
+                self.budgets.firstIndex(where: {line in
+                    self.sortedBudgets[offset].id == line.id
+                })
+            })
+            
+            self.budgets.remove(atOffsets: unsoretdOffsets)
             self.apollo.client.clearCache()
         }
     }

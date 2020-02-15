@@ -49,6 +49,10 @@ struct BudgetsView: View {
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear(perform: {
+            self.userData.loadCurrentUser()
+            self.userData.loadBudgets()
+        })
     }
     
 }
