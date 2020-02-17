@@ -7,9 +7,16 @@
 //
 
 import Foundation
+import Combine
 
-struct User {
-    var email: String
-    var spendable: String
-    var bankLimit: Int = 0
+class User: ObservableObject {
+    let objectWillChange = ObservableObjectPublisher()
+    
+    var spendable: String { willSet { self.objectWillChange.send() } }
+    var bankLimit: Int { willSet { self.objectWillChange.send() } }
+    
+    init(spendable: String, bankLimit: Int = 0) {
+        self.spendable = spendable
+        self.bankLimit = bankLimit
+    }
 }

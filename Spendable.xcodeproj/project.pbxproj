@@ -57,6 +57,11 @@
 		4C5EA94723713518000EDF15 /* BankAccountRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EA94623713518000EDF15 /* BankAccountRowView.swift */; };
 		4C65D1E123F1166600E29F67 /* BankData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1E023F1166600E29F67 /* BankData.graphql.swift */; };
 		4C65D1E423F5018100E29F67 /* SignInWithAppleDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1E323F5018100E29F67 /* SignInWithAppleDelegates.swift */; };
+		4C65D1E623FB175D00E29F67 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1E523FB175D00E29F67 /* Notifications.swift */; };
+		4C65D1E823FB47B200E29F67 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1E723FB47B200E29F67 /* NotificationSettings.swift */; };
+		4C65D1EA23FB4C1300E29F67 /* NotificationSettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1E923FB4C1300E29F67 /* NotificationSettingsData.swift */; };
+		4C65D1EC23FB4D1300E29F67 /* NotificationSettingsData.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C65D1EB23FB4D1300E29F67 /* NotificationSettingsData.graphql */; };
+		4C65D1EE23FB4E7E00E29F67 /* NotificationSettingsData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1ED23FB4E7E00E29F67 /* NotificationSettingsData.graphql.swift */; };
 		4C6B630C23DFFDE400189931 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B630B23DFFDE400189931 /* CategoryData.swift */; };
 		4C6B630F23E0083C00189931 /* BudgetPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B630E23E0083C00189931 /* BudgetPickerView.swift */; };
 		4C6B631123E0088C00189931 /* BudgetPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B631023E0088B00189931 /* BudgetPickerRowView.swift */; };
@@ -177,6 +182,11 @@
 		4C5EA94623713518000EDF15 /* BankAccountRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountRowView.swift; sourceTree = "<group>"; };
 		4C65D1E023F1166600E29F67 /* BankData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankData.graphql.swift; sourceTree = "<group>"; };
 		4C65D1E323F5018100E29F67 /* SignInWithAppleDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleDelegates.swift; sourceTree = "<group>"; };
+		4C65D1E523FB175D00E29F67 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		4C65D1E723FB47B200E29F67 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		4C65D1E923FB4C1300E29F67 /* NotificationSettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsData.swift; sourceTree = "<group>"; };
+		4C65D1EB23FB4D1300E29F67 /* NotificationSettingsData.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationSettingsData.graphql; sourceTree = "<group>"; };
+		4C65D1ED23FB4E7E00E29F67 /* NotificationSettingsData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsData.graphql.swift; sourceTree = "<group>"; };
 		4C6B630B23DFFDE400189931 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 		4C6B630E23E0083C00189931 /* BudgetPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPickerView.swift; sourceTree = "<group>"; };
 		4C6B631023E0088B00189931 /* BudgetPickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPickerRowView.swift; sourceTree = "<group>"; };
@@ -323,6 +333,8 @@
 				4C9FE56323DC15ED00489EB1 /* BudgetData.graphql */,
 				4C9FE56123DC15DB00489EB1 /* BudgetData.swift */,
 				4C6B630B23DFFDE400189931 /* CategoryData.swift */,
+				4C65D1EB23FB4D1300E29F67 /* NotificationSettingsData.graphql */,
+				4C65D1E923FB4C1300E29F67 /* NotificationSettingsData.swift */,
 				4C0985C823765DCC007CBA43 /* TransactionData.graphql */,
 				4C0985C6237659C0007CBA43 /* TransactionData.swift */,
 				4C9FE55C23DC04F000489EB1 /* UserData.graphql */,
@@ -403,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				4C5780EB23DE2C810053117F /* KeyboardResponsive.swift */,
+				4C65D1E523FB175D00E29F67 /* Notifications.swift */,
 				4CCCB3A623E8DE8900E77787 /* SignInWithApple.swift */,
 			);
 			path = Utils;
@@ -488,6 +501,7 @@
 				4C9FE56523DC169D00489EB1 /* Budget.swift */,
 				4C5780FC23DE98050053117F /* BudgetInput.swift */,
 				4C0985CA2376610B007CBA43 /* Category.swift */,
+				4C65D1E723FB47B200E29F67 /* NotificationSettings.swift */,
 				4C9E228B237529E40045E6D6 /* Transaction.swift */,
 				4CA3F5F82370E4900083E471 /* User.swift */,
 			);
@@ -508,6 +522,7 @@
 				4CCCB39923E8BD2B00E77787 /* AllocationTemplateData.graphql.swift */,
 				4C65D1E023F1166600E29F67 /* BankData.graphql.swift */,
 				4CCCB39A23E8BD2B00E77787 /* BudgetData.graphql.swift */,
+				4C65D1ED23FB4E7E00E29F67 /* NotificationSettingsData.graphql.swift */,
 				4CCCB39623E8BD2B00E77787 /* TransactionData.graphql.swift */,
 				4CCCB39823E8BD2B00E77787 /* Types.graphql.swift */,
 				4CCCB39723E8BD2B00E77787 /* UserData.graphql.swift */,
@@ -666,6 +681,7 @@
 			files = (
 				4C08F47D2353F8C20000C2FC /* schema.json in Resources */,
 				4C08F4582353F8800000C2FC /* LaunchScreen.storyboard in Resources */,
+				4C65D1EC23FB4D1300E29F67 /* NotificationSettingsData.graphql in Resources */,
 				4C9FE56423DC15ED00489EB1 /* BudgetData.graphql in Resources */,
 				4C2FBED023E784F800C6DF00 /* AllocationTemplateData.graphql in Resources */,
 				4C08F4552353F8800000C2FC /* Preview Assets.xcassets in Resources */,
@@ -801,6 +817,7 @@
 				4C6B630C23DFFDE400189931 /* CategoryData.swift in Sources */,
 				4CE1FB9123691B8C0071BF74 /* UserData.swift in Sources */,
 				4C5780EC23DE2C810053117F /* KeyboardResponsive.swift in Sources */,
+				4C65D1E823FB47B200E29F67 /* NotificationSettings.swift in Sources */,
 				4C2FBEE323E7E84D00C6DF00 /* AllocationTemplateLineRowView.swift in Sources */,
 				4C9FE56A23DC1BE900489EB1 /* BudgetView.swift in Sources */,
 				4C43ACE123E1442B00315996 /* TransactionFormView.swift in Sources */,
@@ -824,6 +841,8 @@
 				4C08F4502353F8800000C2FC /* RootView.swift in Sources */,
 				4CCCB3A023E8BD2B00E77787 /* AllocationTemplateData.graphql.swift in Sources */,
 				4C0985CB2376610B007CBA43 /* Category.swift in Sources */,
+				4C65D1EE23FB4E7E00E29F67 /* NotificationSettingsData.graphql.swift in Sources */,
+				4C65D1E623FB175D00E29F67 /* Notifications.swift in Sources */,
 				4C48B1DC236FA32F00C1D234 /* TransactionsView.swift in Sources */,
 				4C2FBECA23E7829000C6DF00 /* AllocationTemplate.swift in Sources */,
 				4C65D1E423F5018100E29F67 /* SignInWithAppleDelegates.swift in Sources */,
@@ -837,6 +856,7 @@
 				4C2FBEE123E7DA0E00C6DF00 /* Budgetable.swift in Sources */,
 				4C65D1E123F1166600E29F67 /* BankData.graphql.swift in Sources */,
 				4CCCB3A123E8BD2B00E77787 /* BudgetData.graphql.swift in Sources */,
+				4C65D1EA23FB4C1300E29F67 /* NotificationSettingsData.swift in Sources */,
 				4C43ACDC23E1207E00315996 /* BudgetFormView.swift in Sources */,
 				4C5EA93F23712166000EDF15 /* BankMember.swift in Sources */,
 				4CCCB39F23E8BD2B00E77787 /* Types.graphql.swift in Sources */,

@@ -36,9 +36,27 @@ final class UserData: ObservableObject  {
         }
     }
     
+    
+    var deviceToken : String? {
+        get {
+            keychain.get("device-token")
+        }
+        set {
+            self.objectWillChange.send()
+            
+            if newValue != nil {
+                keychain.set(newValue!, forKey: "device-token")
+            }
+        }
+    }
+    
     // MODELS
     
-    var user = User(email: "", spendable: "0") {
+    var user = User(spendable: "0") {
+        willSet { self.objectWillChange.send() }
+    }
+    
+    var notificationSettings = NotificationSettings() {
         willSet { self.objectWillChange.send() }
     }
     
@@ -99,6 +117,7 @@ final class UserData: ObservableObject  {
     
     func loadData() {
         loadCurrentUser()
+        loadNotificationSettings()
         loadCategories()
         loadBudgets()
         loadTransactions()
@@ -109,15 +128,8 @@ final class UserData: ObservableObject  {
     func loadCurrentUser() {
         apollo.client.fetch(query: CurrentUserQuery()) { result in
             guard let data = try? result.get().data else { return }
-            self.user.email = data.currentUser!.email ?? ""
             self.user.spendable = data.currentUser!.spendable!
             self.user.bankLimit = data.currentUser!.bankLimit!
-        }
-    }
-    
-    func updateCurrentUser() {
-        apollo.client.perform(mutation: UpdateCurrentUserMutation(email: self.user.email)) { result in
-            self.apollo.client.clearCache()
         }
     }
     
@@ -129,7 +141,6 @@ final class UserData: ObservableObject  {
         apollo.client.perform(mutation: SignInWithAppleMutation(token: token)) { result in
             if let data = try? result.get().data?.signInWithApple {
                 self.apiToken = data.token
-                self.user.email = data.email ?? ""
                 self.user.spendable = data.spendable ?? "0"
                 self.user.bankLimit = data.bankLimit ?? 0
                 self.loadData()
@@ -143,7 +154,6 @@ final class UserData: ObservableObject  {
         apollo.client.perform(mutation: LoginMutation(email: email, password: password)) { result in
             if let data = try? result.get().data?.login {
                 self.apiToken = data.token
-                self.user.email = data.email ?? ""
                 self.user.spendable = data.spendable ?? "0"
                 self.user.bankLimit = data.bankLimit ?? 0
                 self.loadData()
@@ -157,7 +167,6 @@ final class UserData: ObservableObject  {
         apollo.client.perform(mutation: CreateUserMutation(email: email, password: password)) { result in
             guard let data = try? result.get().data?.createUser else { return }
             self.apiToken = data.token
-            self.user.email = data.email ?? ""
             self.user.spendable = data.spendable ?? "0"
             self.user.bankLimit = data.bankLimit ?? 0
         }

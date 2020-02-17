@@ -1,0 +1,13 @@
+query GetNotificationSettings($deviceToken: String!) {
+  notificationSettings(deviceToken: $deviceToken) {
+    id
+    enabled
+  }
+}
+
+mutation UpdateNotificationSettings($id: ID!, $enabled: Boolean!) {
+  updateNotificationSettings(id: $id, enabled: $enabled) {
+    id
+    enabled
+  }
+}

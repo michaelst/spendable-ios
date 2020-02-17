@@ -9,23 +9,11 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
     @EnvironmentObject var userData: UserData
-    @State private var password: String = ""
     
     var body: some View {
         NavigationView {
-            Form {
-                Section {
-                    TextField("email", text: $userData.user.email)
-                }
-                
-                Section {
-                    Button(action: { self.userData.updateCurrentUser() }, label: {
-                        Text("Save")
-                    })
-                }
-                
+            Form {                   
                 Section {
                     NavigationLink(destination: BankMembersView()) {
                         Text("Banks")
@@ -37,9 +25,11 @@ struct SettingsView: View {
                 }
                 
                 Section {
-                    Button(action: { self.userData.logout() }, label: {
-                        Text("Logout")
-                    })
+                    Toggle("Notifications", isOn: $userData.notificationSettings.enabled)
+                }
+                
+                Section {
+                    Button("Logout", action: { self.userData.logout() })
                 }
             }.navigationBarTitle("Settings")
         }
