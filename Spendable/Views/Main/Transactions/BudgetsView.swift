@@ -22,12 +22,8 @@ struct BudgetsView: View {
                     
                     Spacer()
                     
-                    if userData.user.spendable.doubleValue < 0 {
-                        Text("($" + String(format: "%.2f", abs(userData.user.spendable.doubleValue)) + ")").foregroundColor(.red)
-                    } else {
-                        Text("$" + String(format: "%.2f", userData.user.spendable.doubleValue))
-                    }
-                }.padding(.vertical)
+                    Text(userData.user.spendable.currencyValue).foregroundColor(userData.user.spendable.doubleValue < 0 ? .red : .secondary)
+                 }.padding(.vertical)
                 
                 ForEach(userData.sortedBudgets) { budget in
                     BudgetRowView(budget: budget)

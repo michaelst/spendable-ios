@@ -13,6 +13,7 @@ class BankMember: ObservableObject, Identifiable {
     let objectWillChange = ObservableObjectPublisher()
     
     let id: String
+    let logo: Data
     
     var name: String {
         willSet { self.objectWillChange.send() }
@@ -26,8 +27,9 @@ class BankMember: ObservableObject, Identifiable {
         willSet { self.objectWillChange.send() }
     }
     
-    init(id: String, name: String, status: String?, bankAccounts: [BankAccount]) {
+    init(id: String, logo: Data, name: String, status: String?, bankAccounts: [BankAccount]) {
         self.id = id
+        self.logo = logo
         self.name = name
         self.status = status
         self.bankAccounts = bankAccounts

@@ -33,11 +33,7 @@ struct TransactionRowView: View {
                 Spacer()
                 
                 VStack(alignment: .trailing) {
-                    if transaction.negative {
-                        Text("$" + String(format: "%.2f", transaction.amount.doubleValue)).foregroundColor(.red)
-                    } else {
-                        Text("+ $" + String(format: "%.2f", transaction.amount.doubleValue)).foregroundColor(.green)
-                    }
+                    Text(transaction.amount.currencyValue).foregroundColor(transaction.amount.doubleValue < 0 ? .red : .green)
                     
                     if transaction.pending {
                         Text("pending")

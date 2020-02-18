@@ -32,62 +32,70 @@ struct TransactionFormView: View {
     }
     
     var body: some View {
-        Form {
-            Section(footer: Text("BANK MEMO: " + (transaction.bankMemo ?? ""))) {
-                HStack {
-                    Text("Name").frame(width: 80, alignment: .leading)
-                    
-                    Spacer()
-                    
-                    TextField("Name", text: $transaction.nameBinding)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.trailing)
+        VStack {
+            Picker("Type", selection: $transaction.type) {
+                ForEach(Transaction.TransactionType.allCases, id: \.self) { type in
+                    Text(type.rawValue).tag(type)
                 }
-                
-                HStack {
-                    Text("Amount")
-                    
-                    Spacer()
-                    
-                    TextField("", text: $transaction.amount)
-                        .foregroundColor(.secondary)
-                        .keyboardType(.decimalPad)
-                        .multilineTextAlignment(.trailing)
-                }
-                
-                DatePicker(selection: $transaction.date, in: ...Date(), displayedComponents: .date) {
-                    Text("Date")
-                }
-            }
+            }.pickerStyle(SegmentedPickerStyle())
             
-            Section {                
-                NavigationLink(destination: CategoryPickerView(transaction: transaction)) {
+            Form {
+                Section(footer: Text("BANK MEMO: " + (transaction.bankMemo ?? ""))) {
                     HStack {
-                        Text("Category").frame(width: 80, alignment: .leading)
+                        Text("Name").frame(width: 80, alignment: .leading)
                         
                         Spacer()
                         
-                        Text(category?.name ?? "").lineLimit(1).foregroundColor(.secondary)
+                        TextField("Name", text: $transaction.nameBinding)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    
+                    HStack {
+                        Text("Amount")
+                        
+                        Spacer()
+                        
+                        TextField("", text: $transaction.amountBinding)
+                            .foregroundColor(.secondary)
+                            .keyboardType(.decimalPad)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    
+                    DatePicker(selection: $transaction.date, in: ...Date(), displayedComponents: .date) {
+                        Text("Date")
                     }
                 }
                 
-                NavigationLink(destination: AllocationsView(transaction: transaction)) {
-                    HStack {
-                        if transaction.allocations.count > 1 {
-                            Text("Budgets").frame(width: 80, alignment: .leading)
-                        } else {
-                            Text("Budget").frame(width: 80, alignment: .leading)
+                Section {
+                    NavigationLink(destination: CategoryPickerView(transaction: transaction)) {
+                        HStack {
+                            Text("Category").frame(width: 80, alignment: .leading)
+                            
+                            Spacer()
+                            
+                            Text(category?.name ?? "").lineLimit(1).foregroundColor(.secondary)
                         }
-                        
-                        Spacer()
-                        
-                        Text(budgetNames).lineLimit(1).foregroundColor(.secondary)
+                    }
+                    
+                    NavigationLink(destination: AllocationsView(transaction: transaction)) {
+                        HStack {
+                            if transaction.allocations.count > 1 {
+                                Text("Budgets").frame(width: 80, alignment: .leading)
+                            } else {
+                                Text("Budget").frame(width: 80, alignment: .leading)
+                            }
+                            
+                            Spacer()
+                            
+                            Text(budgetNames).lineLimit(1).foregroundColor(.secondary)
+                        }
                     }
                 }
-            }
-            
-            Section(header: Text("Notes").foregroundColor(.secondary)) {
-                TextField("", text: $transaction.noteBinding)
+                
+                Section(header: Text("Notes").foregroundColor(.secondary)) {
+                    TextField("", text: $transaction.noteBinding)
+                }
             }
         }
     }

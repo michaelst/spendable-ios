@@ -35,7 +35,13 @@ extension UserData  {
             }
             
             if let id = bankMemberData?.id {
-                let bankMember = BankMember(id: id, name: bankMemberData?.name ?? "", status: bankMemberData?.status, bankAccounts: bankAccounts)
+                let bankMember = BankMember(
+                    id: id,
+                    logo: Data(base64Encoded: bankMemberData!.logo!)!,
+                    name: bankMemberData!.name!,
+                    status: bankMemberData!.status,
+                    bankAccounts: bankAccounts
+                )
                 list.append(bankMember)
             }
         }
@@ -63,7 +69,13 @@ extension UserData  {
             }
             
             if let id = data.id {
-                let bankMember = BankMember(id: id, name: data.name ?? "", status: data.status, bankAccounts: bankAccounts)
+                let bankMember = BankMember(
+                    id: id,
+                    logo: Data(base64Encoded: data.logo!)!,
+                    name: data.name!,
+                    status: data.status,
+                    bankAccounts: bankAccounts
+                )
                 self.bankMembers.append(bankMember)
             }
         }

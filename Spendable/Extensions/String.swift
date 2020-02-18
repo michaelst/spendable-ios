@@ -17,6 +17,13 @@ extension String {
         return Number.formatter.number(from: self)?.doubleValue ?? 0
     }
     
+    var currencyValue: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = .current
+        numberFormatter.numberStyle = .currency
+        return numberFormatter.string(from: NSNumber(value: self.doubleValue)) ?? ""
+    }
+    
     func removePrefix(_ prefix: String) -> String {
         guard self.hasPrefix(prefix) else { return self }
         return String(self.dropFirst(prefix.count))

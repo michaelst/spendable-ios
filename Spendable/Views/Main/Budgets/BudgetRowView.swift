@@ -18,11 +18,7 @@ struct BudgetRowView: View {
                 
                 Spacer()
                 
-                if budget.balance.doubleValue < 0 {
-                    Text("($" + String(format: "%.2f", abs(budget.balance.doubleValue)) + ")").foregroundColor(.red)
-                } else {
-                    Text("$" + String(format: "%.2f", budget.balance.doubleValue))
-                }
+                Text(budget.balance.currencyValue).foregroundColor(budget.balance.doubleValue < 0 ? .red : .secondary)
             }
         }.padding(.vertical)
     }

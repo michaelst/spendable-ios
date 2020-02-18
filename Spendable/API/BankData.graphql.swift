@@ -13,6 +13,7 @@ public final class ListBankMembersQuery: GraphQLQuery {
         id
         name
         status
+        logo
         bankAccounts {
           __typename
           id
@@ -63,6 +64,7 @@ public final class ListBankMembersQuery: GraphQLQuery {
         GraphQLField("id", type: .scalar(GraphQLID.self)),
         GraphQLField("name", type: .scalar(String.self)),
         GraphQLField("status", type: .scalar(String.self)),
+        GraphQLField("logo", type: .scalar(String.self)),
         GraphQLField("bankAccounts", type: .list(.object(BankAccount.selections))),
       ]
 
@@ -72,8 +74,8 @@ public final class ListBankMembersQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, name: String? = nil, status: String? = nil, bankAccounts: [BankAccount?]? = nil) {
-        self.init(unsafeResultMap: ["__typename": "BankMember", "id": id, "name": name, "status": status, "bankAccounts": bankAccounts.flatMap { (value: [BankAccount?]) -> [ResultMap?] in value.map { (value: BankAccount?) -> ResultMap? in value.flatMap { (value: BankAccount) -> ResultMap in value.resultMap } } }])
+      public init(id: GraphQLID? = nil, name: String? = nil, status: String? = nil, logo: String? = nil, bankAccounts: [BankAccount?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "BankMember", "id": id, "name": name, "status": status, "logo": logo, "bankAccounts": bankAccounts.flatMap { (value: [BankAccount?]) -> [ResultMap?] in value.map { (value: BankAccount?) -> ResultMap? in value.flatMap { (value: BankAccount) -> ResultMap in value.resultMap } } }])
       }
 
       public var __typename: String {
@@ -109,6 +111,15 @@ public final class ListBankMembersQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "status")
+        }
+      }
+
+      public var logo: String? {
+        get {
+          return resultMap["logo"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "logo")
         }
       }
 
@@ -201,6 +212,7 @@ public final class CreateBankMemberMutation: GraphQLMutation {
         id
         name
         status
+        logo
         bankAccounts {
           __typename
           id
@@ -258,6 +270,7 @@ public final class CreateBankMemberMutation: GraphQLMutation {
         GraphQLField("id", type: .scalar(GraphQLID.self)),
         GraphQLField("name", type: .scalar(String.self)),
         GraphQLField("status", type: .scalar(String.self)),
+        GraphQLField("logo", type: .scalar(String.self)),
         GraphQLField("bankAccounts", type: .list(.object(BankAccount.selections))),
       ]
 
@@ -267,8 +280,8 @@ public final class CreateBankMemberMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, name: String? = nil, status: String? = nil, bankAccounts: [BankAccount?]? = nil) {
-        self.init(unsafeResultMap: ["__typename": "BankMember", "id": id, "name": name, "status": status, "bankAccounts": bankAccounts.flatMap { (value: [BankAccount?]) -> [ResultMap?] in value.map { (value: BankAccount?) -> ResultMap? in value.flatMap { (value: BankAccount) -> ResultMap in value.resultMap } } }])
+      public init(id: GraphQLID? = nil, name: String? = nil, status: String? = nil, logo: String? = nil, bankAccounts: [BankAccount?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "BankMember", "id": id, "name": name, "status": status, "logo": logo, "bankAccounts": bankAccounts.flatMap { (value: [BankAccount?]) -> [ResultMap?] in value.map { (value: BankAccount?) -> ResultMap? in value.flatMap { (value: BankAccount) -> ResultMap in value.resultMap } } }])
       }
 
       public var __typename: String {
@@ -304,6 +317,15 @@ public final class CreateBankMemberMutation: GraphQLMutation {
         }
         set {
           resultMap.updateValue(newValue, forKey: "status")
+        }
+      }
+
+      public var logo: String? {
+        get {
+          return resultMap["logo"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "logo")
         }
       }
 

@@ -14,6 +14,10 @@ struct BankMemberRowView: View {
     var body: some View {
         NavigationLink(destination: BankMemberView(bankMember: bankMember)) {
             HStack {
+                Image(uiImage: UIImage(data: bankMember.logo)!)
+                    .resizable()
+                    .frame(width: 36, height: 36)
+                
                 Text(bankMember.name)
                 
                 if bankMember.status != "CONNECTED" {

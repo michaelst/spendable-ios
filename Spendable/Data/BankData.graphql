@@ -3,6 +3,7 @@ query ListBankMembers{
     id
     name
     status
+    logo
     bankAccounts {
       id
       name
@@ -17,6 +18,7 @@ mutation CreateBankMember($publicToken: String!) {
     id
     name
     status
+    logo
     bankAccounts {
       id
       name

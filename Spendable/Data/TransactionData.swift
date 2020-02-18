@@ -77,7 +77,7 @@ extension UserData {
         
         let allocations = transaction.allocations.map { allocation in
             return AllocationInputObject(
-                amount: transaction.negative ? "-\(allocation.amount)" : allocation.amount,
+                amount: transaction.amount,
                 budgetId: allocation.budgetId,
                 id: allocation.id.hasPrefix("temp-") ? nil : allocation.id
             )
@@ -85,7 +85,7 @@ extension UserData {
         
         let mutation = UpdateTransactionMutation(
             id: transaction.id,
-            amount: transaction.negative ? "-\(transaction.amount)" : transaction.amount,
+            amount: transaction.amount,
             name: transaction.name,
             date: self.dateFormatter.string(from: transaction.date),
             note: transaction.note,
