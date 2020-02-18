@@ -21,6 +21,7 @@ struct TransactionsView: View {
                         TransactionRowView(transaction: self.userData.sortedTransactions[index])
                             .onAppear(perform: { self.loadMore(index: index) })
                     }
+                    .onDelete(perform: userData.deleteTransactions)
                 }
                 .pullToRefresh(isShowing: $isReloading) {
                     self.userData.apollo.client.clearCache()
@@ -30,6 +31,11 @@ struct TransactionsView: View {
                 .listStyle(GroupedListStyle())
             }
             .navigationBarTitle("Transactions")
+            .navigationBarItems(trailing:
+                NavigationLink(destination: CreateTransactionView()) {
+                    Image(systemName: "plus.circle").font(.system(size: 24, weight: .regular))
+                }
+            )
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

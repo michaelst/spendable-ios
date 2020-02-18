@@ -72,6 +72,50 @@ extension UserData {
         }
     }
     
+    func create(transaction: Transaction) {
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let allocations = transaction.allocations.map { allocation in
+            return AllocationInputObject(
+                amount: transaction.amount,
+                budgetId: allocation.budgetId,
+                id: allocation.id.hasPrefix("temp-") ? nil : allocation.id
+            )
+        }
+        
+        let mutation = CreateTransactionMutation(
+            amount: transaction.amount,
+            name: transaction.name,
+            date: self.dateFormatter.string(from: transaction.date),
+            note: transaction.note,
+            categoryId: transaction.categoryId,
+            allocations: allocations
+        )
+        
+        apollo.client.perform(mutation: mutation) { result in
+            guard let data = try? result.get().data?.createTransaction else { return }
+            
+            if let id = data.id, let amount = data.amount, let date = self.dateFormatter.date(from: data.date!) {
+                let allocations = data.allocations?.map { allocation in
+                    return Allocation(id: allocation!.id!, amount: allocation!.amount!, budgetId: allocation!.budget!.id!)
+                }
+                
+                let transaction = Transaction(
+                    id: id,
+                    name: data.name,
+                    note: data.note,
+                    amount: amount,
+                    date: date,
+                    categoryId: data.category?.id,
+                    allocations: allocations ?? []
+                )
+                
+                self.transactions.append(transaction)
+                self.apollo.client.clearCache()
+            }
+        }
+    }
+    
     func update(transaction: Transaction) {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
@@ -94,6 +138,30 @@ extension UserData {
         )
         
         apollo.client.perform(mutation: mutation) { result in
+            self.apollo.client.clearCache()
+        }
+    }
+    
+    func deleteTransactions(at offsets: IndexSet) {
+        let dispatch = DispatchGroup()
+        
+        for offset in Array(offsets) {
+            dispatch.enter()
+            print(sortedTransactions[offset].id)
+            
+            apollo.client.perform(mutation: DeleteTransactionMutation(id: sortedTransactions[offset].id)) { _result in
+                dispatch.leave()
+            }
+        }
+        
+        dispatch.notify(queue: .main) {
+            let unsoretdOffsets = IndexSet(offsets.compactMap {offset in
+                self.transactions.firstIndex(where: { transaction in
+                    self.sortedTransactions[offset].id == transaction.id
+                })
+            })
+            
+            self.transactions.remove(atOffsets: unsoretdOffsets)
             self.apollo.client.clearCache()
         }
     }

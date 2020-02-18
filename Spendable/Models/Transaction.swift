@@ -38,7 +38,7 @@ class Transaction: ObservableObject, Identifiable {
         case deposit
         case expense
     }
-       
+    
     var amountBinding: String {
         get {
             return self.amount.removePrefix("-")
@@ -66,7 +66,17 @@ class Transaction: ObservableObject, Identifiable {
         }
     }
     
-    init(id: String, pending: Bool, name: String? = nil, note: String? = nil, bankMemo: String? = nil, amount: String, date: Date, categoryId: String? = nil, allocations: [Allocation] = []) {
+    init(
+        id: String,
+        pending: Bool = false,
+        name: String? = nil,
+        note: String? = nil,
+        bankMemo: String? = nil,
+        amount: String = "0.00",
+        date: Date = Date(),
+        categoryId: String? = nil,
+        allocations: [Allocation] = []
+    ) {
         self.id = id
         self.pending = pending
         self.name = name

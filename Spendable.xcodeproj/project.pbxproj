@@ -62,6 +62,7 @@
 		4C65D1EA23FB4C1300E29F67 /* NotificationSettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1E923FB4C1300E29F67 /* NotificationSettingsData.swift */; };
 		4C65D1EC23FB4D1300E29F67 /* NotificationSettingsData.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C65D1EB23FB4D1300E29F67 /* NotificationSettingsData.graphql */; };
 		4C65D1EE23FB4E7E00E29F67 /* NotificationSettingsData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1ED23FB4E7E00E29F67 /* NotificationSettingsData.graphql.swift */; };
+		4C65D1F023FB80DD00E29F67 /* CreateTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1EF23FB80DD00E29F67 /* CreateTransactionView.swift */; };
 		4C6B630C23DFFDE400189931 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B630B23DFFDE400189931 /* CategoryData.swift */; };
 		4C6B630F23E0083C00189931 /* BudgetPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B630E23E0083C00189931 /* BudgetPickerView.swift */; };
 		4C6B631123E0088C00189931 /* BudgetPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B631023E0088B00189931 /* BudgetPickerRowView.swift */; };
@@ -187,6 +188,7 @@
 		4C65D1E923FB4C1300E29F67 /* NotificationSettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsData.swift; sourceTree = "<group>"; };
 		4C65D1EB23FB4D1300E29F67 /* NotificationSettingsData.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationSettingsData.graphql; sourceTree = "<group>"; };
 		4C65D1ED23FB4E7E00E29F67 /* NotificationSettingsData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsData.graphql.swift; sourceTree = "<group>"; };
+		4C65D1EF23FB80DD00E29F67 /* CreateTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransactionView.swift; sourceTree = "<group>"; };
 		4C6B630B23DFFDE400189931 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 		4C6B630E23E0083C00189931 /* BudgetPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPickerView.swift; sourceTree = "<group>"; };
 		4C6B631023E0088B00189931 /* BudgetPickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPickerRowView.swift; sourceTree = "<group>"; };
@@ -440,8 +442,8 @@
 		4C6B630D23E0082800189931 /* Picker */ = {
 			isa = PBXGroup;
 			children = (
-				4C6B630E23E0083C00189931 /* BudgetPickerView.swift */,
 				4C6B631023E0088B00189931 /* BudgetPickerRowView.swift */,
+				4C6B630E23E0083C00189931 /* BudgetPickerView.swift */,
 			);
 			name = Picker;
 			sourceTree = "<group>";
@@ -449,10 +451,11 @@
 		4C9E2288237529720045E6D6 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
-				4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */,
-				4C0985C123764CB2007CBA43 /* TransactionRowView.swift */,
-				4C9E228D23752FA20045E6D6 /* TransactionView.swift */,
+				4C65D1EF23FB80DD00E29F67 /* CreateTransactionView.swift */,
 				4C43ACE023E1442B00315996 /* TransactionFormView.swift */,
+				4C0985C123764CB2007CBA43 /* TransactionRowView.swift */,
+				4C48B1DB236FA32F00C1D234 /* TransactionsView.swift */,
+				4C9E228D23752FA20045E6D6 /* TransactionView.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				4C2FBECE23E784E800C6DF00 /* AllocationTemplateData.swift in Sources */,
 				4C2FBEC123E6864D00C6DF00 /* CreateAllocationView.swift in Sources */,
 				4C2FBED423E7C0C600C6DF00 /* AllocationTemplateRowView.swift in Sources */,
+				4C65D1F023FB80DD00E29F67 /* CreateTransactionView.swift in Sources */,
 				4CCCB3A723E8DE8900E77787 /* SignInWithApple.swift in Sources */,
 				4C2FBEDE23E7D8C500C6DF00 /* AllocationTemplateLineFormView.swift in Sources */,
 				4C9FE56823DC1B9E00489EB1 /* BudgetRowView.swift in Sources */,
