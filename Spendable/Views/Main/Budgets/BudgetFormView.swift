@@ -13,34 +13,36 @@ struct BudgetFormView: View {
     
     var body: some View {
         Form {
-            Section {
-                HStack {
-                    Text("Name").foregroundColor(.secondary)
-                    
-                    Spacer()
-                    
-                    TextField("", text: $budgetInput.name).multilineTextAlignment(.trailing)
-                }
+            HStack {
+                Text("Name")
                 
-                HStack {
-                    Text("Balance").foregroundColor(.secondary)
-                    
-                    Spacer()
-                    
-                    TextField("", text: $budgetInput.balance)
-                        .keyboardType(.decimalPad)
-                        .multilineTextAlignment(.trailing)
-                }
+                Spacer()
                 
-                HStack {
-                    Text("Goal").foregroundColor(.secondary)
-                    
-                    Spacer()
-                    
-                    TextField("", text: $budgetInput.goalBinding)
-                        .keyboardType(.decimalPad)
-                        .multilineTextAlignment(.trailing)
-                }
+                TextField("", text: $budgetInput.name)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.trailing)
+            }
+            
+            HStack {
+                Text("Balance")
+                
+                Spacer()
+                
+                TextField("", text: $budgetInput.balance)
+                    .foregroundColor(.secondary)
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
+            }
+            
+            HStack {
+                Text("Goal")
+                
+                Spacer()
+                
+                TextField("", text: $budgetInput.goalBinding)
+                    .foregroundColor(.secondary)
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
             }
         }
     }

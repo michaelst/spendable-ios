@@ -26,10 +26,19 @@ class Budget: ObservableObject, Identifiable {
         }
     }
     
-     init(id: String, name: String, balance: String, goal: String? = nil) {
-         self.id = id
-         self.name = name
-         self.balance = balance
-         self.goal = goal
-     }
+    var recentAllocations: [RecentBudgetAllocation] = [] { willSet { self.objectWillChange.send() } }
+    
+    init(
+        id: String,
+        name: String,
+        balance: String,
+        goal: String? = nil,
+        recentAllocations: [RecentBudgetAllocation] = []
+    ) {
+        self.id = id
+        self.name = name
+        self.balance = balance
+        self.goal = goal
+        self.recentAllocations = recentAllocations
+    }
 }

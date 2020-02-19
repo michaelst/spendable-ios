@@ -21,8 +21,28 @@ struct BudgetView: View {
     }
     
     var body: some View {
-        BudgetFormView(budgetInput: budgetInput)
-        .onAppear(perform: { self.setInitialValue() })
+        VStack {
+            BudgetFormView(budgetInput: budgetInput)
+                .onAppear(perform: { self.setInitialValue() })
+            
+            List {
+                if budget.recentAllocations.count > 0 {
+                    Section(header: Text("Recent Transactions")) {
+                        ForEach(budget.recentAllocations, id: \.id) { allocation in
+                            RecentBudgetAllocationRowView(allocation: allocation)
+                        }
+                    }
+                }
+                
+                if budget.recentAllocations.count > 0 {
+                    Section(header: Text("Recent Transactions")) {
+                        ForEach(budget.recentAllocations, id: \.id) { allocation in
+                            RecentBudgetAllocationRowView(allocation: allocation)
+                        }
+                    }
+                }
+            }.onAppear(perform: { self.userData.loadBudgetDetails(budget: self.budget) })
+        }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
             leading: Button("Cancel", action: { self.presentationMode.wrappedValue.dismiss() }),

@@ -30,6 +30,25 @@ extension UserData  {
         budgets = budgetsFromData
     }
     
+    func loadBudgetDetails(budget: Budget) {
+        apollo.client.fetch(query: GetBudgetQuery(id: budget.id)) { result in
+            guard let data = try? result.get().data?.budget else { return }
+            let recentBudgetAllocations: [RecentBudgetAllocation]? = data.recentAllocations?.map { allocation in
+                let date = self.dateFormatter.date(from: allocation!.transaction!.date!)
+                
+                return RecentBudgetAllocation(
+                    id: allocation!.id!,
+                    name: allocation!.transaction?.name ?? "",
+                    amount: allocation!.amount!,
+                    date: date!,
+                    pending: allocation!.transaction!.bankTransaction?.pending ?? false
+                )
+            }
+            
+            budget.recentAllocations = recentBudgetAllocations ?? []
+        }
+    }
+    
     func create(budgetInput: BudgetInput) {
         let mutation = CreateBudgetMutation(name: budgetInput.name, balance: budgetInput.balance, goal: budgetInput.goal)
         
@@ -72,6 +91,29 @@ extension UserData  {
             let unsoretdOffsets = IndexSet(offsets.compactMap {offset in
                 self.budgets.firstIndex(where: {line in
                     self.sortedBudgets[offset].id == line.id
+                })
+            })
+            
+            self.budgets.remove(atOffsets: unsoretdOffsets)
+            self.apollo.client.clearCache()
+        }
+    }
+    
+    func deleteGoals(at offsets: IndexSet) {
+        let dispatch = DispatchGroup()
+        
+        for offset in Array(offsets) {
+            dispatch.enter()
+            
+            apollo.client.perform(mutation: DeleteBudgetMutation(id: sortedGoals[offset].id)) { _result in
+                dispatch.leave()
+            }
+        }
+        
+        dispatch.notify(queue: .main) {
+            let unsoretdOffsets = IndexSet(offsets.compactMap {offset in
+                self.budgets.firstIndex(where: {line in
+                    self.sortedGoals[offset].id == line.id
                 })
             })
             

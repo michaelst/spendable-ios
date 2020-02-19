@@ -80,7 +80,17 @@ final class UserData: ObservableObject  {
     
     var sortedBudgets: [Budget] {
         get {
-            budgets.sorted(by: { $0.balance.doubleValue > $1.balance.doubleValue})
+            budgets
+                .filter({ $0.goal == nil })
+                .sorted(by: { $0.balance.doubleValue > $1.balance.doubleValue})
+        }
+    }
+    
+    var sortedGoals: [Budget] {
+        get {
+            budgets
+                .filter({ $0.goal != nil })
+                .sorted(by: { $0.balance.doubleValue > $1.balance.doubleValue})
         }
     }
     

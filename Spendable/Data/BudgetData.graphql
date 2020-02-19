@@ -1,9 +1,35 @@
-query ListBudgets{
+query ListBudgets {
   budgets {
     id
     name
     balance
     goal
+  }
+}
+
+query GetBudget($id: ID!) {
+  budget(id: $id) {
+    id
+    name
+    balance
+    goal
+    recentAllocations {
+        id
+        amount
+        transaction {
+            name
+            date
+            bankTransaction {
+                pending
+            }
+        }
+    }
+    allocationTemplateLines {
+        amount
+        allocationTemplate {
+            name
+        }
+    }
   }
 }
 

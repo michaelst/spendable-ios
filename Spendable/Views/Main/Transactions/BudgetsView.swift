@@ -23,12 +23,21 @@ struct BudgetsView: View {
                     Spacer()
                     
                     Text(userData.user.spendable.currencyValue).foregroundColor(userData.user.spendable.doubleValue < 0 ? .red : .secondary)
-                 }.padding(.vertical)
+                }.padding(.vertical)
                 
                 ForEach(userData.sortedBudgets) { budget in
                     BudgetRowView(budget: budget)
                 }
                 .onDelete(perform: userData.deleteBudgets)
+                
+                if userData.sortedGoals.count > 0 {
+                    Section(header: Text("Goals")) {
+                        ForEach(userData.sortedGoals) { budget in
+                            BudgetRowView(budget: budget)
+                        }
+                        .onDelete(perform: userData.deleteGoals)
+                    }
+                }
             }
             .pullToRefresh(isShowing: $isReloading) {
                 self.userData.apollo.client.clearCache()

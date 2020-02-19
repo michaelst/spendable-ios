@@ -18,7 +18,7 @@ class Allocation: ObservableObject, Identifiable, Budgetable {
 
     init(id: String, amount: String, budgetId: String) {
         self.id = id
-        self.amount = amount.removePrefix("-")
+        self.amount = amount
         self.budgetId = budgetId
     }
 }

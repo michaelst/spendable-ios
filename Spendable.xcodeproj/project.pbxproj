@@ -63,6 +63,8 @@
 		4C65D1EC23FB4D1300E29F67 /* NotificationSettingsData.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C65D1EB23FB4D1300E29F67 /* NotificationSettingsData.graphql */; };
 		4C65D1EE23FB4E7E00E29F67 /* NotificationSettingsData.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1ED23FB4E7E00E29F67 /* NotificationSettingsData.graphql.swift */; };
 		4C65D1F023FB80DD00E29F67 /* CreateTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1EF23FB80DD00E29F67 /* CreateTransactionView.swift */; };
+		4C65D1F323FBB28700E29F67 /* RecentBudgetAllocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1F223FBB28700E29F67 /* RecentBudgetAllocation.swift */; };
+		4C65D1F523FBB6BF00E29F67 /* RecentBudgetAllocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C65D1F423FBB6BF00E29F67 /* RecentBudgetAllocationRowView.swift */; };
 		4C6B630C23DFFDE400189931 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B630B23DFFDE400189931 /* CategoryData.swift */; };
 		4C6B630F23E0083C00189931 /* BudgetPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B630E23E0083C00189931 /* BudgetPickerView.swift */; };
 		4C6B631123E0088C00189931 /* BudgetPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B631023E0088B00189931 /* BudgetPickerRowView.swift */; };
@@ -189,6 +191,8 @@
 		4C65D1EB23FB4D1300E29F67 /* NotificationSettingsData.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NotificationSettingsData.graphql; sourceTree = "<group>"; };
 		4C65D1ED23FB4E7E00E29F67 /* NotificationSettingsData.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsData.graphql.swift; sourceTree = "<group>"; };
 		4C65D1EF23FB80DD00E29F67 /* CreateTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransactionView.swift; sourceTree = "<group>"; };
+		4C65D1F223FBB28700E29F67 /* RecentBudgetAllocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentBudgetAllocation.swift; sourceTree = "<group>"; };
+		4C65D1F423FBB6BF00E29F67 /* RecentBudgetAllocationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentBudgetAllocationRowView.swift; sourceTree = "<group>"; };
 		4C6B630B23DFFDE400189931 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 		4C6B630E23E0083C00189931 /* BudgetPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPickerView.swift; sourceTree = "<group>"; };
 		4C6B631023E0088B00189931 /* BudgetPickerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPickerRowView.swift; sourceTree = "<group>"; };
@@ -439,6 +443,15 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		4C65D1F123FBB26D00E29F67 /* Budgets */ = {
+			isa = PBXGroup;
+			children = (
+				4C9FE56523DC169D00489EB1 /* Budget.swift */,
+				4C65D1F223FBB28700E29F67 /* RecentBudgetAllocation.swift */,
+			);
+			path = Budgets;
+			sourceTree = "<group>";
+		};
 		4C6B630D23E0082800189931 /* Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +493,7 @@
 				4C9FE56923DC1BE900489EB1 /* BudgetView.swift */,
 				4C43ACDB23E1207E00315996 /* BudgetFormView.swift */,
 				4C5780F723DE95BB0053117F /* CreateBudgetView.swift */,
+				4C65D1F423FBB6BF00E29F67 /* RecentBudgetAllocationRowView.swift */,
 			);
 			path = Budgets;
 			sourceTree = "<group>";
@@ -496,12 +510,12 @@
 		4CA3F5F72370E4850083E471 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4C65D1F123FBB26D00E29F67 /* Budgets */,
 				4C2FBEB523E6658100C6DF00 /* Allocation.swift */,
 				4C2FBEC923E7829000C6DF00 /* AllocationTemplate.swift */,
 				4C2FBECB23E782DA00C6DF00 /* AllocationTemplateLine.swift */,
 				4C5EA9422371254D000EDF15 /* BankAccount.swift */,
 				4C5EA93E23712166000EDF15 /* BankMember.swift */,
-				4C9FE56523DC169D00489EB1 /* Budget.swift */,
 				4C5780FC23DE98050053117F /* BudgetInput.swift */,
 				4C0985CA2376610B007CBA43 /* Category.swift */,
 				4C65D1E723FB47B200E29F67 /* NotificationSettings.swift */,
@@ -880,8 +894,10 @@
 				4C6B630F23E0083C00189931 /* BudgetPickerView.swift in Sources */,
 				4CE24CE523DEB37B0020604B /* BankMemberView.swift in Sources */,
 				4C0985C7237659C0007CBA43 /* TransactionData.swift in Sources */,
+				4C65D1F523FBB6BF00E29F67 /* RecentBudgetAllocationRowView.swift in Sources */,
 				4C6B631123E0088C00189931 /* BudgetPickerRowView.swift in Sources */,
 				4C5EA9432371254D000EDF15 /* BankAccount.swift in Sources */,
+				4C65D1F323FBB28700E29F67 /* RecentBudgetAllocation.swift in Sources */,
 				4CCCB39E23E8BD2B00E77787 /* UserData.graphql.swift in Sources */,
 				4C49919523694916002A4D7C /* SignupView.swift in Sources */,
 				4C2FBEB923E67B4800C6DF00 /* AllocationsView.swift in Sources */,
