@@ -145,6 +145,7 @@ public final class GetBudgetQuery: GraphQLQuery {
         }
         allocationTemplateLines {
           __typename
+          id
           amount
           allocationTemplate {
             __typename
@@ -435,6 +436,7 @@ public final class GetBudgetQuery: GraphQLQuery {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
           GraphQLField("amount", type: .scalar(String.self)),
           GraphQLField("allocationTemplate", type: .object(AllocationTemplate.selections)),
         ]
@@ -445,8 +447,8 @@ public final class GetBudgetQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(amount: String? = nil, allocationTemplate: AllocationTemplate? = nil) {
-          self.init(unsafeResultMap: ["__typename": "AllocationTemplateLine", "amount": amount, "allocationTemplate": allocationTemplate.flatMap { (value: AllocationTemplate) -> ResultMap in value.resultMap }])
+        public init(id: GraphQLID? = nil, amount: String? = nil, allocationTemplate: AllocationTemplate? = nil) {
+          self.init(unsafeResultMap: ["__typename": "AllocationTemplateLine", "id": id, "amount": amount, "allocationTemplate": allocationTemplate.flatMap { (value: AllocationTemplate) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -455,6 +457,15 @@ public final class GetBudgetQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID? {
+          get {
+            return resultMap["id"] as? GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
           }
         }
 

@@ -10,24 +10,9 @@ import SwiftUI
 
 struct CreateBudgetView: View {
     @EnvironmentObject var userData: UserData
-    @ObservedObject var budgetInput: BudgetInput = BudgetInput()
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var draftBudget: Budget = Budget(id: "draft")
     
     var body: some View {
-        BudgetFormView(budgetInput: budgetInput)
-        .navigationBarTitle("Create budget")
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(
-            leading:
-            Button("Cancel", action: {
-                self.budgetInput.clear()
-                self.presentationMode.wrappedValue.dismiss()
-            }),
-            trailing:
-            Button("Add", action: {
-                self.userData.create(budgetInput: self.budgetInput)
-                self.presentationMode.wrappedValue.dismiss()
-            })
-        )
+        BudgetFormView(draftBudget: draftBudget, onSave: { self.userData.create(draftBudget: self.draftBudget) })
     }
 }

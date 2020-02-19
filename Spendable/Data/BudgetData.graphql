@@ -25,6 +25,7 @@ query GetBudget($id: ID!) {
         }
     }
     allocationTemplateLines {
+        id
         amount
         allocationTemplate {
             name

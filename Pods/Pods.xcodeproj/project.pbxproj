@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = Plaid;
+			productName = Plaid;
 		};
 /* End PBXAggregateTarget section */
 
@@ -41,13 +42,13 @@
 		53304D806AA22BB1B29E97F940AE5C02 /* Pods-Spendable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Spendable.debug.xcconfig"; sourceTree = "<group>"; };
 		88A318757F81D969177A93DB444DD655 /* LinkKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LinkKit.framework; sourceTree = "<group>"; };
 		99DF44A429AEFA6BA2EDBA8BA989A6FB /* Pods-Spendable-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Spendable-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A653244AA541B363D956357064ED466D /* Pods-Spendable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Spendable.release.xcconfig"; sourceTree = "<group>"; };
 		B780E518CE961CF251B253018506DCBE /* Pods-Spendable-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Spendable-frameworks.sh"; sourceTree = "<group>"; };
 		B7AC3D074116A92A10E956B81E9D43E6 /* Pods-Spendable-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Spendable-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D5A87DF18D0708D6C6A088AE18C7E5C6 /* Pods-Spendable-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Spendable-umbrella.h"; sourceTree = "<group>"; };
 		E00E407BED310FA1263AB9ACC1F5D6AF /* Plaid.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Plaid.xcconfig; sourceTree = "<group>"; };
-		ED714F9CAA9A5BA129FCC081442EAD13 /* Pods_Spendable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Spendable.framework; path = "Pods-Spendable.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED714F9CAA9A5BA129FCC081442EAD13 /* Pods_Spendable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spendable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2ADA3CCEFF3B7F1942AB47C493ABC41 /* Pods-Spendable.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Spendable.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,7 +155,6 @@
 				47ADF8094E97F5B866C477A17223894F /* Frameworks */,
 				B321FB55ADE7E2366613DE96933EF5DC /* Support Files */,
 			);
-			name = Plaid;
 			path = Plaid;
 			sourceTree = "<group>";
 		};

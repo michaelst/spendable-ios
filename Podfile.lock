@@ -1,5 +1,5 @@
 PODS:
-  - Plaid (1.1.26)
+  - Plaid (1.1.27)
 
 DEPENDENCIES:
   - Plaid (~> 1.1.26)
@@ -9,7 +9,7 @@ SPEC REPOS:
     - Plaid
 
 SPEC CHECKSUMS:
-  Plaid: 1052a707b90d3c84e5a5f4c1938c949b5af44fa8
+  Plaid: af02cc6a5d16d7eca0bc602c439d0e6827372cf1
 
 PODFILE CHECKSUM: 519c322d23930d618c03c684016845cfe4d63035
 

@@ -46,11 +46,21 @@ extension UserData  {
             }
             
             budget.recentAllocations = recentBudgetAllocations ?? []
+            
+            let allocationTemplateLines: [BudgetAllocationTemplateLine]? = data.allocationTemplateLines?.map { line in
+                return BudgetAllocationTemplateLine(
+                    id: line!.id!,
+                    name: line!.allocationTemplate?.name ?? "",
+                    amount: line!.amount!
+                )
+            }
+            
+            budget.allocationTemplateLines = allocationTemplateLines ?? []
         }
     }
     
-    func create(budgetInput: BudgetInput) {
-        let mutation = CreateBudgetMutation(name: budgetInput.name, balance: budgetInput.balance, goal: budgetInput.goal)
+    func create(draftBudget: Budget) {
+        let mutation = CreateBudgetMutation(name: draftBudget.name, balance: draftBudget.balance, goal: draftBudget.goal)
         
         apollo.client.perform(mutation: mutation) { result in
             guard let data = try? result.get().data?.createBudget else { return }
@@ -62,16 +72,10 @@ extension UserData  {
         }
     }
     
-    func update(budget: Budget, budgetInput: BudgetInput) {
-        let mutation = UpdateBudgetMutation(id: budget.id, name: budgetInput.name, balance: budgetInput.balance, goal: budgetInput.goal)
+    func update(budget: Budget) {
+        let mutation = UpdateBudgetMutation(id: budget.id, name: budget.name, balance: budget.balance, goal: budget.goal)
         
-        apollo.client.perform(mutation: mutation) { result in
-            guard let data = try? result.get().data?.updateBudget else { return }
-            
-            budget.name = data.name!
-            budget.balance = data.balance!
-            budget.goal = data.goal
-            
+        apollo.client.perform(mutation: mutation) { _result in          
             self.apollo.client.clearCache()
         }
     }

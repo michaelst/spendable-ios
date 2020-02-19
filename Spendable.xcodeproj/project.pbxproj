@@ -22,7 +22,6 @@
 		4C0985C7237659C0007CBA43 /* TransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0985C6237659C0007CBA43 /* TransactionData.swift */; };
 		4C0985C923765DCC007CBA43 /* TransactionData.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C0985C823765DCC007CBA43 /* TransactionData.graphql */; };
 		4C0985CB2376610B007CBA43 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0985CA2376610B007CBA43 /* Category.swift */; };
-		4C2FBEB323E6246300C6DF00 /* Pods_Spendable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA1C44FF7680674E9E53837 /* Pods_Spendable.framework */; };
 		4C2FBEB623E6658100C6DF00 /* Allocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEB523E6658100C6DF00 /* Allocation.swift */; };
 		4C2FBEB923E67B4800C6DF00 /* AllocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEB823E67B4800C6DF00 /* AllocationsView.swift */; };
 		4C2FBEBD23E67BD800C6DF00 /* AllocationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2FBEBC23E67BD800C6DF00 /* AllocationRowView.swift */; };
@@ -50,7 +49,6 @@
 		4C5780EC23DE2C810053117F /* KeyboardResponsive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5780EB23DE2C810053117F /* KeyboardResponsive.swift */; };
 		4C5780F323DE85B60053117F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5780F223DE85B60053117F /* String.swift */; };
 		4C5780F823DE95BB0053117F /* CreateBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5780F723DE95BB0053117F /* CreateBudgetView.swift */; };
-		4C5780FD23DE98050053117F /* BudgetInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5780FC23DE98050053117F /* BudgetInput.swift */; };
 		4C5EA93F23712166000EDF15 /* BankMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EA93E23712166000EDF15 /* BankMember.swift */; };
 		4C5EA9432371254D000EDF15 /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EA9422371254D000EDF15 /* BankAccount.swift */; };
 		4C5EA94523712FBA000EDF15 /* BankMemberRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5EA94423712FBA000EDF15 /* BankMemberRowView.swift */; };
@@ -70,6 +68,7 @@
 		4C6B631123E0088C00189931 /* BudgetPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B631023E0088B00189931 /* BudgetPickerRowView.swift */; };
 		4C750F1123776A54005BAB1F /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C750F1023776A54005BAB1F /* CategoryPickerView.swift */; };
 		4C750F1323777828005BAB1F /* CategoryPickerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C750F1223777828005BAB1F /* CategoryPickerRowView.swift */; };
+		4C8F9C7423FCD268001055CA /* Pods_Spendable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA1C44FF7680674E9E53837 /* Pods_Spendable.framework */; };
 		4C9E228C237529E40045E6D6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E228B237529E40045E6D6 /* Transaction.swift */; };
 		4C9E228E23752FA20045E6D6 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E228D23752FA20045E6D6 /* TransactionView.swift */; };
 		4C9FE55D23DC04F000489EB1 /* UserData.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4C9FE55C23DC04F000489EB1 /* UserData.graphql */; };
@@ -97,6 +96,7 @@
 		4CE24CE123DEAA520020604B /* BankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE24CE023DEAA520020604B /* BankData.swift */; };
 		4CE24CE323DEAA8B0020604B /* BankData.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 4CE24CE223DEAA8B0020604B /* BankData.graphql */; };
 		4CE24CE523DEB37B0020604B /* BankMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE24CE423DEB37B0020604B /* BankMemberView.swift */; };
+		4CFB149023FD0683003873DB /* BudgetAllocationTemplateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB148F23FD0683003873DB /* BudgetAllocationTemplateLine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,19 +115,6 @@
 			remoteInfo = Spendable;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		4C5C2E9B23E5FFDB00CF7B2B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		446969BD668C903588AA43D8 /* Pods-Spendable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spendable.debug.xcconfig"; path = "Target Support Files/Pods-Spendable/Pods-Spendable.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,7 +165,6 @@
 		4C5780EB23DE2C810053117F /* KeyboardResponsive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsive.swift; sourceTree = "<group>"; };
 		4C5780F223DE85B60053117F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		4C5780F723DE95BB0053117F /* CreateBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBudgetView.swift; sourceTree = "<group>"; };
-		4C5780FC23DE98050053117F /* BudgetInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetInput.swift; sourceTree = "<group>"; };
 		4C5EA93E23712166000EDF15 /* BankMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankMember.swift; sourceTree = "<group>"; };
 		4C5EA9422371254D000EDF15 /* BankAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccount.swift; sourceTree = "<group>"; };
 		4C5EA94423712FBA000EDF15 /* BankMemberRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankMemberRowView.swift; sourceTree = "<group>"; };
@@ -224,6 +210,7 @@
 		4CE24CE023DEAA520020604B /* BankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankData.swift; sourceTree = "<group>"; };
 		4CE24CE223DEAA8B0020604B /* BankData.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = BankData.graphql; sourceTree = "<group>"; };
 		4CE24CE423DEB37B0020604B /* BankMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankMemberView.swift; sourceTree = "<group>"; };
+		4CFB148F23FD0683003873DB /* BudgetAllocationTemplateLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetAllocationTemplateLine.swift; sourceTree = "<group>"; };
 		7CA1C44FF7680674E9E53837 /* Pods_Spendable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spendable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEA6C1915EAD94B501552639 /* Pods-Spendable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spendable.release.xcconfig"; path = "Target Support Files/Pods-Spendable/Pods-Spendable.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,7 +223,7 @@
 				4C2FBEC723E77A3900C6DF00 /* SwiftUIRefresh in Frameworks */,
 				4CE1FB9423691C030071BF74 /* KeychainSwift in Frameworks */,
 				4C08F4812353F8E90000C2FC /* Apollo in Frameworks */,
-				4C2FBEB323E6246300C6DF00 /* Pods_Spendable.framework in Frameworks */,
+				4C8F9C7423FCD268001055CA /* Pods_Spendable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +435,7 @@
 			children = (
 				4C9FE56523DC169D00489EB1 /* Budget.swift */,
 				4C65D1F223FBB28700E29F67 /* RecentBudgetAllocation.swift */,
+				4CFB148F23FD0683003873DB /* BudgetAllocationTemplateLine.swift */,
 			);
 			path = Budgets;
 			sourceTree = "<group>";
@@ -516,7 +504,6 @@
 				4C2FBECB23E782DA00C6DF00 /* AllocationTemplateLine.swift */,
 				4C5EA9422371254D000EDF15 /* BankAccount.swift */,
 				4C5EA93E23712166000EDF15 /* BankMember.swift */,
-				4C5780FC23DE98050053117F /* BudgetInput.swift */,
 				4C0985CA2376610B007CBA43 /* Category.swift */,
 				4C65D1E723FB47B200E29F67 /* NotificationSettings.swift */,
 				4C9E228B237529E40045E6D6 /* Transaction.swift */,
@@ -589,8 +576,7 @@
 				4C08F4452353F8800000C2FC /* Frameworks */,
 				4C08F4462353F8800000C2FC /* Resources */,
 				4CCCB3AA23EBA8B100E77787 /* Increment Build Number */,
-				4C5C2E9B23E5FFDB00CF7B2B /* Embed Frameworks */,
-				A4CA0B6184E5DB49066AA44A /* [CP] Embed Pods Frameworks */,
+				97EBE0E99B72A09AEA059595 /* [CP] Embed Pods Frameworks */,
 				4C43F61B236A8C3F00CE5F38 /* Prepare for Distribution */,
 			);
 			buildRules = (
@@ -762,7 +748,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "LINK_ROOT=${PODS_ROOT:+$PODS_ROOT/Plaid/ios}\ncp \"${LINK_ROOT:-$PROJECT_DIR}\"/LinkKit.framework/prepare_for_distribution.sh \"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n\"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n";
+			shellScript = "LINK_ROOT=${PODS_ROOT:+$PODS_ROOT/Plaid}\ncp \"${LINK_ROOT:-$PROJECT_DIR}\"/LinkKit.framework/prepare_for_distribution.sh \"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n\"${CODESIGNING_FOLDER_PATH}\"/Frameworks/LinkKit.framework/prepare_for_distribution.sh\n";
 			showEnvVarsInLog = 0;
 		};
 		4CCCB3AA23EBA8B100E77787 /* Increment Build Number */ = {
@@ -805,7 +791,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A4CA0B6184E5DB49066AA44A /* [CP] Embed Pods Frameworks */ = {
+		97EBE0E99B72A09AEA059595 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -870,6 +856,7 @@
 				4CE1FB9C2369402E0071BF74 /* AuthView.swift in Sources */,
 				4CA3F5FC2370FADE0083E471 /* BankMembersView.swift in Sources */,
 				4CA3F5F92370E4900083E471 /* User.swift in Sources */,
+				4CFB149023FD0683003873DB /* BudgetAllocationTemplateLine.swift in Sources */,
 				4C08F487235402DC0000C2FC /* ApolloClient.swift in Sources */,
 				4C2FBEE123E7DA0E00C6DF00 /* Budgetable.swift in Sources */,
 				4C65D1E123F1166600E29F67 /* BankData.graphql.swift in Sources */,
@@ -886,7 +873,6 @@
 				4C750F1323777828005BAB1F /* CategoryPickerRowView.swift in Sources */,
 				4C9FE56023DC152700489EB1 /* BudgetsView.swift in Sources */,
 				4C2FBED623E7C11600C6DF00 /* AllocationTemplateView.swift in Sources */,
-				4C5780FD23DE98050053117F /* BudgetInput.swift in Sources */,
 				4CE1FB9A23693AA20071BF74 /* MainView.swift in Sources */,
 				4CE24CE123DEAA520020604B /* BankData.swift in Sources */,
 				4C750F1123776A54005BAB1F /* CategoryPickerView.swift in Sources */,
