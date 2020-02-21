@@ -36,20 +36,6 @@ final class UserData: ObservableObject  {
         }
     }
     
-    
-    var deviceToken : String? {
-        get {
-            keychain.get("device-token")
-        }
-        set {
-            self.objectWillChange.send()
-            
-            if newValue != nil {
-                keychain.set(newValue!, forKey: "device-token")
-            }
-        }
-    }
-    
     // MODELS
     
     var user = User(spendable: "0") {
@@ -127,7 +113,6 @@ final class UserData: ObservableObject  {
     
     func loadData() {
         loadCurrentUser()
-        loadNotificationSettings()
         loadCategories()
         loadBudgets()
         loadTransactions()

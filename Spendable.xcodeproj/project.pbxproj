@@ -118,7 +118,7 @@
 
 /* Begin PBXFileReference section */
 		446969BD668C903588AA43D8 /* Pods-Spendable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spendable.debug.xcconfig"; path = "Target Support Files/Pods-Spendable/Pods-Spendable.debug.xcconfig"; sourceTree = "<group>"; };
-		4C08F4482353F8800000C2FC /* Spendable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spendable.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C08F4482353F8800000C2FC /* Spendable Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spendable Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C08F44B2353F8800000C2FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C08F44D2353F8800000C2FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4C08F44F2353F8800000C2FC /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 		4C08F4492353F8800000C2FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C08F4482353F8800000C2FC /* Spendable.app */,
+				4C08F4482353F8800000C2FC /* Spendable Dev.app */,
 				4C08F45E2353F8810000C2FC /* SpendableTests.xctest */,
 				4C08F4692353F8810000C2FC /* SpendableUITests.xctest */,
 			);
@@ -590,7 +590,7 @@
 				4C2FBEC623E77A3900C6DF00 /* SwiftUIRefresh */,
 			);
 			productName = Spendable;
-			productReference = 4C08F4482353F8800000C2FC /* Spendable.app */;
+			productReference = 4C08F4482353F8800000C2FC /* Spendable Dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4C08F45D2353F8810000C2FC /* SpendableTests */ = {
@@ -1072,8 +1072,9 @@
 				LINK_ENV = development;
 				LINK_KEY = 37cc44ed343b19bae3920edf047df1;
 				LINK_WEBHOOK = "";
-				PRODUCT_BUNDLE_IDENTIFIER = fiftysevenmedia.Spendable;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = fiftysevenmedia.SpendableDev;
+				PRODUCT_MODULE_NAME = Spendable_Dev;
+				PRODUCT_NAME = "$(TARGET_NAME) Dev";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

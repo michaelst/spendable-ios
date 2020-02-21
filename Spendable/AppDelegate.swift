@@ -19,9 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userData.apollo.client.clearCache()
         }
         
-        if userData.deviceToken != nil {
-            Notifcations.registerForPushNotifications()
-        }
+        application.registerForRemoteNotifications()
         
         return true
     }
@@ -42,9 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceTokenData: Data) {
         let tokenParts = deviceTokenData.map { data in String(format: "%02.2hhx", data) }
-        let deviceToken = tokenParts.joined()
-        userData.deviceToken = deviceToken
-        userData.loadNotificationSettings()
+        userData.loadNotificationSettings(deviceToken: tokenParts.joined())
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

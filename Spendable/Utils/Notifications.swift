@@ -9,22 +9,17 @@
 import Foundation
 import UserNotifications
 import UIKit
-import KeychainSwift
 
-struct Notifcations {
+struct Notifications {
     
     static func registerForPushNotifications() {
-        let keychain = KeychainSwift()
-        
-        if keychain.get("device-token") == nil {
-            UNUserNotificationCenter.current()
-                .requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-                    guard granted else { return }
-                    
-                    DispatchQueue.main.async {
-                        UIApplication.shared.registerForRemoteNotifications()
-                    }
-            }
+        UNUserNotificationCenter.current()
+            .requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                guard granted else { return }
+                
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
         }
     }
     

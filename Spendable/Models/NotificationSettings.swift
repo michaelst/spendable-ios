@@ -21,7 +21,7 @@ class NotificationSettings: ObservableObject {
             self.save()
             
             if enabled {
-                Notifcations.registerForPushNotifications()
+                Notifications.registerForPushNotifications()
             }
         }
     }
