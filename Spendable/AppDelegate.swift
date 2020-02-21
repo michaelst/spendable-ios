@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userData.apollo.client.clearCache()
         }
         
+        if userData.deviceToken != nil {
+            Notifcations.registerForPushNotifications()
+        }
+        
         return true
     }
     

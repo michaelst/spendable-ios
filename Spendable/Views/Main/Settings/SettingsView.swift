@@ -33,7 +33,6 @@ struct SettingsView: View {
                 }
             }.navigationBarTitle("Settings")
         }
-        .onAppear(perform: { self.userData.loadNotificationSettings() })
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
