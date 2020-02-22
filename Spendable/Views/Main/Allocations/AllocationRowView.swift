@@ -25,7 +25,7 @@ struct AllocationRowView: View {
                 
                 Spacer()
                 
-                Text("$" + String(format: "%.2f", allocation.amount.doubleValue))
+                Text(allocation.amount.currencyValue)
             }
         }.padding(.vertical)
     }

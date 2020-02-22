@@ -26,7 +26,7 @@ struct AllocationFormView: View {
                     
                     Spacer()
                     
-                    TextField("", text: $allocation.amount)
+                    TextField("", text: $allocation.amountBinding)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                 }

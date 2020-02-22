@@ -33,7 +33,7 @@ extension UserData  {
     func loadBudgetDetails(budget: Budget) {
         apollo.client.fetch(query: GetBudgetQuery(id: budget.id)) { result in
             guard let data = try? result.get().data?.budget else { return }
-            let recentBudgetAllocations: [RecentBudgetAllocation]? = data.recentAllocations?.map { allocation in
+            let recentBudgetAllocations: [RecentBudgetAllocation]? = data.recentAllocations?.map({ allocation in
                 let date = self.dateFormatter.date(from: allocation!.transaction!.date!)
                 
                 return RecentBudgetAllocation(
@@ -43,17 +43,17 @@ extension UserData  {
                     date: date!,
                     pending: allocation!.transaction!.bankTransaction?.pending ?? false
                 )
-            }
+            }).sorted(by: { $0.date > $1.date})
             
             budget.recentAllocations = recentBudgetAllocations ?? []
             
-            let allocationTemplateLines: [BudgetAllocationTemplateLine]? = data.allocationTemplateLines?.map { line in
+            let allocationTemplateLines: [BudgetAllocationTemplateLine]? = data.allocationTemplateLines?.map({ line in
                 return BudgetAllocationTemplateLine(
                     id: line!.id!,
                     name: line!.allocationTemplate?.name ?? "",
                     amount: line!.amount!
                 )
-            }
+            }).sorted(by: { $0.amount.doubleValue > $1.amount.doubleValue})
             
             budget.allocationTemplateLines = allocationTemplateLines ?? []
         }

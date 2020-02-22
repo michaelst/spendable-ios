@@ -78,8 +78,7 @@ extension UserData {
         let allocations = transaction.allocations.map { allocation in
             return AllocationInputObject(
                 amount: allocation.amount,
-                budgetId: allocation.budgetId,
-                id: allocation.id.hasPrefix("temp-") ? nil : allocation.id
+                budgetId: allocation.budgetId
             )
         }
         
