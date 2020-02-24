@@ -21,13 +21,15 @@ struct AllocationsView: View {
     var body: some View {
         List {
             Section(footer: AllocationsFooterView(transaction: transaction)) {
-                HStack {
-                    Text("Spendable")
-                    
-                    Spacer()
-                    
-                    Text("$" + String(format: "%.2f", spendableAmount))
-                }.padding(.vertical)
+                if spendableAmount != 0 {
+                    HStack {
+                        Text("Spendable")
+                        
+                        Spacer()
+                        
+                        Text(spendableAmount.currencyValue)
+                    }.padding(.vertical)
+                }
                 
                 ForEach(transaction.allocations.sorted { $0.amount.doubleValue > $1.amount.doubleValue}) { allocation in
                     AllocationRowView(allocation: allocation)
@@ -57,7 +59,7 @@ struct AllocationsFooterView: View {
     var body: some View {
         HStack {
             NavigationLink(destination: CreateAllocationView(transaction: transaction)) {
-                Text("Add budget")
+                Text("Split")
             }
             
             Spacer()
