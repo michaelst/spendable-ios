@@ -18,7 +18,8 @@ class Apollo {
     static let shared = Apollo()
     
     private lazy var networkTransport = HTTPNetworkTransport(
-        url: URL(string: "https://spendable.money/graphql")!
+        url: URL(string: "https://spendable.money/graphql")!,
+        delegate: self
     )
     
     private(set) lazy var client = ApolloClient(networkTransport: self.networkTransport)

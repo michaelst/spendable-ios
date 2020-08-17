@@ -32,11 +32,9 @@ public final class GetNotificationSettingsQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootQueryType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("notificationSettings", arguments: ["deviceToken": GraphQLVariable("deviceToken")], type: .object(NotificationSetting.selections)),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("notificationSettings", arguments: ["deviceToken": GraphQLVariable("deviceToken")], type: .object(NotificationSetting.selections)),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -60,13 +58,11 @@ public final class GetNotificationSettingsQuery: GraphQLQuery {
     public struct NotificationSetting: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["NotificationSettings"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-          GraphQLField("enabled", type: .scalar(Bool.self)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(GraphQLID.self)),
+        GraphQLField("enabled", type: .scalar(Bool.self)),
+      ]
 
       public private(set) var resultMap: ResultMap
 
@@ -138,11 +134,9 @@ public final class UpdateNotificationSettingsMutation: GraphQLMutation {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("updateNotificationSettings", arguments: ["id": GraphQLVariable("id"), "enabled": GraphQLVariable("enabled")], type: .object(UpdateNotificationSetting.selections)),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateNotificationSettings", arguments: ["id": GraphQLVariable("id"), "enabled": GraphQLVariable("enabled")], type: .object(UpdateNotificationSetting.selections)),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -166,13 +160,11 @@ public final class UpdateNotificationSettingsMutation: GraphQLMutation {
     public struct UpdateNotificationSetting: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["NotificationSettings"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-          GraphQLField("enabled", type: .scalar(Bool.self)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(GraphQLID.self)),
+        GraphQLField("enabled", type: .scalar(Bool.self)),
+      ]
 
       public private(set) var resultMap: ResultMap
 

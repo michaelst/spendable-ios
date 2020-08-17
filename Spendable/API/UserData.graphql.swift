@@ -25,11 +25,9 @@ public final class CurrentUserQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootQueryType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("currentUser", type: .object(CurrentUser.selections)),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("currentUser", type: .object(CurrentUser.selections)),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -53,13 +51,11 @@ public final class CurrentUserQuery: GraphQLQuery {
     public struct CurrentUser: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["User"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("bankLimit", type: .scalar(Int.self)),
-          GraphQLField("spendable", type: .scalar(String.self)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("bankLimit", type: .scalar(Int.self)),
+        GraphQLField("spendable", type: .scalar(String.self)),
+      ]
 
       public private(set) var resultMap: ResultMap
 
@@ -130,11 +126,9 @@ public final class SignInWithAppleMutation: GraphQLMutation {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("signInWithApple", arguments: ["token": GraphQLVariable("token")], type: .object(SignInWithApple.selections)),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("signInWithApple", arguments: ["token": GraphQLVariable("token")], type: .object(SignInWithApple.selections)),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -158,14 +152,12 @@ public final class SignInWithAppleMutation: GraphQLMutation {
     public struct SignInWithApple: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["User"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("token", type: .scalar(String.self)),
-          GraphQLField("bankLimit", type: .scalar(Int.self)),
-          GraphQLField("spendable", type: .scalar(String.self)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("token", type: .scalar(String.self)),
+        GraphQLField("bankLimit", type: .scalar(Int.self)),
+        GraphQLField("spendable", type: .scalar(String.self)),
+      ]
 
       public private(set) var resultMap: ResultMap
 
@@ -247,11 +239,9 @@ public final class LoginMutation: GraphQLMutation {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("login", arguments: ["email": GraphQLVariable("email"), "password": GraphQLVariable("password")], type: .object(Login.selections)),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("login", arguments: ["email": GraphQLVariable("email"), "password": GraphQLVariable("password")], type: .object(Login.selections)),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -275,14 +265,12 @@ public final class LoginMutation: GraphQLMutation {
     public struct Login: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["User"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("token", type: .scalar(String.self)),
-          GraphQLField("bankLimit", type: .scalar(Int.self)),
-          GraphQLField("spendable", type: .scalar(String.self)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("token", type: .scalar(String.self)),
+        GraphQLField("bankLimit", type: .scalar(Int.self)),
+        GraphQLField("spendable", type: .scalar(String.self)),
+      ]
 
       public private(set) var resultMap: ResultMap
 
@@ -364,11 +352,9 @@ public final class CreateUserMutation: GraphQLMutation {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("createUser", arguments: ["email": GraphQLVariable("email"), "password": GraphQLVariable("password")], type: .object(CreateUser.selections)),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("createUser", arguments: ["email": GraphQLVariable("email"), "password": GraphQLVariable("password")], type: .object(CreateUser.selections)),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -392,14 +378,12 @@ public final class CreateUserMutation: GraphQLMutation {
     public struct CreateUser: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["User"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("token", type: .scalar(String.self)),
-          GraphQLField("bankLimit", type: .scalar(Int.self)),
-          GraphQLField("spendable", type: .scalar(String.self)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("token", type: .scalar(String.self)),
+        GraphQLField("bankLimit", type: .scalar(Int.self)),
+        GraphQLField("spendable", type: .scalar(String.self)),
+      ]
 
       public private(set) var resultMap: ResultMap
 

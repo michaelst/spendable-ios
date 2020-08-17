@@ -53,11 +53,9 @@ public final class ListTransactionsQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootQueryType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("transactions", arguments: ["offset": GraphQLVariable("offset")], type: .list(.object(Transaction.selections))),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("transactions", arguments: ["offset": GraphQLVariable("offset")], type: .list(.object(Transaction.selections))),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -81,19 +79,17 @@ public final class ListTransactionsQuery: GraphQLQuery {
     public struct Transaction: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Transaction"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-          GraphQLField("name", type: .scalar(String.self)),
-          GraphQLField("note", type: .scalar(String.self)),
-          GraphQLField("amount", type: .scalar(String.self)),
-          GraphQLField("date", type: .scalar(String.self)),
-          GraphQLField("allocations", type: .list(.object(Allocation.selections))),
-          GraphQLField("category", type: .object(Category.selections)),
-          GraphQLField("bankTransaction", type: .object(BankTransaction.selections)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(GraphQLID.self)),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("note", type: .scalar(String.self)),
+        GraphQLField("amount", type: .scalar(String.self)),
+        GraphQLField("date", type: .scalar(String.self)),
+        GraphQLField("allocations", type: .list(.object(Allocation.selections))),
+        GraphQLField("category", type: .object(Category.selections)),
+        GraphQLField("bankTransaction", type: .object(BankTransaction.selections)),
+      ]
 
       public private(set) var resultMap: ResultMap
 
@@ -189,14 +185,12 @@ public final class ListTransactionsQuery: GraphQLQuery {
       public struct Allocation: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Allocation"]
 
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
-            GraphQLField("budget", type: .object(Budget.selections)),
-            GraphQLField("amount", type: .scalar(String.self)),
-          ]
-        }
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("budget", type: .object(Budget.selections)),
+          GraphQLField("amount", type: .scalar(String.self)),
+        ]
 
         public private(set) var resultMap: ResultMap
 
@@ -247,12 +241,10 @@ public final class ListTransactionsQuery: GraphQLQuery {
         public struct Budget: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["Budget"]
 
-          public static var selections: [GraphQLSelection] {
-            return [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("id", type: .scalar(GraphQLID.self)),
-            ]
-          }
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .scalar(GraphQLID.self)),
+          ]
 
           public private(set) var resultMap: ResultMap
 
@@ -287,12 +279,10 @@ public final class ListTransactionsQuery: GraphQLQuery {
       public struct Category: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Category"]
 
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
-          ]
-        }
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+        ]
 
         public private(set) var resultMap: ResultMap
 
@@ -326,13 +316,11 @@ public final class ListTransactionsQuery: GraphQLQuery {
       public struct BankTransaction: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["BankTransaction"]
 
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("name", type: .scalar(String.self)),
-            GraphQLField("pending", type: .scalar(Bool.self)),
-          ]
-        }
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("name", type: .scalar(String.self)),
+          GraphQLField("pending", type: .scalar(Bool.self)),
+        ]
 
         public private(set) var resultMap: ResultMap
 
@@ -423,11 +411,9 @@ public final class GetTransactionQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootQueryType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("transaction", arguments: ["id": GraphQLVariable("id")], type: .object(Transaction.selections)),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("transaction", arguments: ["id": GraphQLVariable("id")], type: .object(Transaction.selections)),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -451,18 +437,16 @@ public final class GetTransactionQuery: GraphQLQuery {
     public struct Transaction: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Transaction"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("name", type: .scalar(String.self)),
-          GraphQLField("note", type: .scalar(String.self)),
-          GraphQLField("amount", type: .scalar(String.self)),
-          GraphQLField("date", type: .scalar(String.self)),
-          GraphQLField("allocations", type: .list(.object(Allocation.selections))),
-          GraphQLField("category", type: .object(Category.selections)),
-          GraphQLField("bankTransaction", type: .object(BankTransaction.selections)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("note", type: .scalar(String.self)),
+        GraphQLField("amount", type: .scalar(String.self)),
+        GraphQLField("date", type: .scalar(String.self)),
+        GraphQLField("allocations", type: .list(.object(Allocation.selections))),
+        GraphQLField("category", type: .object(Category.selections)),
+        GraphQLField("bankTransaction", type: .object(BankTransaction.selections)),
+      ]
 
       public private(set) var resultMap: ResultMap
 
@@ -549,14 +533,12 @@ public final class GetTransactionQuery: GraphQLQuery {
       public struct Allocation: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Allocation"]
 
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
-            GraphQLField("budget", type: .object(Budget.selections)),
-            GraphQLField("amount", type: .scalar(String.self)),
-          ]
-        }
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("budget", type: .object(Budget.selections)),
+          GraphQLField("amount", type: .scalar(String.self)),
+        ]
 
         public private(set) var resultMap: ResultMap
 
@@ -607,12 +589,10 @@ public final class GetTransactionQuery: GraphQLQuery {
         public struct Budget: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["Budget"]
 
-          public static var selections: [GraphQLSelection] {
-            return [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("id", type: .scalar(GraphQLID.self)),
-            ]
-          }
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .scalar(GraphQLID.self)),
+          ]
 
           public private(set) var resultMap: ResultMap
 
@@ -647,12 +627,10 @@ public final class GetTransactionQuery: GraphQLQuery {
       public struct Category: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Category"]
 
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
-          ]
-        }
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+        ]
 
         public private(set) var resultMap: ResultMap
 
@@ -686,13 +664,11 @@ public final class GetTransactionQuery: GraphQLQuery {
       public struct BankTransaction: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["BankTransaction"]
 
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("name", type: .scalar(String.self)),
-            GraphQLField("pending", type: .scalar(Bool.self)),
-          ]
-        }
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("name", type: .scalar(String.self)),
+          GraphQLField("pending", type: .scalar(Bool.self)),
+        ]
 
         public private(set) var resultMap: ResultMap
 
@@ -757,11 +733,9 @@ public final class ListCategoriesQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootQueryType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("categories", type: .list(.object(Category.selections))),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("categories", type: .list(.object(Category.selections))),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -785,14 +759,12 @@ public final class ListCategoriesQuery: GraphQLQuery {
     public struct Category: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Category"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-          GraphQLField("name", type: .scalar(String.self)),
-          GraphQLField("parentName", type: .scalar(String.self)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(GraphQLID.self)),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("parentName", type: .scalar(String.self)),
+      ]
 
       public private(set) var resultMap: ResultMap
 
@@ -897,11 +869,9 @@ public final class CreateTransactionMutation: GraphQLMutation {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("createTransaction", arguments: ["amount": GraphQLVariable("amount"), "name": GraphQLVariable("name"), "date": GraphQLVariable("date"), "note": GraphQLVariable("note"), "categoryId": GraphQLVariable("categoryId"), "allocations": GraphQLVariable("allocations")], type: .object(CreateTransaction.selections)),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("createTransaction", arguments: ["amount": GraphQLVariable("amount"), "name": GraphQLVariable("name"), "date": GraphQLVariable("date"), "note": GraphQLVariable("note"), "categoryId": GraphQLVariable("categoryId"), "allocations": GraphQLVariable("allocations")], type: .object(CreateTransaction.selections)),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -925,18 +895,16 @@ public final class CreateTransactionMutation: GraphQLMutation {
     public struct CreateTransaction: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Transaction"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-          GraphQLField("name", type: .scalar(String.self)),
-          GraphQLField("note", type: .scalar(String.self)),
-          GraphQLField("amount", type: .scalar(String.self)),
-          GraphQLField("date", type: .scalar(String.self)),
-          GraphQLField("allocations", type: .list(.object(Allocation.selections))),
-          GraphQLField("category", type: .object(Category.selections)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(GraphQLID.self)),
+        GraphQLField("name", type: .scalar(String.self)),
+        GraphQLField("note", type: .scalar(String.self)),
+        GraphQLField("amount", type: .scalar(String.self)),
+        GraphQLField("date", type: .scalar(String.self)),
+        GraphQLField("allocations", type: .list(.object(Allocation.selections))),
+        GraphQLField("category", type: .object(Category.selections)),
+      ]
 
       public private(set) var resultMap: ResultMap
 
@@ -1023,14 +991,12 @@ public final class CreateTransactionMutation: GraphQLMutation {
       public struct Allocation: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Allocation"]
 
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
-            GraphQLField("budget", type: .object(Budget.selections)),
-            GraphQLField("amount", type: .scalar(String.self)),
-          ]
-        }
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("budget", type: .object(Budget.selections)),
+          GraphQLField("amount", type: .scalar(String.self)),
+        ]
 
         public private(set) var resultMap: ResultMap
 
@@ -1081,12 +1047,10 @@ public final class CreateTransactionMutation: GraphQLMutation {
         public struct Budget: GraphQLSelectionSet {
           public static let possibleTypes: [String] = ["Budget"]
 
-          public static var selections: [GraphQLSelection] {
-            return [
-              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-              GraphQLField("id", type: .scalar(GraphQLID.self)),
-            ]
-          }
+          public static let selections: [GraphQLSelection] = [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .scalar(GraphQLID.self)),
+          ]
 
           public private(set) var resultMap: ResultMap
 
@@ -1121,12 +1085,10 @@ public final class CreateTransactionMutation: GraphQLMutation {
       public struct Category: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["Category"]
 
-        public static var selections: [GraphQLSelection] {
-          return [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
-          ]
-        }
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+        ]
 
         public private(set) var resultMap: ResultMap
 
@@ -1199,11 +1161,9 @@ public final class UpdateTransactionMutation: GraphQLMutation {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("updateTransaction", arguments: ["id": GraphQLVariable("id"), "amount": GraphQLVariable("amount"), "name": GraphQLVariable("name"), "date": GraphQLVariable("date"), "note": GraphQLVariable("note"), "categoryId": GraphQLVariable("categoryId"), "allocations": GraphQLVariable("allocations")], type: .object(UpdateTransaction.selections)),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateTransaction", arguments: ["id": GraphQLVariable("id"), "amount": GraphQLVariable("amount"), "name": GraphQLVariable("name"), "date": GraphQLVariable("date"), "note": GraphQLVariable("note"), "categoryId": GraphQLVariable("categoryId"), "allocations": GraphQLVariable("allocations")], type: .object(UpdateTransaction.selections)),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -1227,12 +1187,10 @@ public final class UpdateTransactionMutation: GraphQLMutation {
     public struct UpdateTransaction: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Transaction"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(GraphQLID.self)),
+      ]
 
       public private(set) var resultMap: ResultMap
 
@@ -1292,11 +1250,9 @@ public final class DeleteTransactionMutation: GraphQLMutation {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static var selections: [GraphQLSelection] {
-      return [
-        GraphQLField("deleteTransaction", arguments: ["id": GraphQLVariable("id")], type: .object(DeleteTransaction.selections)),
-      ]
-    }
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("deleteTransaction", arguments: ["id": GraphQLVariable("id")], type: .object(DeleteTransaction.selections)),
+    ]
 
     public private(set) var resultMap: ResultMap
 
@@ -1320,12 +1276,10 @@ public final class DeleteTransactionMutation: GraphQLMutation {
     public struct DeleteTransaction: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Transaction"]
 
-      public static var selections: [GraphQLSelection] {
-        return [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-        ]
-      }
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .scalar(GraphQLID.self)),
+      ]
 
       public private(set) var resultMap: ResultMap
 
