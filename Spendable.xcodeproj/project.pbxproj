@@ -1108,7 +1108,7 @@
 				);
 				LINK_ENV = development;
 				LINK_KEY = 37cc44ed343b19bae3920edf047df1;
-				LINK_WEBHOOK = "https://spendable.dev/plaid/webhook";
+				LINK_WEBHOOK = "https://spendable.money/plaid/webhook";
 				PRODUCT_BUNDLE_IDENTIFIER = fiftysevenmedia.Spendable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;

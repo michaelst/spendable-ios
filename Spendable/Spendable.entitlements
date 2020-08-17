@@ -10,7 +10,7 @@
 	</array>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>webcredentials:spendable.dev</string>
+		<string>webcredentials:spendable.money</string>
 	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
