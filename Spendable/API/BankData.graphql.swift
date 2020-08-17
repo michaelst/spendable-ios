@@ -1,3 +1,4 @@
+// @generated
 //  This file was automatically generated and should not be edited.
 
 import Apollo
@@ -5,7 +6,7 @@ import Foundation
 
 public final class ListBankMembersQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     query ListBankMembers {
       bankMembers {
@@ -25,17 +26,19 @@ public final class ListBankMembersQuery: GraphQLQuery {
     }
     """
 
-  public let operationName = "ListBankMembers"
+  public let operationName: String = "ListBankMembers"
 
   public init() {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootQueryType"]
+    public static let possibleTypes: [String] = ["RootQueryType"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("bankMembers", type: .list(.object(BankMember.selections))),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("bankMembers", type: .list(.object(BankMember.selections))),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -57,16 +60,18 @@ public final class ListBankMembersQuery: GraphQLQuery {
     }
 
     public struct BankMember: GraphQLSelectionSet {
-      public static let possibleTypes = ["BankMember"]
+      public static let possibleTypes: [String] = ["BankMember"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
-        GraphQLField("name", type: .scalar(String.self)),
-        GraphQLField("status", type: .scalar(String.self)),
-        GraphQLField("logo", type: .scalar(String.self)),
-        GraphQLField("bankAccounts", type: .list(.object(BankAccount.selections))),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("name", type: .scalar(String.self)),
+          GraphQLField("status", type: .scalar(String.self)),
+          GraphQLField("logo", type: .scalar(String.self)),
+          GraphQLField("bankAccounts", type: .list(.object(BankAccount.selections))),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -133,15 +138,17 @@ public final class ListBankMembersQuery: GraphQLQuery {
       }
 
       public struct BankAccount: GraphQLSelectionSet {
-        public static let possibleTypes = ["BankAccount"]
+        public static let possibleTypes: [String] = ["BankAccount"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-          GraphQLField("name", type: .scalar(String.self)),
-          GraphQLField("sync", type: .scalar(Bool.self)),
-          GraphQLField("balance", type: .scalar(String.self)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("name", type: .scalar(String.self)),
+            GraphQLField("sync", type: .scalar(Bool.self)),
+            GraphQLField("balance", type: .scalar(String.self)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -204,7 +211,7 @@ public final class ListBankMembersQuery: GraphQLQuery {
 
 public final class CreateBankMemberMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     mutation CreateBankMember($publicToken: String!) {
       createBankMember(publicToken: $publicToken) {
@@ -224,7 +231,7 @@ public final class CreateBankMemberMutation: GraphQLMutation {
     }
     """
 
-  public let operationName = "CreateBankMember"
+  public let operationName: String = "CreateBankMember"
 
   public var publicToken: String
 
@@ -237,11 +244,13 @@ public final class CreateBankMemberMutation: GraphQLMutation {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootMutationType"]
+    public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("createBankMember", arguments: ["publicToken": GraphQLVariable("publicToken")], type: .object(CreateBankMember.selections)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("createBankMember", arguments: ["publicToken": GraphQLVariable("publicToken")], type: .object(CreateBankMember.selections)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -263,16 +272,18 @@ public final class CreateBankMemberMutation: GraphQLMutation {
     }
 
     public struct CreateBankMember: GraphQLSelectionSet {
-      public static let possibleTypes = ["BankMember"]
+      public static let possibleTypes: [String] = ["BankMember"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
-        GraphQLField("name", type: .scalar(String.self)),
-        GraphQLField("status", type: .scalar(String.self)),
-        GraphQLField("logo", type: .scalar(String.self)),
-        GraphQLField("bankAccounts", type: .list(.object(BankAccount.selections))),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("name", type: .scalar(String.self)),
+          GraphQLField("status", type: .scalar(String.self)),
+          GraphQLField("logo", type: .scalar(String.self)),
+          GraphQLField("bankAccounts", type: .list(.object(BankAccount.selections))),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -339,15 +350,17 @@ public final class CreateBankMemberMutation: GraphQLMutation {
       }
 
       public struct BankAccount: GraphQLSelectionSet {
-        public static let possibleTypes = ["BankAccount"]
+        public static let possibleTypes: [String] = ["BankAccount"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-          GraphQLField("name", type: .scalar(String.self)),
-          GraphQLField("sync", type: .scalar(Bool.self)),
-          GraphQLField("balance", type: .scalar(String.self)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("name", type: .scalar(String.self)),
+            GraphQLField("sync", type: .scalar(Bool.self)),
+            GraphQLField("balance", type: .scalar(String.self)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -410,14 +423,14 @@ public final class CreateBankMemberMutation: GraphQLMutation {
 
 public final class CreatePublicTokenMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     mutation CreatePublicToken($id: ID!) {
       createPublicToken(id: $id)
     }
     """
 
-  public let operationName = "CreatePublicToken"
+  public let operationName: String = "CreatePublicToken"
 
   public var id: GraphQLID
 
@@ -430,11 +443,13 @@ public final class CreatePublicTokenMutation: GraphQLMutation {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootMutationType"]
+    public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("createPublicToken", arguments: ["id": GraphQLVariable("id")], type: .scalar(String.self)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("createPublicToken", arguments: ["id": GraphQLVariable("id")], type: .scalar(String.self)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -459,7 +474,7 @@ public final class CreatePublicTokenMutation: GraphQLMutation {
 
 public final class UpdateBankAccountMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     mutation UpdateBankAccount($id: ID!, $sync: Boolean!) {
       updateBankAccount(id: $id, sync: $sync) {
@@ -469,7 +484,7 @@ public final class UpdateBankAccountMutation: GraphQLMutation {
     }
     """
 
-  public let operationName = "UpdateBankAccount"
+  public let operationName: String = "UpdateBankAccount"
 
   public var id: GraphQLID
   public var sync: Bool
@@ -484,11 +499,13 @@ public final class UpdateBankAccountMutation: GraphQLMutation {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootMutationType"]
+    public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateBankAccount", arguments: ["id": GraphQLVariable("id"), "sync": GraphQLVariable("sync")], type: .object(UpdateBankAccount.selections)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("updateBankAccount", arguments: ["id": GraphQLVariable("id"), "sync": GraphQLVariable("sync")], type: .object(UpdateBankAccount.selections)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -510,12 +527,14 @@ public final class UpdateBankAccountMutation: GraphQLMutation {
     }
 
     public struct UpdateBankAccount: GraphQLSelectionSet {
-      public static let possibleTypes = ["BankAccount"]
+      public static let possibleTypes: [String] = ["BankAccount"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 

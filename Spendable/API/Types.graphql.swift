@@ -1,3 +1,4 @@
+// @generated
 //  This file was automatically generated and should not be edited.
 
 import Apollo
@@ -6,6 +7,10 @@ import Foundation
 public struct AllocationTemplateLineInputObject: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
+  /// - Parameters:
+  ///   - amount
+  ///   - budgetId
+  ///   - id
   public init(amount: Swift.Optional<String?> = nil, budgetId: Swift.Optional<GraphQLID?> = nil, id: Swift.Optional<GraphQLID?> = nil) {
     graphQLMap = ["amount": amount, "budgetId": budgetId, "id": id]
   }
@@ -41,6 +46,10 @@ public struct AllocationTemplateLineInputObject: GraphQLMapConvertible {
 public struct AllocationInputObject: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
+  /// - Parameters:
+  ///   - amount
+  ///   - budgetId
+  ///   - id
   public init(amount: String, budgetId: GraphQLID, id: Swift.Optional<GraphQLID?> = nil) {
     graphQLMap = ["amount": amount, "budgetId": budgetId, "id": id]
   }

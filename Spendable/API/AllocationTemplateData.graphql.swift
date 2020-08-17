@@ -1,3 +1,4 @@
+// @generated
 //  This file was automatically generated and should not be edited.
 
 import Apollo
@@ -5,7 +6,7 @@ import Foundation
 
 public final class ListAllocationTemplatesQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     query ListAllocationTemplates {
       allocationTemplates {
@@ -25,17 +26,19 @@ public final class ListAllocationTemplatesQuery: GraphQLQuery {
     }
     """
 
-  public let operationName = "ListAllocationTemplates"
+  public let operationName: String = "ListAllocationTemplates"
 
   public init() {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootQueryType"]
+    public static let possibleTypes: [String] = ["RootQueryType"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("allocationTemplates", type: .list(.object(AllocationTemplate.selections))),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("allocationTemplates", type: .list(.object(AllocationTemplate.selections))),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -57,14 +60,16 @@ public final class ListAllocationTemplatesQuery: GraphQLQuery {
     }
 
     public struct AllocationTemplate: GraphQLSelectionSet {
-      public static let possibleTypes = ["AllocationTemplate"]
+      public static let possibleTypes: [String] = ["AllocationTemplate"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
-        GraphQLField("name", type: .scalar(String.self)),
-        GraphQLField("lines", type: .list(.object(Line.selections))),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("name", type: .scalar(String.self)),
+          GraphQLField("lines", type: .list(.object(Line.selections))),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -113,14 +118,16 @@ public final class ListAllocationTemplatesQuery: GraphQLQuery {
       }
 
       public struct Line: GraphQLSelectionSet {
-        public static let possibleTypes = ["AllocationTemplateLine"]
+        public static let possibleTypes: [String] = ["AllocationTemplateLine"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-          GraphQLField("amount", type: .scalar(String.self)),
-          GraphQLField("budget", type: .object(Budget.selections)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("amount", type: .scalar(String.self)),
+            GraphQLField("budget", type: .object(Budget.selections)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -169,12 +176,14 @@ public final class ListAllocationTemplatesQuery: GraphQLQuery {
         }
 
         public struct Budget: GraphQLSelectionSet {
-          public static let possibleTypes = ["Budget"]
+          public static let possibleTypes: [String] = ["Budget"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("id", type: .scalar(GraphQLID.self)),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -211,7 +220,7 @@ public final class ListAllocationTemplatesQuery: GraphQLQuery {
 
 public final class CreateAllocationTemplateMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     mutation CreateAllocationTemplate($name: String!, $lines: [AllocationTemplateLineInputObject]) {
       createAllocationTemplate(name: $name, lines: $lines) {
@@ -231,7 +240,7 @@ public final class CreateAllocationTemplateMutation: GraphQLMutation {
     }
     """
 
-  public let operationName = "CreateAllocationTemplate"
+  public let operationName: String = "CreateAllocationTemplate"
 
   public var name: String
   public var lines: [AllocationTemplateLineInputObject?]?
@@ -246,11 +255,13 @@ public final class CreateAllocationTemplateMutation: GraphQLMutation {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootMutationType"]
+    public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("createAllocationTemplate", arguments: ["name": GraphQLVariable("name"), "lines": GraphQLVariable("lines")], type: .object(CreateAllocationTemplate.selections)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("createAllocationTemplate", arguments: ["name": GraphQLVariable("name"), "lines": GraphQLVariable("lines")], type: .object(CreateAllocationTemplate.selections)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -272,14 +283,16 @@ public final class CreateAllocationTemplateMutation: GraphQLMutation {
     }
 
     public struct CreateAllocationTemplate: GraphQLSelectionSet {
-      public static let possibleTypes = ["AllocationTemplate"]
+      public static let possibleTypes: [String] = ["AllocationTemplate"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
-        GraphQLField("name", type: .scalar(String.self)),
-        GraphQLField("lines", type: .list(.object(Line.selections))),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("name", type: .scalar(String.self)),
+          GraphQLField("lines", type: .list(.object(Line.selections))),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -328,14 +341,16 @@ public final class CreateAllocationTemplateMutation: GraphQLMutation {
       }
 
       public struct Line: GraphQLSelectionSet {
-        public static let possibleTypes = ["AllocationTemplateLine"]
+        public static let possibleTypes: [String] = ["AllocationTemplateLine"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-          GraphQLField("amount", type: .scalar(String.self)),
-          GraphQLField("budget", type: .object(Budget.selections)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("amount", type: .scalar(String.self)),
+            GraphQLField("budget", type: .object(Budget.selections)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -384,12 +399,14 @@ public final class CreateAllocationTemplateMutation: GraphQLMutation {
         }
 
         public struct Budget: GraphQLSelectionSet {
-          public static let possibleTypes = ["Budget"]
+          public static let possibleTypes: [String] = ["Budget"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("id", type: .scalar(GraphQLID.self)),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -426,7 +443,7 @@ public final class CreateAllocationTemplateMutation: GraphQLMutation {
 
 public final class UpdateAllocationTemplateMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     mutation UpdateAllocationTemplate($id: ID!, $name: String!, $lines: [AllocationTemplateLineInputObject]) {
       updateAllocationTemplate(id: $id, name: $name, lines: $lines) {
@@ -446,7 +463,7 @@ public final class UpdateAllocationTemplateMutation: GraphQLMutation {
     }
     """
 
-  public let operationName = "UpdateAllocationTemplate"
+  public let operationName: String = "UpdateAllocationTemplate"
 
   public var id: GraphQLID
   public var name: String
@@ -463,11 +480,13 @@ public final class UpdateAllocationTemplateMutation: GraphQLMutation {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootMutationType"]
+    public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateAllocationTemplate", arguments: ["id": GraphQLVariable("id"), "name": GraphQLVariable("name"), "lines": GraphQLVariable("lines")], type: .object(UpdateAllocationTemplate.selections)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("updateAllocationTemplate", arguments: ["id": GraphQLVariable("id"), "name": GraphQLVariable("name"), "lines": GraphQLVariable("lines")], type: .object(UpdateAllocationTemplate.selections)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -489,14 +508,16 @@ public final class UpdateAllocationTemplateMutation: GraphQLMutation {
     }
 
     public struct UpdateAllocationTemplate: GraphQLSelectionSet {
-      public static let possibleTypes = ["AllocationTemplate"]
+      public static let possibleTypes: [String] = ["AllocationTemplate"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
-        GraphQLField("name", type: .scalar(String.self)),
-        GraphQLField("lines", type: .list(.object(Line.selections))),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("name", type: .scalar(String.self)),
+          GraphQLField("lines", type: .list(.object(Line.selections))),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -545,14 +566,16 @@ public final class UpdateAllocationTemplateMutation: GraphQLMutation {
       }
 
       public struct Line: GraphQLSelectionSet {
-        public static let possibleTypes = ["AllocationTemplateLine"]
+        public static let possibleTypes: [String] = ["AllocationTemplateLine"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .scalar(GraphQLID.self)),
-          GraphQLField("amount", type: .scalar(String.self)),
-          GraphQLField("budget", type: .object(Budget.selections)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("amount", type: .scalar(String.self)),
+            GraphQLField("budget", type: .object(Budget.selections)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -601,12 +624,14 @@ public final class UpdateAllocationTemplateMutation: GraphQLMutation {
         }
 
         public struct Budget: GraphQLSelectionSet {
-          public static let possibleTypes = ["Budget"]
+          public static let possibleTypes: [String] = ["Budget"]
 
-          public static let selections: [GraphQLSelection] = [
-            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("id", type: .scalar(GraphQLID.self)),
-          ]
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("id", type: .scalar(GraphQLID.self)),
+            ]
+          }
 
           public private(set) var resultMap: ResultMap
 
@@ -643,7 +668,7 @@ public final class UpdateAllocationTemplateMutation: GraphQLMutation {
 
 public final class DeleteAllocationTemplateMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     mutation DeleteAllocationTemplate($id: ID!) {
       deleteAllocationTemplate(id: $id) {
@@ -653,7 +678,7 @@ public final class DeleteAllocationTemplateMutation: GraphQLMutation {
     }
     """
 
-  public let operationName = "DeleteAllocationTemplate"
+  public let operationName: String = "DeleteAllocationTemplate"
 
   public var id: GraphQLID
 
@@ -666,11 +691,13 @@ public final class DeleteAllocationTemplateMutation: GraphQLMutation {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootMutationType"]
+    public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("deleteAllocationTemplate", arguments: ["id": GraphQLVariable("id")], type: .object(DeleteAllocationTemplate.selections)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("deleteAllocationTemplate", arguments: ["id": GraphQLVariable("id")], type: .object(DeleteAllocationTemplate.selections)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -692,12 +719,14 @@ public final class DeleteAllocationTemplateMutation: GraphQLMutation {
     }
 
     public struct DeleteAllocationTemplate: GraphQLSelectionSet {
-      public static let possibleTypes = ["AllocationTemplate"]
+      public static let possibleTypes: [String] = ["AllocationTemplate"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 

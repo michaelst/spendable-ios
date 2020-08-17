@@ -1,3 +1,4 @@
+// @generated
 //  This file was automatically generated and should not be edited.
 
 import Apollo
@@ -5,7 +6,7 @@ import Foundation
 
 public final class GetNotificationSettingsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     query GetNotificationSettings($deviceToken: String!) {
       notificationSettings(deviceToken: $deviceToken) {
@@ -16,7 +17,7 @@ public final class GetNotificationSettingsQuery: GraphQLQuery {
     }
     """
 
-  public let operationName = "GetNotificationSettings"
+  public let operationName: String = "GetNotificationSettings"
 
   public var deviceToken: String
 
@@ -29,11 +30,13 @@ public final class GetNotificationSettingsQuery: GraphQLQuery {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootQueryType"]
+    public static let possibleTypes: [String] = ["RootQueryType"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("notificationSettings", arguments: ["deviceToken": GraphQLVariable("deviceToken")], type: .object(NotificationSetting.selections)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("notificationSettings", arguments: ["deviceToken": GraphQLVariable("deviceToken")], type: .object(NotificationSetting.selections)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -55,13 +58,15 @@ public final class GetNotificationSettingsQuery: GraphQLQuery {
     }
 
     public struct NotificationSetting: GraphQLSelectionSet {
-      public static let possibleTypes = ["NotificationSettings"]
+      public static let possibleTypes: [String] = ["NotificationSettings"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
-        GraphQLField("enabled", type: .scalar(Bool.self)),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("enabled", type: .scalar(Bool.self)),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -105,7 +110,7 @@ public final class GetNotificationSettingsQuery: GraphQLQuery {
 
 public final class UpdateNotificationSettingsMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
-  public let operationDefinition =
+  public let operationDefinition: String =
     """
     mutation UpdateNotificationSettings($id: ID!, $enabled: Boolean!) {
       updateNotificationSettings(id: $id, enabled: $enabled) {
@@ -116,7 +121,7 @@ public final class UpdateNotificationSettingsMutation: GraphQLMutation {
     }
     """
 
-  public let operationName = "UpdateNotificationSettings"
+  public let operationName: String = "UpdateNotificationSettings"
 
   public var id: GraphQLID
   public var enabled: Bool
@@ -131,11 +136,13 @@ public final class UpdateNotificationSettingsMutation: GraphQLMutation {
   }
 
   public struct Data: GraphQLSelectionSet {
-    public static let possibleTypes = ["RootMutationType"]
+    public static let possibleTypes: [String] = ["RootMutationType"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("updateNotificationSettings", arguments: ["id": GraphQLVariable("id"), "enabled": GraphQLVariable("enabled")], type: .object(UpdateNotificationSetting.selections)),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("updateNotificationSettings", arguments: ["id": GraphQLVariable("id"), "enabled": GraphQLVariable("enabled")], type: .object(UpdateNotificationSetting.selections)),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -157,13 +164,15 @@ public final class UpdateNotificationSettingsMutation: GraphQLMutation {
     }
 
     public struct UpdateNotificationSetting: GraphQLSelectionSet {
-      public static let possibleTypes = ["NotificationSettings"]
+      public static let possibleTypes: [String] = ["NotificationSettings"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .scalar(GraphQLID.self)),
-        GraphQLField("enabled", type: .scalar(Bool.self)),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
+          GraphQLField("enabled", type: .scalar(Bool.self)),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
